@@ -5,24 +5,24 @@ Proyect 1 - My first amazing arcade game 🦎
 
 ![Imagen Logo](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9YDPnvkDf5tANgyRskUV4Y0KmVyi_MaBtGw&usqp=CAU)
 
-Jessie: ¿Buscáis problemas? 
+Jessie: ¿Teneis problemas? 
 
-James: Pues escuchad nuestro lema. 
+James: Pues compilad nuestro lema. 
 
-Jessie: Para proteger al mundo de la devastación. 
+Jessie: Para proteger al C++ de la devastación. 
 
-James: Para unir a todos los pueblos en una sola nación. 
+James: Para unir a todos los proyectos en una sola ejecución. 
 
-Jessie: Para denunciar a los enemigos de la verdad y el amor. 
+Jessie: Para denunciar a los enemigos del tema oscuro y el amor. 
 
-James: Para extender nuestro poder mas allá del espacio exterior. 
+James: Para extender nuestro poder mas allá del Visual Studio. 
 
 Jessie: Jessie. 
 
 James: James. 
 
-Jessie: ¡El Team Rocket despega a la velocidad de la luz! 
+Jessie: ¡El Team Serapio despega a la velocidad de la luz! 
 
-James: ¡Rendíos ahora o preparaos para luchar! 
+James: ¡Rendíos ahora o preparaos para programar! 
 
 Meowth: ¡Meowth! ¡Bien dicho!
