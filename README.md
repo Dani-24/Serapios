@@ -26,3 +26,5 @@ Jessie: ¡El Team Serapio despega a la velocidad de la luz!
 James: ¡Rendíos ahora o preparaos para programar! 
 
 Meowth: ¡Meowth! ¡Bien dicho!
+
+Unos wakfus?
