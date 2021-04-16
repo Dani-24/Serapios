@@ -13,16 +13,35 @@ class ModuleTextures;
 class ModuleInput;
 class ModulePlayer;
 class ModuleRender;
-//class ModuleScene;
-//class ModuleParticles;
+class ModuleScene;
 class ModuleWindow;
+//class ModuleParticles;
 
 class Application
 {
+public:
+	Application();
+
+	~Application();
+
+	bool Init();
+	update_status Update();
+	bool CleanUp();
 
 public:
-
-
+	Module* modules[NUM_MODULES];
+	ModuleAudio* audio = nullptr;
+	ModuleBox* box = nullptr;
+	ModuleCollisions* collisions = nullptr;
+	ModuleTextures* textures = nullptr;
+	ModuleInput* input = nullptr;
+	ModulePlayer* player = nullptr;
+	ModuleRender* render = nullptr;
+	ModuleScene* scene = nullptr;
+	ModuleWindow* window = nullptr;
+	/*ModuleParticles* particles = nullptr;*/
 }
+
+extern Application* App;
 
 #endif // __APPLICATION_H__
