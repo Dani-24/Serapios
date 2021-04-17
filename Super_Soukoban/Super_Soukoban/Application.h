@@ -40,7 +40,7 @@ public:
 	ModuleScene* scene = nullptr;
 	ModuleWindow* window = nullptr;
 	/*ModuleParticles* particles = nullptr;*/
-}
+};
 
 extern Application* App;
 
