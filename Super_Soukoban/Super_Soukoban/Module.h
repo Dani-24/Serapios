@@ -3,7 +3,17 @@
 
 #include "Globals.h"
 
+struct Collider;
 
-
+class Module{
+public:
+	virtual bool Init();
+	virtual bool Start();
+	virtual update_status PreUpdate();
+	virtual update_status Update();
+	virtual update_status PostUpdate();
+	virtual bool CleanUp();
+	virtual void OnCollision(Collider* c1, Collider* c2);
+};
 
 #endif // __MODULE_H__
