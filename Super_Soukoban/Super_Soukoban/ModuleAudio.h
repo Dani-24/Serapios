@@ -23,7 +23,7 @@ public:
 	bool Init();
 
 	//liberar memoria
-	bool Cleanup();
+	bool CleanUp();
 
 	//poner una musica concreto
 	bool PlayMusic(const char* path, float fade_time = DEFAULT_MUSIC_FADE_TIME);
