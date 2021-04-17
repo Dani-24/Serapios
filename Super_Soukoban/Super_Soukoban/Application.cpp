@@ -30,7 +30,7 @@ Application::Application() {
 
 Application::~Application() {
 	for (int i = 0; i < NUM_MODULES; i++) {
-		delete modules[i]
+		delete modules[i];
 		modules[i] = nullptr;
 	}
 }
@@ -39,11 +39,13 @@ bool Application::Init()
 {
 	bool ret = true;
 
-	for (int i = 0; i < NUM_MODULES && ret; ++i)
+	for (int i = 0; i < NUM_MODULES && ret; ++i) {
 		ret = modules[i]->Init();
+	}
 
-	for (int i = 0; i < NUM_MODULES && ret; ++i)
+	for (int i = 0; i < NUM_MODULES && ret; ++i) {
 		ret = modules[i]->Start();
+	}
 
 	return ret;
 }
