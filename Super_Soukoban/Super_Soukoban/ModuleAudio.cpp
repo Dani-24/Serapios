@@ -46,7 +46,7 @@ bool ModuleAudio::Init() {
 
 bool ModuleAudio::CleanUp()
 {
-	LOG("Sound FX, cerrando Mixer y Audio subsystem");
+	LOG("freeingSound FX, cerrando Mixer y Audio subsystem");
 
 	if (music != NULL)
 	{
@@ -66,5 +66,32 @@ bool ModuleAudio::CleanUp()
 	SDL_QuitSubSystem(SDL_INIT_AUDIO);
 
 	return true;
+}
+
+bool ModuleAudio::PlayMusic(const char* path, float fade_time)
+{
+	bool ret = true;
+	
+	if (music != NULL)
+	{
+		if (fade_time > 0.0f)
+		{
+
+			Mix_FadeOutMusic((int)(fade_time * 1000.0f));
+		}
+		else
+		{
+			Mix_HaltMusic();
+		}
+		Mix_FreeMusic(music);
+	}
+
+	music = Mix_LoadMUS(path);
+
+	if (music == NULL)
+	{
+		LOG("Sound FX, cerrando Mixer y Audio subsystem");
+	}
+
 }
 
