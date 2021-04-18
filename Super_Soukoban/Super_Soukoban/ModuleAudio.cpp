@@ -90,8 +90,58 @@ bool ModuleAudio::PlayMusic(const char* path, float fade_time)
 
 	if (music == NULL)
 	{
-		LOG("Sound FX, cerrando Mixer y Audio subsystem");
+		LOG("Cannot load music %s. Mix_GetError(): %s\n",path, Mix_GetError());
+		ret = false;
+	}
+	else {
+		if(fade_time>0.0f)
+		{
+
+		}
+        else
+	    {
+		    if (Mix_PlayMusic(music, -1) < 0)
+		    {
+			     LOG("Cannot play music %s. Mix_GetError(): %s\n", path, Mix_GetError());
+				 ret = false;
+			}
+	    }
 	}
 
+    LOG("Successfully playing %s", path);
+    return ret;
 }
 
+uint ModuleAudio::LoadFx(const char* path)
+{
+	uint ret = 0;
+	Mix_Chunk* chunk = Mix_LoadWAV(path);
+
+	if (chunk == nullptr)
+	{
+		LOG("Cannot load WAV %s. Mix_GetError(): %s\n", path, Mix_GetError());
+	}
+	else
+	{
+		for (ret = 0; ret < MAX_FX; ++ret)
+		{
+			if (soundFx[ret] == nullptr)
+			{
+				soundFx[ret] = chunk;
+				break;
+			}
+		}
+	}
+	return ret;
+}
+
+bool ModuleAudio::PlayFx(uint index, int repeat)
+{
+	bool ret = false;
+	if (soundFx[index] != nullptr)
+	{
+		Mix_PlayChannel(-1, soundFx[index], repeat);
+		ret = true;
+	}
+	return ret;
+}

@@ -6,10 +6,9 @@
 #define DEFAULT_MUSIC_FADE_TIME 2.0f
 #define MAX_FX 200
 
-//struct _Mix_Music;
-struct Mix_Music;
+struct _Mix_Music;
 struct Mix_Chunk;
-//typedef struct _Mix_Music Mix_Music
+typedef struct _Mix_Music Mix_Music;
 
 class ModuleAudio : public Module
 {
