@@ -13,15 +13,13 @@ typedef struct _Mix_Music Mix_Music;
 class ModuleAudio : public Module
 {
 public:
-	//constructor y destruct
+
 	ModuleAudio();
 
 	~ModuleAudio();
 
-	//inicializar
 	bool Init();
 
-	//liberar memoria
 	bool CleanUp();
 
 	//poner una musica concreto
