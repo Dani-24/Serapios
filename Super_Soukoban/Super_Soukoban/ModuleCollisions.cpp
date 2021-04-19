@@ -63,3 +63,8 @@ update_status ModuleCollisions::PreUpdate() {
 	return update_status::UPDATE_CONTINUE;
 }
 
+update_status ModuleCollisions::Update() {
+	if (App->input->keys[SDL_SCANCODE_F1]) {
+
+	}
+}
