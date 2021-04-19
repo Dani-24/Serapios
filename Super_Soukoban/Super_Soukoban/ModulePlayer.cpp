@@ -30,8 +30,8 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	//texture = App->textures->Load("Assets/sprite.png");
-	//currentAnimation = &idleAnim;
+	texture = App->textures->Load("Assets/captura54.png");
+	currentAnimation = &idleAnim;
 	//walkingFx = App->audio->LoadFx("Assets/sonido.wav");
 	//movingBoxFx = App->audio->LoadFx("Assets/sonido.wav");
 

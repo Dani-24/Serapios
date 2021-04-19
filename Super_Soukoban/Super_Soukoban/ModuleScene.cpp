@@ -4,7 +4,7 @@
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
-//#include "ModuleBox.h"
+#include "ModuleBox.h"
 
 ModuleScene::ModuleScene()
 {
@@ -22,7 +22,7 @@ bool ModuleScene::Start()
 
 	bool ret = true;
 
-	//bgTexture = App->textures->Load("(Direccion del archivo)");
+	//bgTexture = App->textures->Load("Assets/background.png");
 
 	App->audio->PlayMusic("Assets/mlbattle.mp3", 1.0f);
 
