@@ -30,8 +30,13 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
+<<<<<<< HEAD
 	texture = App->textures->Load("Assets/captura54.png");
 	currentAnimation = &idleAnim;
+=======
+	texture = App->textures->Load("Game/Assets/sprite.png");
+	//currentAnimation = &idleAnim;
+>>>>>>> 5f4a304fc15248e2ca38d215f9219cf9a984aedf
 	//walkingFx = App->audio->LoadFx("Assets/sonido.wav");
 	//movingBoxFx = App->audio->LoadFx("Assets/sonido.wav");
 
@@ -48,6 +53,10 @@ update_status ModulePlayer::Update()
 {
 	
 	// Aqui van los movimientos mediante ifs y SDL_SCANCODE_*TECLA == KEY_STATE::KEY_REPEAT
+	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	{
+		position.x -= speed;
+	}
 
 	collider->SetPos(position.x, position.y);
 
@@ -58,11 +67,11 @@ update_status ModulePlayer::Update()
 
 update_status ModulePlayer::PostUpdate()
 {
-	/*if (!destroyed)
+	if (!destroyed)
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture, position.x, position.y, &rect);
-	}*/
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }
