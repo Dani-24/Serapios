@@ -13,16 +13,19 @@
 //#include "ModuleParticles.h"
 
 Application::Application() {
+    modules[0] = window = new ModuleWindow();
+    modules[1] = input = new ModuleInput();
+	modules[2] = textures = new ModuleTextures();
+	modules[3] = audio = new ModuleAudio();
+	modules[4] = scene = new ModuleScene();
+    modules[5] = player = new ModulePlayer();
+	modules[6] = box = new ModuleBox();
+	modules[7] = collisions = new ModuleCollisions();
+	modules[8] = render = new ModuleRender();
 
-	modules[0] = audio = new ModuleAudio();
-	modules[1] = box = new ModuleBox();
-	modules[2] = collisions = new ModuleCollisions();
-	modules[3] = textures = new ModuleTextures();
-	modules[4] = input = new ModuleInput();
-	modules[5] = player = new ModulePlayer();
-	modules[6] = render = new ModuleRender();
-	modules[7] = scene = new ModuleScene();
-	modules[8] = window = new ModuleWindow();
+	
+
+	
 
 	//modules[9] = particles = new ModuleParticles();
 	

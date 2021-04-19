@@ -30,18 +30,18 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-<<<<<<< HEAD
-	texture = App->textures->Load("Assets/captura54.png");
+
+	texture = App->textures->Load("Game/Assets/captura54.png");
 	currentAnimation = &idleAnim;
-=======
-	texture = App->textures->Load("Game/Assets/sprite.png");
+
+	//texture = App->textures->Load("Game/Assets/sprite.png");
 	//currentAnimation = &idleAnim;
->>>>>>> 5f4a304fc15248e2ca38d215f9219cf9a984aedf
+
 	//walkingFx = App->audio->LoadFx("Assets/sonido.wav");
 	//movingBoxFx = App->audio->LoadFx("Assets/sonido.wav");
 
-	position.x = 500;
-	position.y = 500;
+	position.x = 150;
+	position.y = 120;
 
 	// X, Y, anchura, alturra, 
 	collider = App->collisions->AddCollider({ position.x, position.y, 15, 15 }, Collider::Type::PLAYER, this);
@@ -63,11 +63,11 @@ update_status ModulePlayer::Update()
 
 update_status ModulePlayer::PostUpdate()
 {
-	/*if (!destroyed)
-	{
-		SDL_Rect rect = currentAnimation->GetCurrentFrame();
-		App->render->Blit(texture, position.x, position.y, &rect);
-	}*/
+	//if (!destroyed)
+	//{
+	//	SDL_Rect rect = currentAnimation->GetCurrentFrame();
+	//	App->render->Blit(texture, position.x, position.y, &rect);
+	//}
 
 	return update_status::UPDATE_CONTINUE;
 }
