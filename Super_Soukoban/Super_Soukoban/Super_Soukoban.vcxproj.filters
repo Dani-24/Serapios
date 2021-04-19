@@ -58,6 +58,9 @@
     <ClInclude Include="ModuleScene.h">
       <Filter>Archivos de recursos\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Archivos de recursos\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
