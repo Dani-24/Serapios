@@ -24,14 +24,13 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 public:
-	
+	// Position of the player in the map
 	iPoint position;			
 
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
 
-	bool destroyed = false;
-
+	// The player spritesheet
 	SDL_Texture* texture = nullptr;
 
 	// The pointer to the current player animation
