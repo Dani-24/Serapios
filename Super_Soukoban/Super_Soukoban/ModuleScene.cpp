@@ -4,7 +4,7 @@
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
-//#include "ModuleBox.h"
+#include "ModuleBox.h"
 
 ModuleScene::ModuleScene()
 {
