@@ -60,4 +60,6 @@ update_status ModuleCollisions::PreUpdate() {
 			}
 		}
 	}
+	return update_status::UPDATE_CONTINUE;
 }
+
