@@ -14,11 +14,8 @@ public:
 	bool Init() override;
 	bool CleanUp() override;
 
-public:
-
-    SDL_Window* window = nullptr;
 	SDL_Surface* screenSurface = nullptr;
-	
+	SDL_Window* window = nullptr;
 };
 
 

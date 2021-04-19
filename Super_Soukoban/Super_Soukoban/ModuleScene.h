@@ -6,14 +6,6 @@
 
 struct SDL_Texture;
 
-//enum GameScreen
-//{
-//	LOGO = 0,
-//	TITLE,
-//	GAMEPLAY,
-//	ENDING
-//};
-
 class ModuleScene : public Module
 {
 public:
@@ -35,7 +27,6 @@ public:
 
 	SDL_Texture* bgTexture = nullptr;
 
-	//GameScreen currentScreen;// 0-LOGO, 1-TITLE, 2-GAMEPLAY, 3-ENDING
 };
 
 #endif // __MODULE_SCENE_H__
