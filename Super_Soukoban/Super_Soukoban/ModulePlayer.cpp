@@ -12,20 +12,14 @@
 
 ModulePlayer::ModulePlayer()
 {
-	// idle animation - just one sprite
-	idleAnim.PushBack({ 66, 1, 32, 14 });
 
-	// move upwards
-	upAnim.PushBack({ 100, 1, 32, 14 });
+
+	// Ejemplo animaciones
+	/*upAnim.PushBack({ 100, 1, 32, 14 });
 	upAnim.PushBack({ 132, 0, 32, 14 });
 	upAnim.loop = false;
-	upAnim.speed = 0.1f;
+	upAnim.speed = 0.1f;*/
 
-	// Move down
-	downAnim.PushBack({ 33, 1, 32, 14 });
-	downAnim.PushBack({ 0, 1, 32, 14 });
-	downAnim.loop = false;
-	downAnim.speed = 0.1f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -42,8 +36,8 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Assets/ship.png");
 	currentAnimation = &idleAnim;
 
-	laserFx = App->audio->LoadFx("Assets/laser.wav");
-	explosionFx = App->audio->LoadFx("Assets/explosion.wav");
+	walkingFx = App->audio->LoadFx("Assets/laser.wav");
+	movingBoxFx = App->audio->LoadFx("Assets/explosion.wav");
 
 	position.x = 150;
 	position.y = 120;
