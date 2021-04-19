@@ -48,6 +48,10 @@ update_status ModulePlayer::Update()
 {
 	
 	// Aqui van los movimientos mediante ifs y SDL_SCANCODE_*TECLA == KEY_STATE::KEY_REPEAT
+	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	{
+		position.x -= speed;
+	}
 
 	collider->SetPos(position.x, position.y);
 
@@ -58,11 +62,11 @@ update_status ModulePlayer::Update()
 
 update_status ModulePlayer::PostUpdate()
 {
-	/*if (!destroyed)
+	if (!destroyed)
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture, position.x, position.y, &rect);
-	}*/
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }
