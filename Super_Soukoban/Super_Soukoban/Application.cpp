@@ -9,13 +9,13 @@
 #include "ModulePlayer.h"
 #include "ModuleRender.h"
 #include "ModuleScene.h"
-//#include "ModuleParticles.h"
 #include "ModuleWindow.h"
+//#include "ModuleParticles.h"
 
 Application::Application() {
 
 	modules[0] = audio = new ModuleAudio();
-	//modules[1] = box = new ModuleBox();
+	modules[1] = box = new ModuleBox();
 	modules[2] = collisions = new ModuleCollisions();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = input = new ModuleInput();

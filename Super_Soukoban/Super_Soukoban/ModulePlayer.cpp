@@ -1,25 +1,22 @@
 #include "ModulePlayer.h"
-
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
-
-#include "SDL/include/SDL_scancode.h"
+#include "External_libraries/SDL/include/SDL_scancode.h"
 
 
 ModulePlayer::ModulePlayer()
 {
-
+	// Aqui van las animaciones del player
 
 	// Ejemplo animaciones
 	/*upAnim.PushBack({ 100, 1, 32, 14 });
 	upAnim.PushBack({ 132, 0, 32, 14 });
 	upAnim.loop = false;
 	upAnim.speed = 0.1f;*/
-
 }
 
 ModulePlayer::~ModulePlayer()
@@ -33,103 +30,44 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/ship.png");
-	currentAnimation = &idleAnim;
+	//texture = App->textures->Load("Assets/sprite.png");
+	//currentAnimation = &idleAnim;
+	//walkingFx = App->audio->LoadFx("Assets/sonido.wav");
+	//movingBoxFx = App->audio->LoadFx("Assets/sonido.wav");
 
-	walkingFx = App->audio->LoadFx("Assets/laser.wav");
-	movingBoxFx = App->audio->LoadFx("Assets/explosion.wav");
+	position.x = 500;
+	position.y = 500;
 
-	position.x = 150;
-	position.y = 120;
-
-	collider = App->collisions->AddCollider({ position.x, position.y, 32, 16 }, Collider::Type::PLAYER, this);
+	// X, Y, anchura, alturra, 
+	collider = App->collisions->AddCollider({ position.x, position.y, 15, 15 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
 
 update_status ModulePlayer::Update()
 {
-	// Moving the player with the camera scroll
-	App->player->position.x += 1;
-
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
-	{
-		position.x -= speed;
-	}
-
-	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-	{
-		position.x += speed;
-	}
-
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-	{
-		position.y += speed;
-		if (currentAnimation != &downAnim)
-		{
-			downAnim.Reset();
-			currentAnimation = &downAnim;
-		}
-	}
-
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-	{
-		position.y -= speed;
-		if (currentAnimation != &upAnim)
-		{
-			upAnim.Reset();
-			currentAnimation = &upAnim;
-		}
-	}
-
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-	{
-		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
-		App->audio->PlayFx(laserFx);
-	}
-
-	// If no up/down movement detected, set the current animation back to idle
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
-		currentAnimation = &idleAnim;
+	
+	// Aqui van los movimientos mediante ifs y SDL_SCANCODE_*TECLA == KEY_STATE::KEY_REPEAT
 
 	collider->SetPos(position.x, position.y);
 
 	currentAnimation->Update();
-
-	if (destroyed)
-	{
-		destroyedCountdown--;
-		if (destroyedCountdown <= 0)
-			return update_status::UPDATE_STOP;
-	}
 
 	return update_status::UPDATE_CONTINUE;
 }
 
 update_status ModulePlayer::PostUpdate()
 {
-	if (!destroyed)
+	/*if (!destroyed)
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture, position.x, position.y, &rect);
-	}
+	}*/
 
 	return update_status::UPDATE_CONTINUE;
 }
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == collider && destroyed == false)
-	{
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
-		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
-		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
-		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
-		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
-
-		App->audio->PlayFx(explosionFx);
-
-		destroyed = true;
-	}
+	// que pasa al colisionar? pues aquí va
 }

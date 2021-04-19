@@ -61,6 +61,9 @@
     <ClInclude Include="Animation.h">
       <Filter>Archivos de recursos\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="p2Point.h">
+      <Filter>Archivos de recursos\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">

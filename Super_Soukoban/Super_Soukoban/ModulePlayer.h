@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Animation.h"
+#include "p2Point.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -24,7 +25,7 @@ public:
 
 public:
 	// Position of the player in the map
-	//iPoint position;						// checkear p2point de project 7 handout/solution
+	iPoint position;			
 
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
