@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)/$(SolutionName)/External_Libraries;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)/$(SolutionName)/External_Libraries;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\$(SolutionName)\External_Libraries;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\$(SolutionName)\External_Libraries;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -96,6 +96,8 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>$(SolutionDir)\$(SolutionName)\External_Libraries\SDL_mixer\libx86;$(SolutionDir)\$(SolutionName)\External_Libraries\SDL_image\libx86;$(SolutionDir)\$(SolutionName)\External_Libraries\SDL\libx86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
