@@ -12,22 +12,21 @@ public:
 	ModuleScene();
 	~ModuleScene();
 
-	// Loads the necessary textures for the map background
+	// Loads the textures for the background
 	bool Start() override;
 
 	// Updates the scene's background animations
 	update_status Update() override;
 
-	// Performs the render call of all the parts of the scene's background
+	// Renderiza
 	update_status PostUpdate() override;
 
 public:
 
-	// The scene sprite sheet loaded into an SDL_Texture
+	// Con lo de abajo creas sprites para el fondo
+
 	SDL_Texture* bgTexture = nullptr;
 
-	// The sprite rectangle for the ground
-	SDL_Texture* starsTexture = nullptr;
 };
 
 #endif // __MODULE_SCENE_H__

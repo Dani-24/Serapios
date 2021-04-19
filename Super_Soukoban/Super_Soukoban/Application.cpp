@@ -3,7 +3,7 @@
 #include "Module.h"
 #include "ModuleAudio.h"
 #include "ModuleBox.h"
-//#include "ModuleCollisions.h"
+#include "ModuleCollisions.h"
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModulePlayer.h"
@@ -15,13 +15,13 @@
 Application::Application() {
 
 	modules[0] = audio = new ModuleAudio();
-	/*modules[1] = box = new ModuleBox();
+	//modules[1] = box = new ModuleBox();
 	modules[2] = collisions = new ModuleCollisions();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = input = new ModuleInput();
 	modules[5] = player = new ModulePlayer();
 	modules[6] = render = new ModuleRender();
-	modules[7] = scene = new ModuleScene();*/
+	modules[7] = scene = new ModuleScene();
 	modules[8] = window = new ModuleWindow();
 
 	//modules[9] = particles = new ModuleParticles();
