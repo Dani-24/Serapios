@@ -24,7 +24,7 @@ bool ModuleScene::Start()
 
 	//bgTexture = App->textures->Load("(Direccion del archivo)");
 
-	App->audio->PlayMusic("Assets/mlbattle.mp3", 1.0f);
+	App->audio->PlayMusic("Game/Assets/mlbattle.mp3", 1.0f);
 
 	
 	// Ejemplo Collider:
