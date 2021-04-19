@@ -28,4 +28,4 @@ public:
     KEY_STATE keys[MAX_KEYS] = { KEY_IDLE };
 };
 
-#endif
+#endif // __MODULE_INPUT_H_
