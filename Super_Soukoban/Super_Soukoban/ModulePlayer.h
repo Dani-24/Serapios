@@ -29,7 +29,7 @@ public:
 
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
-
+	bool destroyed = false;
 	// The player spritesheet
 	SDL_Texture* texture = nullptr;
 
