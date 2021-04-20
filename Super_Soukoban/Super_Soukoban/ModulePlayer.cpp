@@ -31,7 +31,7 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 
-	texture = App->textures->Load("Game/Assets/captura54.png");
+	texture = App->textures->Load("Assets/sprite.png");
 	currentAnimation = &idleAnim;
 
 	//texture = App->textures->Load("Game/Assets/sprite.png");

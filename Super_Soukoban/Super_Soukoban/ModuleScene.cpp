@@ -39,7 +39,7 @@ bool ModuleScene::Start()
 update_status ModuleScene::Update()
 {
 	// Mover la camara (no necesario para el soukoban :D)
-	App->render->camera.x += 0;
+	App->render->camera.x += 4;
 
 	return update_status::UPDATE_CONTINUE;
 }

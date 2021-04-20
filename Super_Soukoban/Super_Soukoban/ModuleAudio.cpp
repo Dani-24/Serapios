@@ -23,7 +23,7 @@ bool ModuleAudio::Init() {
 	bool ret = true;
 	if (SDL_InitSubSystem(SDL_INIT_AUDIO) < 0)
 	{
-		LOG("SLD_INIT_AUDIO no se ha podido inicializar :( SDL_Error: %s\n", SDL_GetError());
+		LOG("SLD_INIT_AUDIO could not initialize:( SDL_Error: %s\n", SDL_GetError());
 		ret = false;
 	}
 	// carga el formato OGG
@@ -32,13 +32,13 @@ bool ModuleAudio::Init() {
 
 	if ((init & flags) != flags)
 	{
-		LOG("no se ha podido inicializar Mixer lib.Mix_Init :( SDL_Error: %s\n", Mix_GetError());
+		LOG("could not initialize Mixer lib.Mix_Init :( SDL_Error: %s\n", Mix_GetError());
 		ret = false;
 	}
 	//inicializa sdl mixer
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 	{
-		LOG("no se ha podido inicializar SDL_Mixer :( SDL_Mixer Error: %s\n", Mix_GetError());
+		LOG("SDL_mixer could not initialize! SDL_Mixer :( SDL_Mixer Error: %s\n", Mix_GetError());
 		ret = false;
 	}
 	return ret;
@@ -46,7 +46,7 @@ bool ModuleAudio::Init() {
 
 bool ModuleAudio::CleanUp()
 {
-	LOG("freeingSound FX, cerrando Mixer y Audio subsystem");
+	LOG("freeingSound FX, closing Mixer y Audio subsystem");
 
 	if (music != NULL)
 	{
@@ -76,7 +76,6 @@ bool ModuleAudio::PlayMusic(const char* path, float fade_time)
 	{
 		if (fade_time > 0.0f)
 		{
-
 			Mix_FadeOutMusic((int)(fade_time * 1000.0f));
 		}
 		else
@@ -96,7 +95,11 @@ bool ModuleAudio::PlayMusic(const char* path, float fade_time)
 	else {
 		if(fade_time>0.0f)
 		{
-
+			if(Mix_FadeInMusic(music,-1,(int)(fade_time * 1000.0f))<0)
+			{
+				LOG("Cannot dae in music %s. Mix_GetError(): %s", path, Mix_GetError());
+				ret = false;
+			}
 		}
         else
 	    {
