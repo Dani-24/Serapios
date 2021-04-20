@@ -34,17 +34,15 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Assets/sprite.png");
 	currentAnimation = &idleAnim;
 
-	//texture = App->textures->Load("Game/Assets/sprite.png");
-	//currentAnimation = &idleAnim;
 
 	//walkingFx = App->audio->LoadFx("Assets/sonido.wav");
 	//movingBoxFx = App->audio->LoadFx("Assets/sonido.wav");
 
-	position.x = 150;
-	position.y = 120;
+	position.x = 0;
+	position.y = 0;
 
 	// X, Y, anchura, alturra, 
-	collider = App->collisions->AddCollider({ position.x, position.y, 15, 15 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 230, 230 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
