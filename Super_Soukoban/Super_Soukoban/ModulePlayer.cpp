@@ -124,10 +124,29 @@ update_status ModulePlayer::Update()
 	}
 	// que se quede mirando al lado que se movia:
 	if(App->input->keys[SDL_SCANCODE_D] == KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == KEY_IDLE && App->input->keys[SDL_SCANCODE_A] == KEY_IDLE && App->input->keys[SDL_SCANCODE_W] == KEY_IDLE) {
-		
-		if (currentAnimation != &idleLeftAnim) {
-			idleLeftAnim.Reset();
-			currentAnimation = &idleLeftAnim;
+		if (currentAnimation == &leftAnim) {
+			if (currentAnimation != &idleLeftAnim) {
+				idleLeftAnim.Reset();
+				currentAnimation = &idleLeftAnim;
+			}
+		}
+		if (currentAnimation == &upAnim) {
+			if (currentAnimation != &idleUpAnim) {
+				idleUpAnim.Reset();
+				currentAnimation = &idleUpAnim;
+			}
+		}
+		if (currentAnimation == &rightAnim) {
+			if (currentAnimation != &idleRightAnim) {
+				idleRightAnim.Reset();
+				currentAnimation = &idleRightAnim;
+			}
+		}
+		if (currentAnimation == &downAnim) {
+			if (currentAnimation != &idleDownAnim) {
+				idleDownAnim.Reset();
+				currentAnimation = &idleDownAnim;
+			}
 		}
 	}
 	
