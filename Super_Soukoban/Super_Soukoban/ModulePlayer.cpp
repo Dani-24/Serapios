@@ -14,7 +14,7 @@ ModulePlayer::ModulePlayer()
 	idleLeftAnim.PushBack({ 9,9,14,24 });
 	idleUpAnim.PushBack({ 9,43,14,24 });
 	idleRightAnim.PushBack({ 211,9,14,24 });
-	idleDownAnim.PushBack({ 211,43,14,24 });
+	idleDownAnim.PushBack({ 210,43,14,24 });
 
 	leftAnim.PushBack({ 9,9,14,24 });
 	leftAnim.PushBack({ 33,9,14,24 });
@@ -49,14 +49,14 @@ ModulePlayer::ModulePlayer()
 	rightAnim.loop = true;
 	rightAnim.speed = 0.2f;
 
-	downAnim.PushBack({ 211,43,14,24 });
-	downAnim.PushBack({ 235,43,14,24 });
-	downAnim.PushBack({ 259,43,14,24 });
-	downAnim.PushBack({ 283,43,14,24 });
-	downAnim.PushBack({ 307,43,14,24 });
-	downAnim.PushBack({ 331,43,14,24 });
-	downAnim.PushBack({ 355,43,14,24 });
-	downAnim.PushBack({ 379,43,14,24 });
+	downAnim.PushBack({ 210,43,14,24 });
+	downAnim.PushBack({ 234,43,14,24 });
+	downAnim.PushBack({ 258,43,14,24 });
+	downAnim.PushBack({ 282,43,14,24 });
+	downAnim.PushBack({ 306,43,14,24 });
+	downAnim.PushBack({ 330,43,14,24 });
+	downAnim.PushBack({ 354,43,14,24 });
+	downAnim.PushBack({ 378,43,14,24 });
 	downAnim.loop = true;
 	downAnim.speed = 0.2f;
 
@@ -73,19 +73,18 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-
 	texture = App->textures->Load("Assets/player.png");
 	currentAnimation = &idleDownAnim;
-
 
 	//walkingFx = App->audio->LoadFx("Assets/sonido.wav");
 	//movingBoxFx = App->audio->LoadFx("Assets/sonido.wav");
 
+	// Posición inicial (depende del lvl)
 	position.x = 100;
 	position.y = 100;
 
 	// X, Y, anchura, alturra, 
-	collider = App->collisions->AddCollider({ position.x, position.y, 12, 24 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 13, 24 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
@@ -95,28 +94,51 @@ update_status ModulePlayer::Update()
 	
 	// Aqui van los movimientos mediante ifs y SDL_SCANCODE_*TECLA == KEY_STATE::KEY_REPEAT
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT) {
+		
+		/*if (newPos == 0) {
+			newPos = position.y - 25;
+		}
+
+		while (position.y > newPos) {
+			if (currentAnimation != &upAnim) {
+				upAnim.Reset();
+				currentAnimation = &upAnim;
+			}
+			position.y -= 1;
+		}
+		if (position.y == newPos) {
+			newPos = 0;
+		}*/
+		
 		position.y -= 1;
+		
 		if (currentAnimation != &upAnim) {
 			upAnim.Reset();
 			currentAnimation = &upAnim;
 		}
 	}
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT) {
-		position.x -= 1;
-		if (currentAnimation != &leftAnim) {
-			leftAnim.Reset();
-			currentAnimation = &leftAnim;
-		}
-	}
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT) {
+	else if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT) {
+		
 		position.y += 1;
+		
 		if (currentAnimation != &downAnim) {
 			downAnim.Reset();
 			currentAnimation = &downAnim;
 		}
 	}
-	if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT) {
+	else if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT) {
+		
+		position.x -= 1;
+
+		if (currentAnimation != &leftAnim) {
+			leftAnim.Reset();
+			currentAnimation = &leftAnim;
+		}
+	}
+	else if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT) {
+		
 		position.x += 1;
+		
 		if (currentAnimation != &rightAnim) {
 			rightAnim.Reset();
 			currentAnimation = &rightAnim;
