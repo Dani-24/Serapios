@@ -75,14 +75,14 @@ bool ModulePlayer::Start()
 
 
 	texture = App->textures->Load("Assets/player.png");
-	currentAnimation = &idleLeftAnim;
+	currentAnimation = &idleDownAnim;
 
 
 	//walkingFx = App->audio->LoadFx("Assets/sonido.wav");
 	//movingBoxFx = App->audio->LoadFx("Assets/sonido.wav");
 
-	position.x = 0;
-	position.y = 0;
+	position.x = 100;
+	position.y = 100;
 
 	// X, Y, anchura, alturra, 
 	collider = App->collisions->AddCollider({ position.x, position.y, 200, 200 }, Collider::Type::PLAYER, this);
