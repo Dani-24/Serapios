@@ -20,10 +20,10 @@ enum class update_status
 typedef unsigned int uint; //abreviacion basicamente
 
 // Configuracion de la pantalla 
-#define SCREEN_WIDTH 1280
-#define SCREEN_HEIGHT 720
+#define SCREEN_WIDTH 300
+#define SCREEN_HEIGHT 200
 
-#define SCREEN_SIZE 1
+#define SCREEN_SIZE 3
 #define WIN_FULLSCREEN 0
 #define WIN_FULLSCREEN_DESKTOP 0
 #define WIN_BORDERLESS 0
