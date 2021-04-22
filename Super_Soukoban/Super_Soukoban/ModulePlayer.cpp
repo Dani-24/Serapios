@@ -38,7 +38,7 @@ ModulePlayer::ModulePlayer()
 	rightAnim.PushBack({ 211,9,14,24 });
 	rightAnim.PushBack({ 235,9,14,24 });
 	rightAnim.PushBack({ 259,9,14,24 });
-	rightAnim.PushBack({ 283,9,14,24 });
+	rightAnim.PushBack({ 280,9,14,24 });
 	rightAnim.PushBack({ 307,9,14,24 });
 	rightAnim.PushBack({ 331,9,14,24 });
 	rightAnim.PushBack({ 355,9,14,24 });
