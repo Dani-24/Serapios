@@ -11,7 +11,7 @@
 ModulePlayer::ModulePlayer()
 {
 	// Aqui van las animaciones del player
-
+	idleAnim.PushBack({0,0,200,200});
 	// Ejemplo animaciones
 	/*upAnim.PushBack({ 100, 1, 32, 14 });
 	upAnim.PushBack({ 132, 0, 32, 14 });
@@ -42,7 +42,7 @@ bool ModulePlayer::Start()
 	position.y = 0;
 
 	// X, Y, anchura, alturra, 
-	collider = App->collisions->AddCollider({ position.x, position.y, 230, 230 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 200, 200 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }

@@ -22,7 +22,7 @@ bool ModuleScene::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/background.png");
+	bgTexture = App->textures->Load("Assets/captura54.png");
 
 	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
 
@@ -39,7 +39,7 @@ bool ModuleScene::Start()
 update_status ModuleScene::Update()
 {
 	// Mover la camara (no necesario para el soukoban :D)
-	App->render->camera.x += 0;
+	//App->render->camera.x += 0;
 
 	return update_status::UPDATE_CONTINUE;
 }
