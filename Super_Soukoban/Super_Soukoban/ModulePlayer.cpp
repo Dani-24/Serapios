@@ -85,7 +85,7 @@ bool ModulePlayer::Start()
 	position.y = 100;
 
 	// X, Y, anchura, alturra, 
-	collider = App->collisions->AddCollider({ position.x, position.y, 200, 200 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 12, 24 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
