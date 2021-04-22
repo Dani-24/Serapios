@@ -12,6 +12,9 @@ ModulePlayer::ModulePlayer()
 {
 	// Aqui van las animaciones del player
 	idleLeftAnim.PushBack({ 9,9,14,24 });
+	idleUpAnim.PushBack({ 9,43,14,24 });
+	idleRightAnim.PushBack({ 211,9,14,24 });
+	idleDownAnim.PushBack({ 211,43,14,24 });
 
 	leftAnim.PushBack({ 9,9,14,24 });
 	leftAnim.PushBack({ 33,9,14,24 });
@@ -24,7 +27,7 @@ ModulePlayer::ModulePlayer()
 	leftAnim.loop = true;
 	leftAnim.speed = 0.2f;
 
-	upAnim.PushBack({ 9,43,14,24 });
+	upAnim.PushBack({ 9, 43,14,24 });
 	upAnim.PushBack({ 33,43,14,24 });
 	upAnim.PushBack({ 57,43,14,24 });
 	upAnim.PushBack({ 81,43,14,24 });
@@ -119,8 +122,10 @@ update_status ModulePlayer::Update()
 			currentAnimation = &rightAnim;
 		}
 	}
+	// que se quede mirando al lado que se movia:
 	if(App->input->keys[SDL_SCANCODE_D] == KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == KEY_IDLE && App->input->keys[SDL_SCANCODE_A] == KEY_IDLE && App->input->keys[SDL_SCANCODE_W] == KEY_IDLE) {
-		if (currentAnimation != &idleLeftAnim) {		// hacer con el if que detecte cual fue la anterior animacion par a que la current sea en esa direccion
+		
+		if (currentAnimation != &idleLeftAnim) {
 			idleLeftAnim.Reset();
 			currentAnimation = &idleLeftAnim;
 		}
