@@ -11,12 +11,18 @@
 ModulePlayer::ModulePlayer()
 {
 	// Aqui van las animaciones del player
-	idleAnim.PushBack({0,0,200,200});
-	// Ejemplo animaciones
-	/*upAnim.PushBack({ 100, 1, 32, 14 });
-	upAnim.PushBack({ 132, 0, 32, 14 });
-	upAnim.loop = false;
-	upAnim.speed = 0.1f;*/
+	idleLeftAnim.PushBack({ 9,9,14,24 });
+
+
+	leftAnim.PushBack({ 9,9,14,24 });
+	leftAnim.PushBack({ 33,9,14,24 });
+	leftAnim.PushBack({ 9,9,14,24 });
+	leftAnim.PushBack({ 9,9,14,24 });
+	leftAnim.PushBack({ 9,9,14,24 });
+	leftAnim.loop = true;
+	leftAnim.speed = 0.1f;
+
+	
 }
 
 ModulePlayer::~ModulePlayer()
@@ -31,7 +37,7 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 
-	texture = App->textures->Load("Assets/sprite.png");
+	texture = App->textures->Load("Assets/player.png");
 	currentAnimation = &idleAnim;
 
 
@@ -54,15 +60,27 @@ update_status ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT) {
 		position.y -= 1;
 	}
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT) {
+	else if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT) {
 		position.x -= 1;
+		if (currentAnimation != &leftAnim) {
+			leftAnim.Reset();
+			currentAnimation = &leftAnim;
+		}
 	}
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT) {
+	else if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT) {
 		position.y += 1;
 	}
-	if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT) {
+	else if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT) {
 		position.x += 1;
 	}
+	else {
+		if (currentAnimation != &idleLeftAnim) {		// hacer con el if que detecte cual fue la anterior animacion par a que la current sea en esa direccion
+			idleLeftAnim.Reset();
+			currentAnimation = &idleLeftAnim;
+		}
+	}
+
+
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_DOWN) {		// Apagar programa con ESC
 		return update_status::UPDATE_STOP;
 	}
