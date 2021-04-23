@@ -30,7 +30,7 @@ private:
 	SDL_Texture* ground = nullptr;
 	SDL_Texture* point = nullptr;
 
-	int map[10][16];
+	int map[16][10];
 };
 
 #endif // __MODULE_SCENE_H__

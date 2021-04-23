@@ -56,9 +56,9 @@ bool ModuleScene::Start()
 
 update_status ModuleScene::Update(int arr[10][16])
 {
-	for (int i = 0; i < 10; ++i)
+	for (int i = 0; i < 16; ++i)
 	{
-		for (int j = 0; j < 16; ++j)
+		for (int j = 0; j < 10; ++j)
 		{
 			map[i][j] == arr[i][j];
 		}
@@ -72,9 +72,9 @@ update_status ModuleScene::PostUpdate()
 	// Aqui se dibuja el fondo
 
 	int type = 0;
-	for (int i = 0; i < 10; ++i)
+	for (int i = 0; i < 16; ++i)
 	{
-		for (int j = 0; j < 16; ++j)
+		for (int j = 0; j < 10; ++j)
 		{
 			type=map[i][j];
 			switch (type)
