@@ -1,19 +1,29 @@
 # Serapios
-Proyect 1 - Our first amazing arcade game 🦎
+Project 1 - Our first amazing arcade game 🦎
+
+
+### Link to the Github project:
+https://github.com/Dani-24/Serapios
 
 ## Description
 <p> We are Serapios, a group of students from CITM and there is where we are going to work on our first project: Super Soukoban.
 
-## Key Features
+## Members
 
-<p align="center">
-  <img width="250" height="200" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9YDPnvkDf5tANgyRskUV4Y0KmVyi_MaBtGw&usqp=CAU">
-</p
-  
+* Dani Toledo - Dani-24
+* Xavi López - Xavierlm11
+* Laia Pachón - laiapachon
+* Adrián Ramírez - AdriRamirez
+* Miguel Rodríguez - Bankaster
+
+## Description of the game
+Super Soukoban is a game that consists on pushing a box above a sphere, but the way of pushing the boxes has to be the correct one, if there is any error, the player usually loses the game. In case that the player pushed the box to the wrong place near the wall, there is no way to stretch out of it. 
+
+
 ## Controls
+The controls in this game are quite simple, the man can only be moved to four different directions, Up, Down, Left and Right, the controls to this are the keys A for the left way, D for the right way, S for going down and, finally, W for going up. F1 is used for displate the colliders and, finally, F2 is for direct WIN/LOSE.
 
-
-## Developers
+## Additional comments
 
 
 ## License
