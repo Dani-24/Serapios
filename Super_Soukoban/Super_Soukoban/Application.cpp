@@ -10,6 +10,7 @@
 #include "ModuleRender.h"
 #include "ModuleScene.h"
 #include "ModuleWindow.h"
+//#include "ModuleParticles.h"
 
 Application::Application() {
     modules[0] = window = new ModuleWindow();
@@ -21,6 +22,12 @@ Application::Application() {
 	modules[6] = box = new ModuleBox();
 	modules[7] = collisions = new ModuleCollisions();
 	modules[8] = render = new ModuleRender();
+
+	
+
+	
+
+	//modules[9] = particles = new ModuleParticles();
 	
 }
 
