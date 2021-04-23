@@ -94,22 +94,7 @@ update_status ModulePlayer::Update()
 	
 	// Aqui van los movimientos mediante ifs y SDL_SCANCODE_*TECLA == KEY_STATE::KEY_REPEAT
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT) {
-		
-		/*if (newPos == 0) {
-			newPos = position.y - 25;
-		}
 
-		while (position.y > newPos) {
-			if (currentAnimation != &upAnim) {
-				upAnim.Reset();
-				currentAnimation = &upAnim;
-			}
-			position.y -= 1;
-		}
-		if (position.y == newPos) {
-			newPos = 0;
-		}*/
-		
 		position.y -= 1;
 		
 		if (currentAnimation != &upAnim) {
@@ -144,6 +129,7 @@ update_status ModulePlayer::Update()
 			currentAnimation = &rightAnim;
 		}
 	}
+
 	// que se quede mirando al lado que se movia:
 	if(App->input->keys[SDL_SCANCODE_D] == KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == KEY_IDLE && App->input->keys[SDL_SCANCODE_A] == KEY_IDLE && App->input->keys[SDL_SCANCODE_W] == KEY_IDLE) {
 		if (currentAnimation == &leftAnim) {
@@ -172,6 +158,24 @@ update_status ModulePlayer::Update()
 		}
 	}
 	
+	// que el personaje se mueva hasta las tiles al soltar la tecla de mov
+	if (currentAnimation == &idleLeftAnim && position.x % 25 != 0) {
+		position.x -= 1;
+		currentAnimation = &leftAnim;
+	}
+	if (currentAnimation == &idleUpAnim && position.y % 25 != 0) {
+		position.y -= 1;
+		currentAnimation = &upAnim;
+	}
+	if (currentAnimation == &idleRightAnim && position.x % 25 != 0) {
+		position.x += 1;
+		currentAnimation = &rightAnim;
+	}
+	if (currentAnimation == &idleDownAnim && position.y % 25 != 0) {
+		position.y += 1;
+		currentAnimation = &downAnim;
+	}
+
 	
 	collider->SetPos(position.x, position.y);
 
