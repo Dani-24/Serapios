@@ -7,11 +7,11 @@
 #include "ModuleBox.h"
 int Scene1[10][16] = {
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0},
+	{0,0,3,3,3,3,3,0,0,0,0,0,0,0,0,0},
+	{0,0,3,3,4,3,3,0,0,0,0,0,0,0,0,0},
+	{0,0,3,3,3,3,3,0,0,0,0,0,0,0,0,0},
+	{0,0,2,2,2,2,2,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -34,17 +34,14 @@ bool ModuleScene::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/captura54.png");
-
-	ground = App->textures->Load("Assets/ground.png");
-	wall = App->textures->Load("Assets/wall.png");
-	s_wall = App->textures->Load("Assets/s_wall.png");
-	floor = App->textures->Load("Assets/floor.png");
-	point = App->textures->Load("Assets/point.png");
+	background = App->textures->Load("Assets/tiles/background.png");
+	wall = App->textures->Load("Assets/tiles/wall.png");
+	wall2 = App->textures->Load("Assets/wall2.png");
+	ground = App->textures->Load("Assets/tiles/ground.png");
+	point = App->textures->Load("Assets/tiles/point.png");
 	
 
 	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
-
 
 	Update(Scene1);
 	
@@ -59,8 +56,6 @@ bool ModuleScene::Start()
 
 update_status ModuleScene::Update(int arr[10][16])
 {
-	// Mover la camara (no necesario para el soukoban :D)
-	//App->render->camera.x += 0;
 	for (int i = 0; i < 10; ++i)
 	{
 		for (int j = 0; j < 16; ++j)
@@ -75,7 +70,6 @@ update_status ModuleScene::Update(int arr[10][16])
 update_status ModuleScene::PostUpdate()
 {
 	// Aqui se dibuja el fondo
-	App->render->Blit(bgTexture, 0, 0, NULL);
 
 	int type = 0;
 	for (int i = 0; i < 10; ++i)
@@ -86,17 +80,16 @@ update_status ModuleScene::PostUpdate()
 			switch (type)
 			{
 			case 0:
-				App->render->Blit(ground, i*24, j*24, NULL);
+				App->render->Blit(background, i*24, j*24, NULL);
 				break;
-
 			case 1:
 				App->render->Blit(wall, i * 24, j * 24, NULL);
 				break;
 			case 2:
-				App->render->Blit(s_wall, i * 24, j * 24, NULL);
+				App->render->Blit(wall2, i * 24, j * 24, NULL);
 				break;
 			case 3:
-				App->render->Blit(floor, i * 24, j * 24, NULL);
+				App->render->Blit(ground, i * 24, j * 24, NULL);
 				break;
 			case 4:
 				App->render->Blit(point, i * 24, j * 24, NULL);

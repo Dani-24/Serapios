@@ -23,15 +23,11 @@ public:
 
 public:
 
-	// Con lo de abajo creas sprites para el fondo
-	
-	SDL_Texture* bgTexture = nullptr;
-
 private:
-	SDL_Texture* ground = nullptr;
+	SDL_Texture* background = nullptr;
 	SDL_Texture* wall = nullptr;
-	SDL_Texture* s_wall = nullptr;
-	SDL_Texture* floor = nullptr;
+	SDL_Texture* wall2 = nullptr;
+	SDL_Texture* ground = nullptr;
 	SDL_Texture* point = nullptr;
 
 	int map[10][16];
