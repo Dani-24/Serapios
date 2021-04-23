@@ -18,8 +18,10 @@ ModuleScene::~ModuleScene()
 
 bool ModuleScene::Start()
 {
-	LOG("Loading background assets");
+	NumScene = 1;
 
+	LOG("Loading background assets");
+	
 	bool ret = true;
 
 	background = App->textures->Load("Assets/tiles/background.png");
@@ -34,7 +36,8 @@ bool ModuleScene::Start()
 	// App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);
 
 	// Ejemplo cajas: 
-	// App->boxes->AddBox(600, 80);
+
+	
 
 	return ret;
 }

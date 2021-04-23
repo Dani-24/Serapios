@@ -25,8 +25,8 @@ public:
 
 public:
 	// Position of the player in the map
-	iPoint position;		
-	int newPos = 0;
+	iPoint position;	
+
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
 	bool destroyed = false;

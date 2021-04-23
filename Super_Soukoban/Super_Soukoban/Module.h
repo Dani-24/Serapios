@@ -14,6 +14,8 @@ public:
 	virtual update_status PostUpdate();
 	virtual bool CleanUp();
 	virtual void OnCollision(Collider* c1, Collider* c2);
+
+	int NumScene; // en que lvl esta
 };
 
 #endif // __MODULE_H__

@@ -15,7 +15,6 @@ class ModulePlayer;
 class ModuleRender;
 class ModuleScene;
 class ModuleWindow;
-//class ModuleParticles;
 
 class Application
 {
