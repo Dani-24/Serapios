@@ -13,16 +13,24 @@ ModuleCollisions::ModuleCollisions() {
 	matrix[Collider::Type::WALL][Collider::Type::WALL] = false;
 	matrix[Collider::Type::WALL][Collider::Type::BOX] = true;
 	matrix[Collider::Type::WALL][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::WALL][Collider::Type::POINT] = false;
 
 	// Colliders cajas:
 	matrix[Collider::Type::BOX][Collider::Type::WALL] = true;
 	matrix[Collider::Type::BOX][Collider::Type::BOX] = true;
 	matrix[Collider::Type::BOX][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::BOX][Collider::Type::POINT] = true;
 
 	// Colliders player:
 	matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::BOX] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::POINT] = false;
+
+	matrix[Collider::Type::POINT][Collider::Type::WALL] = false;
+	matrix[Collider::Type::POINT][Collider::Type::BOX] = true;
+	matrix[Collider::Type::POINT][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::POINT][Collider::Type::POINT] = false;
 }
 
 ModuleCollisions::~ModuleCollisions() {
@@ -92,14 +100,17 @@ void ModuleCollisions::DebugDraw()
 		case Collider::Type::NONE: // colores de los colliders en RGB
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
 			break;
-		case Collider::Type::WALL: 
+		case Collider::Type::WALL:
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
 			break;
-		case Collider::Type::PLAYER: 
+		case Collider::Type::PLAYER:
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
 			break;
-		case Collider::Type::BOX: 
+		case Collider::Type::BOX:
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
+			break;
+		case Collider::Type::POINT:
+			App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
 			break;
 		}
 	}

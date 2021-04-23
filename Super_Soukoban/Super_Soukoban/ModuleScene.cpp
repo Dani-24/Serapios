@@ -27,7 +27,6 @@ bool ModuleScene::Start()
 	wall2 = App->textures->Load("Assets/tiles/wall2.png");
 	ground = App->textures->Load("Assets/tiles/ground.png");
 	point = App->textures->Load("Assets/tiles/point.png");
-	
 
 	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
 	
@@ -64,15 +63,18 @@ update_status ModuleScene::PostUpdate()
 				break;
 			case 1:
 				App->render->Blit(wall, i * 24, j * 24, NULL);
+				App->collisions->AddCollider({ i*24 , j*24 , 25 , 25 }, Collider::Type::WALL);
 				break;
 			case 2:
 				App->render->Blit(wall2, i * 24, j * 24, NULL);
+				App->collisions->AddCollider({ i*24 , j*24 , 25 , 25 }, Collider::Type::WALL);
 				break;
 			case 3:
 				App->render->Blit(ground, i * 24, j * 24, NULL);
 				break;
 			case 4:
 				App->render->Blit(point, i * 24, j * 24, NULL);
+				App->collisions->AddCollider({ i * 24 , j * 24 , 25 , 25 }, Collider::Type::POINT);
 				break;
 			}
 		}

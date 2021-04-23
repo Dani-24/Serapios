@@ -11,6 +11,7 @@ struct Collider {
 		WALL,
 		PLAYER,
 		BOX,
+		POINT,
 		MAX
 	};
 
