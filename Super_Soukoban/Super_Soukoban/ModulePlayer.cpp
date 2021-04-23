@@ -74,17 +74,17 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 	texture = App->textures->Load("Assets/player.png");
-	currentAnimation = &idleDownAnim;
+	currentAnimation = &idleLeftAnim;
 
 	//walkingFx = App->audio->LoadFx("Assets/sonido.wav");
 	//movingBoxFx = App->audio->LoadFx("Assets/sonido.wav");
 
 	// Posición inicial (depende del lvl)
-	position.x = 100;
-	position.y = 100;
+	position.x = 150;
+	position.y = 48;
 
 	// X, Y, anchura, alturra, 
-	collider = App->collisions->AddCollider({ position.x, position.y, 13, 24 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x-5, position.y, 24, 24 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
@@ -159,25 +159,25 @@ update_status ModulePlayer::Update()
 	}
 	
 	// que el personaje se mueva hasta las tiles al soltar la tecla de mov
-	if (currentAnimation == &idleLeftAnim && position.x % 25 != 0) {
+	if (currentAnimation == &idleLeftAnim && (position.x % 24)-5 != 0) {
 		position.x -= 1;
 		currentAnimation = &leftAnim;
 	}
-	if (currentAnimation == &idleUpAnim && position.y % 25 != 0) {
+	if (currentAnimation == &idleUpAnim && (position.y % 24) != 0) {
 		position.y -= 1;
 		currentAnimation = &upAnim;
 	}
-	if (currentAnimation == &idleRightAnim && position.x % 25 != 0) {
+	if (currentAnimation == &idleRightAnim && (position.x % 24)-5 != 0) {
 		position.x += 1;
 		currentAnimation = &rightAnim;
 	}
-	if (currentAnimation == &idleDownAnim && position.y % 25 != 0) {
+	if (currentAnimation == &idleDownAnim && (position.y % 24) != 0) {
 		position.y += 1;
 		currentAnimation = &downAnim;
 	}
 
 	
-	collider->SetPos(position.x, position.y);
+	collider->SetPos(position.x-5, position.y);	// el -5 corrige la hitbox
 
 	currentAnimation->Update();
 
