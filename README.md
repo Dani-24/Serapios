@@ -10,11 +10,12 @@ https://github.com/Dani-24/Serapios
 
 ## Members
 
-* Dani Toledo - https://github.com/Dani-24
-* Xavi López - https://github.com/Xavierlm11
-* Laia Pachón - https://github.com/laiapachon
-* Adrián Ramírez - https://github.com/AdriRamirez
-* Miguel Rodríguez - https://github.com/Bankaster
+   * [Dani Toledo Rodríguez](https://github.com/Dani-24) 
+   * [Xavier López Martín](https://github.com/Xavierlm11)
+   * [Laia Pachón Pérez](https://github.com/laiapachon)
+   * [Adrian Ramirez Perez](https://github.com/AdriRamirez)
+   * [Miguel Rodríguez Torrente](https://github.com/Bankaster)
+
 
 ## Description of the game
 Super Soukoban is a game that consists on pushing a box above a sphere, but the way of pushing the boxes has to be the correct one, if there is any error, the player usually loses the game. In case that the player pushed the box to the wrong place near the wall, there is no way to stretch out of it. 
