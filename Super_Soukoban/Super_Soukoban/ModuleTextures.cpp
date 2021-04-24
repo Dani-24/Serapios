@@ -6,7 +6,7 @@
 #include "External_Libraries/SDL_image/include/SDL_image.h"
 #pragma comment(lib, "External_Libraries/SDL_image/libx86/SDL2_image.lib")
 
-ModuleTextures::ModuleTextures() : Module()
+ModuleTextures::ModuleTextures (bool startEnabled) : Module(startEnabled)
 {
 	for (uint i = 0; i < MAX_TEXTURES; ++i)
 		textures[i] = nullptr;
@@ -83,4 +83,28 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 	}
 
 	return texture;
+}
+//removes memory
+bool ModuleTextures::Unload(SDL_Texture* texture)
+{
+	bool ret = false;
+	if (texture != nullptr)
+	{
+		for (uint i = 0; i < MAX_TEXTURES; ++i)
+		{
+			if (textures[i] == nullptr)
+			{
+				textures[i] = texture;
+				ret = true;
+				break;
+			}
+		}
+		SDL_DestroyTexture(texture);
+	}
+	return ret;
+}
+//size texture
+void ModuleTextures::GetTextureSize(const SDL_Texture* texture, uint& width, uint& height)const
+{
+	SDL_QueryTexture((SDL_Texture*)texture, NULL, NULL, (int*)&width, (int*)&height);
 }

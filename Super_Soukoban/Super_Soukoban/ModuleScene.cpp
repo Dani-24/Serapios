@@ -5,8 +5,9 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleBox.h"
+#include "ModulePlayer.h"
 
-ModuleScene::ModuleScene()
+ModuleScene::ModuleScene(bool startEnabled) :Module(startEnabled)
 {
 
 }
@@ -35,6 +36,9 @@ bool ModuleScene::Start()
 
 	// Ejemplo cajas: 
 	// App->boxes->AddBox(600, 80);
+	//to active the entities
+	App->player->Enable();
+	App->box->Enable();
 
 	return ret;
 }
@@ -81,4 +85,12 @@ update_status ModuleScene::PostUpdate()
 	}
 
 	return update_status::UPDATE_CONTINUE;
+}
+//disable the entities
+bool ModuleScene::CleanUp()
+{
+	App->player->Disable();
+	App->box->Disable();
+
+	return true;
 }

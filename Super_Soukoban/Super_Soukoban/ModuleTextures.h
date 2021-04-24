@@ -10,7 +10,7 @@ struct SDL_Texture;
 class ModuleTextures : public Module
 {
 public:
-	ModuleTextures();
+	ModuleTextures(bool startEnabled) ;
 	~ModuleTextures();
 
 	// Initializes the SDL_Image library
@@ -22,6 +22,9 @@ public:
 	// Loads a new SDL_Texture from a file path, returns nullptr if could not be created
 	SDL_Texture* const Load(const char* path);
 
+	bool Unload(SDL_Texture* texture);
+
+	void GetTextureSize(const SDL_Texture* texture, uint& width, uint& height) const;
 public:
 	// Array of all the loaded textures
 	SDL_Texture* textures[MAX_TEXTURES] = { nullptr };

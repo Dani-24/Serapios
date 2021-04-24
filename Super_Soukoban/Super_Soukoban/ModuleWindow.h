@@ -8,7 +8,7 @@ struct SDL_Surface;
 
 class ModuleWindow :public Module {
 public:
-	ModuleWindow();
+	ModuleWindow(bool startEnabled);
 	~ModuleWindow();
 
 	bool Init() override;

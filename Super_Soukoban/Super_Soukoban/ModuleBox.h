@@ -14,7 +14,7 @@ struct Collider;
 class ModuleBox : public Module
 {
 public:
-	ModuleBox();
+	ModuleBox(bool startEnabled) ;
 	~ModuleBox();
 
 	bool Start() override;

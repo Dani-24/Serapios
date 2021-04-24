@@ -6,7 +6,7 @@
 #include "ModuleTextures.h"
 
 
-ModuleBox::ModuleBox()
+ModuleBox::ModuleBox(bool startEnabled) :Module(startEnabled)
 {
 	for (uint i = 0; i < MAX_BOXES; i++)
 		boxes[i] = nullptr;

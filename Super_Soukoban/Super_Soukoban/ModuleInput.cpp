@@ -4,7 +4,7 @@
 #include "External_libraries/SDL/include/SDL.h"
 
 
-ModuleInput::ModuleInput() :Module() {
+ModuleInput::ModuleInput(bool startEnabled) :Module(startEnabled) {
 
 }
 

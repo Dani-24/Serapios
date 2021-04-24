@@ -153,6 +153,7 @@
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleBox.cpp" />
     <ClCompile Include="ModuleCollisions.cpp" />
+    <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModulePlayer.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleBox.h" />
     <ClInclude Include="ModuleCollisions.h" />
+    <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModulePlayer.h" />
     <ClInclude Include="ModuleRender.h" />

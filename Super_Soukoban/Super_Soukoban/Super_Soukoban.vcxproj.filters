@@ -64,6 +64,9 @@
     <ClInclude Include="p2Point.h">
       <Filter>Archivos de recursos\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleFadeToBlack.h">
+      <Filter>Archivos de recursos\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -106,6 +109,9 @@
       <Filter>Archivos de recursos\Utils</Filter>
     </ClCompile>
     <ClCompile Include="ModuleScene.cpp">
+      <Filter>Archivos de recursos\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFadeToBlack.cpp">
       <Filter>Archivos de recursos\Modules</Filter>
     </ClCompile>
   </ItemGroup>

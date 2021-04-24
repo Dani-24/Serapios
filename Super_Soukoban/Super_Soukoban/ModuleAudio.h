@@ -14,7 +14,7 @@ class ModuleAudio : public Module
 {
 public:
 
-	ModuleAudio();
+	ModuleAudio(bool startEnabled);
 
 	~ModuleAudio();
 

@@ -7,7 +7,7 @@
 
 class ModuleCollisions :public Module {
 public:
-	ModuleCollisions();
+	ModuleCollisions(bool startEnabled) ;
 	~ModuleCollisions();
 
 	update_status PreUpdate();	// comprobar collisiones

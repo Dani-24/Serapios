@@ -6,10 +6,11 @@
 #include "External_Libraries/SDL/include/SDL_render.h"
 #include "External_Libraries/SDL/include/SDL_scancode.h"
 
-ModuleRender::ModuleRender() :Module() {
-
+ModuleRender::ModuleRender (bool startEnabled) : Module(startEnabled)
+{
 }
-ModuleRender::~ModuleRender(){
+ModuleRender::~ModuleRender()
+{
 }
 
 bool ModuleRender::Init() {
@@ -18,7 +19,8 @@ bool ModuleRender::Init() {
 	bool ret = true;
 	Uint32 flags = 0;
 
-	if (VSYNC==true) {
+	if (VSYNC==true)
+	{
 		flags |= SDL_RENDERER_PRESENTVSYNC;
 	}
 

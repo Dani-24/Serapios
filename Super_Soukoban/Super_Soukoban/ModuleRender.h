@@ -9,7 +9,7 @@ struct SDL_Renderer;
 
 class ModuleRender :public Module {
 public:
-	ModuleRender();
+	ModuleRender(bool startEnabled);
 	~ModuleRender();
 
 	bool Init() override;

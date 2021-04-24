@@ -3,12 +3,13 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 9	// editar si se requiere
+#define NUM_MODULES 10	// editar si se requiere
 
 class Module;
 class ModuleAudio;
 class ModuleBox;
 class ModuleCollisions;
+class ModuleFadeToBlack;
 class ModuleTextures;
 class ModuleInput;
 class ModulePlayer;
@@ -33,6 +34,7 @@ public:
 	ModuleAudio* audio = nullptr;
 	ModuleBox* box = nullptr;
 	ModuleCollisions* collisions = nullptr;
+	ModuleFadeToBlack* fade = nullptr;
 	ModuleTextures* textures = nullptr;
 	ModuleInput* input = nullptr;
 	ModulePlayer* player = nullptr;

@@ -9,7 +9,7 @@ struct SDL_Texture;
 class ModuleScene : public Module
 {
 public:
-	ModuleScene();
+	ModuleScene(bool startEnabled);
 	~ModuleScene();
 
 	// Loads the textures for the background
@@ -20,6 +20,8 @@ public:
 
 	// Renderiza
 	update_status PostUpdate() override;
+
+	bool CleanUp();
 
 public:
 

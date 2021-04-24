@@ -3,7 +3,8 @@
 #include "Application.h"
 #include "External_Libraries/SDL/include/SDL.h"
 
-ModuleWindow::ModuleWindow() :Module() {
+ModuleWindow::ModuleWindow(bool startEnabled) : Module(startEnabled) 
+{
 
 }
 

@@ -5,10 +5,11 @@
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
+#include "ModuleFadeToBlack.h"
 #include "External_libraries/SDL/include/SDL_scancode.h"
 
 
-ModulePlayer::ModulePlayer()
+ModulePlayer::ModulePlayer(bool startEnabled) :Module(startEnabled)
 {
 	// Aqui van las animaciones del player
 	idleLeftAnim.PushBack({ 9,9,14,24 });
