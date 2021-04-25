@@ -1,127 +1,118 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Archivos de origen">
+    <Filter Include="Archivos de recursos">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Archivos de origen\Modules">
+    <Filter Include="Archivos de recursos\Modules">
       <UniqueIdentifier>{f405b906-a4a3-4023-8fdc-dc3c85cd1574}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de origen\Utils">
+    <Filter Include="Archivos de recursos\Utils">
       <UniqueIdentifier>{150b1805-d7e1-4293-be85-a1539d4fedcc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de origen\Application">
+    <Filter Include="Archivos de recursos\Application">
       <UniqueIdentifier>{6ba72fae-df3f-4e81-b333-e93eb679a5f9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\Gameplay">
-      <UniqueIdentifier>{01c37462-40ae-49f1-8d8d-9622016b250c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
-      <Filter>Archivos de origen\Application</Filter>
+      <Filter>Archivos de recursos\Application</Filter>
     </ClInclude>
     <ClInclude Include="Globals.h">
-      <Filter>Archivos de origen\Application</Filter>
+      <Filter>Archivos de recursos\Application</Filter>
     </ClInclude>
     <ClInclude Include="MemLeaks.h">
-      <Filter>Archivos de origen\Application</Filter>
+      <Filter>Archivos de recursos\Application</Filter>
     </ClInclude>
     <ClInclude Include="Module.h">
-      <Filter>Archivos de origen\Modules</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleWindow.h">
-      <Filter>Archivos de origen\Modules</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleInput.h">
-      <Filter>Archivos de origen\Modules</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleTextures.h">
-      <Filter>Archivos de origen\Modules</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleRender.h">
-      <Filter>Archivos de origen\Modules</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleAudio.h">
-      <Filter>Archivos de origen\Modules</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleCollisions.h">
-      <Filter>Archivos de origen\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Collider.h">
-      <Filter>Archivos de origen\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Archivos de origen\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="p2Point.h">
-      <Filter>Archivos de origen\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleFadeToBlack.h">
-      <Filter>Archivos de origen\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleFonts.h">
-      <Filter>Archivos de origen\Modules</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModulePlayer.h">
-      <Filter>Archivos de origen\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleScene.h">
-      <Filter>Archivos de origen\Gameplay</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleBox.h">
-      <Filter>Archivos de origen\Gameplay</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Archivos de recursos\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleScene.h">
+      <Filter>Archivos de recursos\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Archivos de recursos\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="p2Point.h">
+      <Filter>Archivos de recursos\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleFadeToBlack.h">
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
-      <Filter>Archivos de origen\Application</Filter>
+      <Filter>Archivos de recursos\Application</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Archivos de origen\Application</Filter>
+      <Filter>Archivos de recursos\Application</Filter>
     </ClCompile>
     <ClCompile Include="Globals.cpp">
-      <Filter>Archivos de origen\Application</Filter>
+      <Filter>Archivos de recursos\Application</Filter>
     </ClCompile>
     <ClCompile Include="Module.cpp">
-      <Filter>Archivos de origen\Modules</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleWindow.cpp">
-      <Filter>Archivos de origen\Modules</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleInput.cpp">
-      <Filter>Archivos de origen\Modules</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleTextures.cpp">
-      <Filter>Archivos de origen\Modules</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleRender.cpp">
-      <Filter>Archivos de origen\Modules</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleAudio.cpp">
-      <Filter>Archivos de origen\Modules</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleCollisions.cpp">
-      <Filter>Archivos de origen\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Collider.cpp">
-      <Filter>Archivos de origen\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleFadeToBlack.cpp">
-      <Filter>Archivos de origen\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleFonts.cpp">
-      <Filter>Archivos de origen\Modules</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModulePlayer.cpp">
-      <Filter>Archivos de origen\Gameplay</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleScene.cpp">
-      <Filter>Archivos de origen\Gameplay</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleBox.cpp">
-      <Filter>Archivos de origen\Gameplay</Filter>
+      <Filter>Archivos de recursos\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Archivos de recursos\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleScene.cpp">
+      <Filter>Archivos de recursos\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFadeToBlack.cpp">
+      <Filter>Archivos de recursos\Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
