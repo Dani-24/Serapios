@@ -39,7 +39,9 @@ public:
 	ModulePlayer* player = nullptr;
 	ModuleBox* boxes = nullptr;
 	ModuleRender* render = nullptr;
+
 	ModuleScene* scene = nullptr;
+	
 	ModuleWindow* window = nullptr;
 	ModuleFonts* fonts = nullptr;
 };
