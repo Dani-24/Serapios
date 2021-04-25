@@ -19,8 +19,10 @@ public:
 	void Enable();
 	void Disable();
 	inline bool IsEnabled()const { return  isEnabled; }
+	
 private:
 	bool isEnabled = true;
+	
 };
 
 #endif // __MODULE_H__

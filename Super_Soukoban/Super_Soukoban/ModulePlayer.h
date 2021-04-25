@@ -54,6 +54,7 @@ public:
 	uint walkingFx = 0;
 	uint movingBoxFx = 0;
 
+	int pos = 0;
 };
 
 #endif //!__MODULE_PLAYER_H__

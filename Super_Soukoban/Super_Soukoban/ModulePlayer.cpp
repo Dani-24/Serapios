@@ -81,7 +81,7 @@ bool ModulePlayer::Start()
 	//movingBoxFx = App->audio->LoadFx("Assets/sonido.wav");
 
 	// Posición inicial (depende del lvl)
-	int pos = 1;
+	
 	switch (pos) {
 	case 0:
 		position.x = 150;

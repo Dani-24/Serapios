@@ -22,6 +22,7 @@ bool ModuleScene::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
+	//pos = 1;
 
 	background = App->textures->Load("Assets/tiles/background.png");
 	wall = App->textures->Load("Assets/tiles/wall.png");
@@ -40,11 +41,14 @@ bool ModuleScene::Start()
 	App->boxes->AddBox(96, 144);
 	App->boxes->AddBox(192, 120);
 
+    App->player->pos += 1;
+
 	return ret;
 }
 
 update_status ModuleScene::Update()
 {
+	
 	return update_status::UPDATE_CONTINUE;
 }
 
