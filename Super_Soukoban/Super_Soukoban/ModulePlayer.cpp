@@ -118,7 +118,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 		else if ((App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT)) {
-			move = true;
+			
 			position.y += 1;
 			
 			if (currentAnimation != &downAnim) {
@@ -127,7 +127,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 		if ((App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT) ) {
-			move = true;
+			
 			position.x -= 1;
 
 			

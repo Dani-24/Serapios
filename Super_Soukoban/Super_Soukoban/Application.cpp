@@ -10,6 +10,8 @@
 #include "ModuleBox.h"
 #include "ModuleRender.h"
 #include "ModuleScene.h"
+#include "ModuleScene2.h"
+#include "ModuleScene3.h"
 #include "ModuleWindow.h"
 #include "ModuleFonts.h"
 
@@ -19,12 +21,14 @@ Application::Application() {
 	modules[2] = textures = new ModuleTextures(true);
 	modules[3] = audio = new ModuleAudio(true);
 	modules[4] = scene = new ModuleScene(true);
-    modules[5] = player = new ModulePlayer(true);
-	modules[6] = boxes = new ModuleBox(true); 
-	modules[7] = collisions = new ModuleCollisions(true);
-	modules[8] = fade = new ModuleFadeToBlack(true);
-	modules[9] = fonts = new ModuleFonts(true);
-	modules[10] = render = new ModuleRender(true);
+	modules[5] = scene2 = new ModuleScene2(true);
+	modules[6] = scene3 = new ModuleScene3(true);
+    modules[7] = player = new ModulePlayer(true);
+	modules[8] = boxes = new ModuleBox(true); 
+	modules[9] = collisions = new ModuleCollisions(true);
+	modules[10] = fade = new ModuleFadeToBlack(true);
+	modules[11] = fonts = new ModuleFonts(true);
+	modules[12] = render = new ModuleRender(true);
 	
 }
 

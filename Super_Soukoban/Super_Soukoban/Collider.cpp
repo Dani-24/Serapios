@@ -15,3 +15,7 @@ bool Collider::Intersects(const SDL_Rect& r)const {	// colisionan?
 		rect.y < r.y + r.h &&
 		rect.y + rect.h > r.y);
 }
+
+bool Collider::Superpos(const SDL_Rect& r)const {	// colisionan?
+	return (rect.x == r.x+r.w && rect.y == r.y+r.h);
+}

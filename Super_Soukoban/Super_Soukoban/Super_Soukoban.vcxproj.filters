@@ -73,6 +73,9 @@
     <ClInclude Include="ModuleBox.h">
       <Filter>Archivos de origen\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleScene2.h">
+      <Filter>Archivos de origen\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -121,6 +124,9 @@
       <Filter>Archivos de origen\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="ModuleBox.cpp">
+      <Filter>Archivos de origen\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleScene2.cpp">
       <Filter>Archivos de origen\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>

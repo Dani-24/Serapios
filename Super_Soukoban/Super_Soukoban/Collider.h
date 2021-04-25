@@ -18,7 +18,7 @@ struct Collider {
 	Collider(SDL_Rect rectangle,Type type,Module* listener=nullptr);
 	void SetPos(int x, int y);
 	bool Intersects(const SDL_Rect& r)const;
-
+	bool Superpos(const SDL_Rect& r)const;
 	SDL_Rect rect;
 	bool pendingToDelete = false;
 	Type type;
