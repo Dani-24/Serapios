@@ -24,14 +24,6 @@ public:
 	bool CleanUp();
 
 public:
-
-private:
-	SDL_Texture* background = nullptr;		// 0
-	SDL_Texture* wall = nullptr;			// 1
-	SDL_Texture* wall2 = nullptr;			// 2
-	SDL_Texture* ground = nullptr;			// 3
-	SDL_Texture* point = nullptr;			// 4
-
 	int map[16][10] = {
 	{0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0},
@@ -50,6 +42,13 @@ private:
 	{0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0}
 	};
+private:
+	SDL_Texture* background = nullptr;		// 0
+	SDL_Texture* wall = nullptr;			// 1
+	SDL_Texture* wall2 = nullptr;			// 2
+	SDL_Texture* ground = nullptr;			// 3
+	SDL_Texture* point = nullptr;			// 4
+
 };
 
 #endif // __MODULE_SCENE_H__

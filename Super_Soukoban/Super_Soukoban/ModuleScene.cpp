@@ -22,7 +22,6 @@ bool ModuleScene::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
-	//pos = 1;
 
 	background = App->textures->Load("Assets/tiles/background.png");
 	wall = App->textures->Load("Assets/tiles/wall.png");

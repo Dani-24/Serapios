@@ -3,6 +3,8 @@
 #include "ModuleCollisions.h"
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
+#include "ModulePlayer.h"
+#include "ModuleScene.h"
 
 // BOX	-- Maneja una caja
 
@@ -11,7 +13,7 @@ Box::Box(int x, int y) :position(x, y) {
 
 	normalBoxAnim.PushBack({ 0,0,24,24 });
 	currentAnim = &normalBoxAnim;
-	darkBoxAnim.PushBack({ 0,40,24,24 });
+	darkBoxAnim.PushBack({ 40,0,24,24 });
 
 	collider = App->collisions->AddCollider({ 0,0,24,24 }, Collider::Type::BOX, (Module*)App->boxes);
 }
@@ -28,6 +30,52 @@ const Collider* Box::GetCollider() const {
 void Box::Update() {
 
 	// aqui va el mov de la caja
+	bool d = true;
+	if (position.x - 17 == App->player->position.x && position.y == App->player->position.y) {	//17?
+		position.x += 1;
+		d = true;
+	}
+	if (position.x + 27 == App->player->position.x && position.y == App->player->position.y) {	//17?
+		position.x -= 1;
+		d = false;
+	}
+	if (position.y - 22 == App->player->position.y && position.x == App->player->position.x - 5) {	//17?
+		position.y += 1;
+		d = false;
+	}
+	if (position.y + 22 == App->player->position.y && position.x == App->player->position.x - 5) {	//17?
+		position.y -= 1;
+		d = true;
+	}
+
+	if (position.x % 24 != 0 && d == true) {
+		position.x += 1;
+		d = false;
+	}
+	if (position.x % 24 != 0 && d == false) {
+		position.x -= 1;
+		d = true;
+	}
+	if (position.y % 24 != 0 && d == true) {
+		position.y -= 1;
+		d = false;
+	}
+	if (position.y % 24 != 0 && d == false) {
+		position.y += 1;
+		d = true;
+	}
+
+	for (int i = 0; i < 16; ++i)
+	{
+		for (int j = 0; j < 10; ++j)
+		{
+			if (App->scene->map[i][j] == 4) {
+				if (position.x == i * 24 && position.y == j * 24) {
+					currentAnim = &darkBoxAnim;
+				}
+			}
+		}
+	}
 
 	if (currentAnim != nullptr) {
 		currentAnim->Update();
@@ -139,14 +187,5 @@ void ModuleBox::SpawnBox(const BoxSpawnpoint& info) {
 }
 
 void ModuleBox::OnCollision(Collider* c1, Collider* c2) {
-	for (uint i = 0; i < MAX_BOXES; i++) {
-		if (boxes[i] != nullptr && boxes[i]->GetCollider() == c1)
-		{
-			boxes[i]->OnCollision(c2);
-
-			/*delete boxes[i];
-			boxes[i] = nullptr;*/
-			break;
-		}
-	}
+	
 }

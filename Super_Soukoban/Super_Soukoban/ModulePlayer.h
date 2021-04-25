@@ -25,8 +25,9 @@ public:
 
 public:
 	// Position of the player in the map
-	iPoint position;		
-	int newPos = 0;
+	iPoint position;	
+	int nPosX = 0;
+	int nPosY = 0;
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
 	bool destroyed = false;
@@ -49,15 +50,11 @@ public:
 
 	Collider* collider = nullptr;
 
-	// Sound effects
-	uint walkingFx = 0;
-	uint movingBoxFx = 0;
-
 	uint score = 0;
 	int scoreFont = -1;
 	char scoreText[10] = { "\0" };
 
-
+	bool canMove = true;
 	int currentScene;
 };
 
