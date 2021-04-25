@@ -82,7 +82,7 @@ bool ModulePlayer::Start()
 
 	// Posición inicial (depende del lvl)
 	
-	switch (pos) {
+	switch (currentScene) {
 	case 0:
 		position.x = 150;
 		position.y = 48;

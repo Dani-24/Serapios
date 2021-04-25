@@ -30,7 +30,6 @@ public:
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
 	bool destroyed = false;
-	int acum;
 	// The player spritesheet
 	SDL_Texture* texture = nullptr;
 
@@ -54,7 +53,7 @@ public:
 	uint walkingFx = 0;
 	uint movingBoxFx = 0;
 
-	int pos = 0;
+	int currentScene;
 };
 
 #endif //!__MODULE_PLAYER_H__
