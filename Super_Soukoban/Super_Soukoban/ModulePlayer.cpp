@@ -81,9 +81,17 @@ bool ModulePlayer::Start()
 	//movingBoxFx = App->audio->LoadFx("Assets/sonido.wav");
 
 	// Posición inicial (depende del lvl)
-	position.x = 150;
-	position.y = 48;
-
+	int pos = 1;
+	switch (pos) {
+	case 0:
+		position.x = 150;
+		position.y = 48;
+		break;
+	case 1:
+		position.x = 200;
+		position.y = 72;
+		break;
+	}
 	// X, Y, anchura, altura, 
 	collider = App->collisions->AddCollider({ position.x-5, position.y, 24, 24 }, Collider::Type::PLAYER, this);
 
