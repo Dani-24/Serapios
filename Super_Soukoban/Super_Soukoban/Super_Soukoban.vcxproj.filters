@@ -67,6 +67,9 @@
     <ClInclude Include="ModuleFadeToBlack.h">
       <Filter>Archivos de recursos\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleFonts.h">
+      <Filter>Archivos de recursos\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -112,6 +115,9 @@
       <Filter>Archivos de recursos\Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleFadeToBlack.cpp">
+      <Filter>Archivos de recursos\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFonts.cpp">
       <Filter>Archivos de recursos\Modules</Filter>
     </ClCompile>
   </ItemGroup>

@@ -11,6 +11,7 @@
 #include "ModuleRender.h"
 #include "ModuleScene.h"
 #include "ModuleWindow.h"
+#include "ModuleFonts.h"
 
 //#include "ModuleParticles.h"
 
@@ -24,8 +25,9 @@ Application::Application() {
 	modules[6] = box = new ModuleBox(false);
 	modules[7] = collisions = new ModuleCollisions(true);
 	modules[8] = fade = new ModuleFadeToBlack(true);
-	modules[9] = render = new ModuleRender(true);
-
+	modules[9] = fonts = new ModuleFonts(true);
+	modules[10] = render = new ModuleRender(true);
+	
 	
 
 	
