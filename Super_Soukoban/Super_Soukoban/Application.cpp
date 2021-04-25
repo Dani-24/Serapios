@@ -11,6 +11,7 @@
 #include "ModuleRender.h"
 #include "ModuleScene.h"
 #include "ModuleWindow.h"
+#include "ModuleFonts.h"
 
 //#include "ModuleParticles.h"
 
@@ -19,13 +20,14 @@ Application::Application() {
     modules[1] = input = new ModuleInput(true);
 	modules[2] = textures = new ModuleTextures(true);
 	modules[3] = audio = new ModuleAudio(true);
-	modules[4] = scene = new ModuleScene(false);
-    modules[5] = player = new ModulePlayer(false);
-	modules[6] = box = new ModuleBox(false);
+	modules[4] = scene = new ModuleScene(true);
+    modules[5] = player = new ModulePlayer(true);
+	modules[6] = box = new ModuleBox(true);
 	modules[7] = collisions = new ModuleCollisions(true);
 	modules[8] = fade = new ModuleFadeToBlack(true);
-	modules[9] = render = new ModuleRender(true);
-
+	modules[9] = fonts = new ModuleFonts(true);
+	modules[10] = render = new ModuleRender(true);
+	
 	
 
 	
