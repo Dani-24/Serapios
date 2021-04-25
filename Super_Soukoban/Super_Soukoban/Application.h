@@ -43,8 +43,8 @@ public:
 	ModuleRender* render = nullptr;
 
 	ModuleScene* scene = nullptr;
-	ModuleScene* scene2 = nullptr;
-	ModuleScene* scene3 = nullptr;
+	ModuleScene2* scene2 = nullptr;
+	ModuleScene3* scene3 = nullptr;
 
 	ModuleWindow* window = nullptr;
 	ModuleFonts* fonts = nullptr;

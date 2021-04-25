@@ -1,4 +1,4 @@
-#include "ModuleScene2.h"
+#include "ModuleScene3.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -7,19 +7,19 @@
 #include "ModuleBox.h"
 #include "ModulePlayer.h"
 
-ModuleScene2::ModuleScene2(bool startEnabled) :Module(startEnabled)
+ModuleScene3::ModuleScene3(bool startEnabled) :Module(startEnabled)
 {
 
 }
 
-ModuleScene2::~ModuleScene2()
+ModuleScene3::~ModuleScene3()
 {
 
 }
 
-bool ModuleScene2::Start()
+bool ModuleScene3::Start()
 {
-	LOG("Loading background assets 3");
+	LOG("Loading background assets 2");
 
 	bool ret = true;
 	//pos = 1;
@@ -46,14 +46,14 @@ bool ModuleScene2::Start()
 	return ret;
 }
 
-update_status ModuleScene2::Update()
+update_status ModuleScene3::Update()
 {
 
 	return update_status::UPDATE_CONTINUE;
 }
 
 
-update_status ModuleScene2::PostUpdate()
+update_status ModuleScene3::PostUpdate()
 {
 	// Aqui se dibuja el fondo
 
@@ -91,7 +91,7 @@ update_status ModuleScene2::PostUpdate()
 	return update_status::UPDATE_CONTINUE;
 }
 //disable the entities
-bool ModuleScene2::CleanUp()
+bool ModuleScene3::CleanUp()
 {
 	App->player->Disable();
 	App->boxes->Disable();

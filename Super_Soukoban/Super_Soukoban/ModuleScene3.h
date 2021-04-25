@@ -1,16 +1,16 @@
-#ifndef __MODULE_SCENE_2_H__
-#define __MODULE_SCENE_2_H__
+#ifndef __MODULE_SCENE_3_H__
+#define __MODULE_SCENE_3_H__
 
 #include "Module.h"
 #include "Animation.h"
 
 struct SDL_Texture;
 
-class ModuleScene2 : public Module
+class ModuleScene3 : public Module
 {
 public:
-	ModuleScene2(bool startEnabled);
-	~ModuleScene2();
+	ModuleScene3(bool startEnabled);
+	~ModuleScene3();
 
 	// Loads the textures for the background
 	bool Start() override;
@@ -37,19 +37,19 @@ private:
 	{0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,1,1,1,1,2,0},
-	{0,0,0,0,0,3,3,3,2,0},
+	{0,1,1,1,2,3,3,3,2,0},
 	{0,2,3,3,2,3,3,3,2,0},
-	{0,2,3,0,3,3,3,3,2,0},
-	{0,2,4,0,0,1,1,1,2,0},
+	{0,2,3,3,3,3,3,3,2,0},
+	{0,2,4,3,3,1,1,1,2,0},
 	{0,2,4,2,3,3,3,2,0,0},
-	{0,2,4,2,0,2,3,2,0,0},
+	{0,2,4,2,3,2,3,2,0,0},
 	{0,1,1,2,3,3,3,2,0,0},
-	{0,0,1,1,1,1,1,2,0,0},
-	{0,0,1,1,1,1,0,0,0,0},
-	{0,0,1,1,1,1,0,0,0,0},
-	{0,0,0,1,1,1,0,0,0,0},
+	{0,0,0,1,1,1,1,2,0,0},
+	{0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0}
 	};
 };
 
-#endif // __MODULE_SCENE_2_H_
+#endif // __MODULE_SCENE_3_H_
