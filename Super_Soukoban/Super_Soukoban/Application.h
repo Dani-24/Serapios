@@ -7,17 +7,16 @@
 
 class Module;
 class ModuleAudio;
-class ModuleBox;
 class ModuleCollisions;
 class ModuleFadeToBlack;
 class ModuleTextures;
 class ModuleInput;
 class ModulePlayer;
+class ModuleBox;
 class ModuleRender;
 class ModuleScene;
 class ModuleWindow;
 class ModuleFonts;
-//class ModuleParticles;
 
 class Application
 {
@@ -33,17 +32,16 @@ public:
 public:
 	Module* modules[NUM_MODULES];
 	ModuleAudio* audio = nullptr;
-	ModuleBox* box = nullptr;
 	ModuleCollisions* collisions = nullptr;
 	ModuleFadeToBlack* fade = nullptr;
 	ModuleTextures* textures = nullptr;
 	ModuleInput* input = nullptr;
 	ModulePlayer* player = nullptr;
+	ModuleBox* boxes = nullptr;
 	ModuleRender* render = nullptr;
 	ModuleScene* scene = nullptr;
 	ModuleWindow* window = nullptr;
 	ModuleFonts* fonts = nullptr;
-	/*ModuleParticles* particles = nullptr;*/
 };
 
 extern Application* App;

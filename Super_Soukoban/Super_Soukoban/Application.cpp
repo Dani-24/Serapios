@@ -2,18 +2,16 @@
 
 #include "Module.h"
 #include "ModuleAudio.h"
-#include "ModuleBox.h"
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModulePlayer.h"
+#include "ModuleBox.h"
 #include "ModuleRender.h"
 #include "ModuleScene.h"
 #include "ModuleWindow.h"
 #include "ModuleFonts.h"
-
-//#include "ModuleParticles.h"
 
 Application::Application() {
     modules[0] = window = new ModuleWindow(true);
@@ -22,17 +20,11 @@ Application::Application() {
 	modules[3] = audio = new ModuleAudio(true);
 	modules[4] = scene = new ModuleScene(true);
     modules[5] = player = new ModulePlayer(true);
-	modules[6] = box = new ModuleBox(true);
+	modules[6] = boxes = new ModuleBox(true); 
 	modules[7] = collisions = new ModuleCollisions(true);
 	modules[8] = fade = new ModuleFadeToBlack(true);
 	modules[9] = fonts = new ModuleFonts(true);
 	modules[10] = render = new ModuleRender(true);
-	
-	
-
-	
-
-	//modules[9] = particles = new ModuleParticles();
 	
 }
 
@@ -74,15 +66,6 @@ update_status Application::Update()
 	return ret;
 }
 
-//bool Application::CleanUp()
-//{
-//	bool ret = true;
-//
-//	for (int i = NUM_MODULES - 1; i >= 0 && ret; --i)
-//		ret = modules[i]->CleanUp();
-//
-//	return ret;
-//}
 bool Application::CleanUp()
 {
 	bool ret = true;

@@ -84,7 +84,7 @@ bool ModulePlayer::Start()
 	position.x = 150;
 	position.y = 48;
 
-	// X, Y, anchura, alturra, 
+	// X, Y, anchura, altura, 
 	collider = App->collisions->AddCollider({ position.x-5, position.y, 24, 24 }, Collider::Type::PLAYER, this);
 
 	return ret;
@@ -93,7 +93,7 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::Update()
 {
 	
-	// Aqui van los movimientos mediante ifs y SDL_SCANCODE_*TECLA == KEY_STATE::KEY_REPEAT
+	// Player movement and animations 
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT) {
 
 		position.y -= 1;
@@ -131,7 +131,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	// que se quede mirando al lado que se movia:
+	// Here we make the player stop de animation when stop walking
 	if(App->input->keys[SDL_SCANCODE_D] == KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == KEY_IDLE && App->input->keys[SDL_SCANCODE_A] == KEY_IDLE && App->input->keys[SDL_SCANCODE_W] == KEY_IDLE) {
 		if (currentAnimation == &leftAnim) {
 			if (currentAnimation != &idleLeftAnim) {
@@ -159,7 +159,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 	
-	// que el personaje se mueva hasta las tiles al soltar la tecla de mov
+	// Auto player movement
 	if (currentAnimation == &idleLeftAnim && (position.x % 24)-5 != 0) {
 		position.x -= 1;
 		currentAnimation = &leftAnim;
@@ -178,7 +178,7 @@ update_status ModulePlayer::Update()
 	}
 
 	
-	collider->SetPos(position.x-5, position.y);	// el -5 corrige la hitbox
+	collider->SetPos(position.x-5, position.y);	// player hitbox
 
 	currentAnimation->Update();
 

@@ -30,15 +30,15 @@ bool ModuleScene::Start()
 	point = App->textures->Load("Assets/tiles/point.png");
 
 	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
-	
-	// Ejemplo Collider:
-	// App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);
 
-	// Ejemplo cajas: 
-	// App->boxes->AddBox(600, 80);
 	//to active the entities
 	App->player->Enable();
-	App->box->Enable();
+	App->boxes->Enable();
+
+	// Boxes lvl1 :
+	App->boxes->AddBox(144, 96);
+	App->boxes->AddBox(96, 144);
+	App->boxes->AddBox(192, 120);
 
 	return ret;
 }
@@ -90,7 +90,7 @@ update_status ModuleScene::PostUpdate()
 bool ModuleScene::CleanUp()
 {
 	App->player->Disable();
-	App->box->Disable();
+	App->boxes->Disable();
 
 	return true;
 }
