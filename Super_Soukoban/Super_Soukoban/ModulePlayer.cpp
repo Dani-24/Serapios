@@ -6,8 +6,9 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleFonts.h"
 #include "External_libraries/SDL/include/SDL_scancode.h"
-
+#include<stdio.h>
 
 ModulePlayer::ModulePlayer(bool startEnabled) :Module(startEnabled)
 {
@@ -95,6 +96,9 @@ bool ModulePlayer::Start()
 	// X, Y, anchura, altura, 
 	collider = App->collisions->AddCollider({ position.x-5, position.y, 24, 24 }, Collider::Type::PLAYER, this);
 
+	char lookupTable[] = { "0123456789 0123456789" };
+	scoreFont = App->fonts->Load("Assets/font.png", lookupTable, 2);
+
 	return ret;
 }
 
@@ -102,42 +106,50 @@ update_status ModulePlayer::Update()
 {
 	
 	// Player movement and animations 
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT) {
+	
+		if ((App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT)) {
+			
 
-		position.y -= 1;
-		
-		if (currentAnimation != &upAnim) {
-			upAnim.Reset();
-			currentAnimation = &upAnim;
+			position.y -= 1;
+			
+			if (currentAnimation != &upAnim) {
+				upAnim.Reset();
+				currentAnimation = &upAnim;
+			}
 		}
-	}
-	else if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT) {
-		
-		position.y += 1;
-		
-		if (currentAnimation != &downAnim) {
-			downAnim.Reset();
-			currentAnimation = &downAnim;
+		else if ((App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT)) {
+			move = true;
+			position.y += 1;
+			
+			if (currentAnimation != &downAnim) {
+				downAnim.Reset();
+				currentAnimation = &downAnim;
+			}
 		}
-	}
-	else if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT) {
-		
-		position.x -= 1;
+		if ((App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT) ) {
+			move = true;
+			position.x -= 1;
 
-		if (currentAnimation != &leftAnim) {
-			leftAnim.Reset();
-			currentAnimation = &leftAnim;
+			
+			if (currentAnimation != &leftAnim) {
+				leftAnim.Reset();
+				currentAnimation = &leftAnim;
+			}
 		}
-	}
-	else if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT) {
-		
-		position.x += 1;
-		
-		if (currentAnimation != &rightAnim) {
-			rightAnim.Reset();
-			currentAnimation = &rightAnim;
+		else if ((App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT) ) {
+			
+			position.x += 1;
+			
+			if (currentAnimation != &rightAnim) {
+				rightAnim.Reset();
+				currentAnimation = &rightAnim;
+			}
 		}
-	}
+		/*if ((position.x % 24 == 0 || position.y % 24 == 0) && move == true) {
+			score += 1;
+			
+		}*/
+	
 
 	// Here we make the player stop de animation when stop walking
 	if(App->input->keys[SDL_SCANCODE_D] == KEY_IDLE && App->input->keys[SDL_SCANCODE_S] == KEY_IDLE && App->input->keys[SDL_SCANCODE_A] == KEY_IDLE && App->input->keys[SDL_SCANCODE_W] == KEY_IDLE) {
@@ -204,10 +216,18 @@ update_status ModulePlayer::PostUpdate()
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
 
+	sprintf_s(scoreText, 10, "%4d", score);
+	App->fonts->BlitText(50, 50, scoreFont, scoreText);
+	//App->fonts->BlitText(50, 50, scoreFont, "123456");
+
+
+
 	return update_status::UPDATE_CONTINUE;
 }
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
+	
+
 	// que pasa al colisionar? pues aquí va
 }

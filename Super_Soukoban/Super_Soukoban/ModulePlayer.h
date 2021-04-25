@@ -53,6 +53,11 @@ public:
 	uint walkingFx = 0;
 	uint movingBoxFx = 0;
 
+	uint score = 0;
+	int scoreFont = -1;
+	char scoreText[10] = { "\0" };
+
+
 	int currentScene;
 };
 
