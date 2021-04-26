@@ -41,9 +41,9 @@ void Module::Enable()
 
 void Module::Disable()
 {
-	if (!isEnabled)
+	if (isEnabled)
 	{
-		isEnabled = true;
+		isEnabled = false;
 		CleanUp();
 	}
 }
