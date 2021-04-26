@@ -41,7 +41,7 @@ update_status SceneIntro::Update() {
 //DRAW BACKGROUD
 
 update_status SceneIntro::PostUpdate() {
-	App->render->Blit(bgTexture, 0, 0, NULL);
+	App->render->Blit(bgTexture, SCREEN_WIDTH/2-115, SCREEN_HEIGHT/2-115 , NULL);
 
 	return update_status::UPDATE_CONTINUE;
 }

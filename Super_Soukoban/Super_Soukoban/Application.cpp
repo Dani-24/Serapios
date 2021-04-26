@@ -22,7 +22,7 @@ Application::Application() {
 	modules[2] = textures = new ModuleTextures(true);
 	modules[3] = audio = new ModuleAudio(true);
 	modules[4] = sceneintro = new SceneIntro(true);
-	modules[5] = scene = new ModuleScene(true);
+	modules[5] = scene = new ModuleScene(false);
 	modules[6] = scene2 = new ModuleScene2(false);
 	modules[7] = scene3 = new ModuleScene3(false);
     modules[8] = player = new ModulePlayer(false);

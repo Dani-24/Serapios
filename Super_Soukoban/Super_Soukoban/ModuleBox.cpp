@@ -98,7 +98,7 @@ void Box::OnCollision(Collider* collider) {
 // MODULE BOX	-- maneja las cajas 
 
 ModuleBox::ModuleBox(bool startEnabled) : Module(startEnabled){
-	for (uint i = 0; i < MAX_BOXES; i++) {
+	for (uint i = 0; i < MAX_BOXES; ++i) {
 		boxes[i] = nullptr;
 	}
 }
@@ -116,7 +116,7 @@ update_status ModuleBox::Update() {
 
 	HandleBoxSpawn();
 
-	for (uint i = 0; i < MAX_BOXES; i++) {
+	for (uint i = 0; i < MAX_BOXES; ++i) {
 		if (boxes[i] != nullptr) {
 			boxes[i]->Update();
 		}
@@ -126,7 +126,7 @@ update_status ModuleBox::Update() {
 }
 
 update_status ModuleBox::PostUpdate() {
-	for (uint i = 0; i < MAX_BOXES; i++) {
+	for (uint i = 0; i < MAX_BOXES; ++i) {
 		if (boxes[i] != nullptr) {
 			boxes[i]->Draw();
 		}
@@ -136,7 +136,7 @@ update_status ModuleBox::PostUpdate() {
 
 bool ModuleBox::CleanUp() {
 	LOG("Deleting all boxes");
-	for (uint i = 0; i < MAX_BOXES; i++)
+	for (uint i = 0; i < MAX_BOXES; ++i)
 	{
 		if (boxes[i] != nullptr)
 		{
