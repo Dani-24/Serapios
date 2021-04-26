@@ -40,9 +40,9 @@ bool ModuleScene::Start()
 	App->boxes->Enable();
 
 	// Boxes lvl1 :
-	App->boxes->AddBox(144, 96);
+	/*App->boxes->AddBox(144, 96);
 	App->boxes->AddBox(96, 144);
-	App->boxes->AddBox(192, 120);
+	App->boxes->AddBox(192, 120);*/
 
     App->player->currentScene = 0;	// Posición inicial de player en la Scene 1
 

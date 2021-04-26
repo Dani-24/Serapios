@@ -5,7 +5,7 @@
 #include "Animation.h"
 #include "Module.h"
 
-#define MAX_BOXES 4
+#define MAX_BOXES 20
 
 struct SDL_Texture;
 struct Collider;
