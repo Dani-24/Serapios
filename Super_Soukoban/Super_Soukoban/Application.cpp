@@ -14,21 +14,23 @@
 #include "ModuleScene3.h"
 #include "ModuleWindow.h"
 #include "ModuleFonts.h"
+#include "SceneIntro.h"
 
 Application::Application() {
     modules[0] = window = new ModuleWindow(true);
     modules[1] = input = new ModuleInput(true);
 	modules[2] = textures = new ModuleTextures(true);
 	modules[3] = audio = new ModuleAudio(true);
-	modules[4] = scene = new ModuleScene(true);
-	modules[5] = scene2 = new ModuleScene2(false);
-	modules[6] = scene3 = new ModuleScene3(false);
-    modules[7] = player = new ModulePlayer(false);
-	modules[8] = boxes = new ModuleBox(false); 
-	modules[9] = collisions = new ModuleCollisions(true);
-	modules[10] = fade = new ModuleFadeToBlack(true);
-	modules[11] = fonts = new ModuleFonts(true);
-	modules[12] = render = new ModuleRender(true);
+	modules[4] = sceneintro = new SceneIntro(true);
+	modules[5] = scene = new ModuleScene(true);
+	modules[6] = scene2 = new ModuleScene2(false);
+	modules[7] = scene3 = new ModuleScene3(false);
+    modules[8] = player = new ModulePlayer(false);
+	modules[9] = boxes = new ModuleBox(false); 
+	modules[10] = collisions = new ModuleCollisions(true);
+	modules[11] = fade = new ModuleFadeToBlack(true);
+	modules[12] = fonts = new ModuleFonts(true);
+	modules[13] = render = new ModuleRender(true);
 	
 }
 
