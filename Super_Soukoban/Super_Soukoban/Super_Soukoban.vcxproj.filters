@@ -73,10 +73,10 @@
     <ClInclude Include="ModuleBox.h">
       <Filter>Archivos de origen\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleScene2.h">
+    <ClInclude Include="ModuleScene3.h">
       <Filter>Archivos de origen\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleScene3.h">
+    <ClInclude Include="ModuleScene2.h">
       <Filter>Archivos de origen\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
@@ -129,10 +129,10 @@
     <ClCompile Include="ModuleBox.cpp">
       <Filter>Archivos de origen\Gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleScene2.cpp">
+    <ClCompile Include="ModuleScene3.cpp">
       <Filter>Archivos de origen\Gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleScene3.cpp">
+    <ClCompile Include="ModuleScene2.cpp">
       <Filter>Archivos de origen\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>

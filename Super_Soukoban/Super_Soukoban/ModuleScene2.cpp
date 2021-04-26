@@ -3,9 +3,13 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
+#include "ModuleInput.h"
 #include "ModuleCollisions.h"
 #include "ModuleBox.h"
 #include "ModulePlayer.h"
+#include "ModuleFadeToBlack.h"
+
+#include "External_Libraries/SDL/include/SDL_scancode.h"
 
 ModuleScene2::ModuleScene2(bool startEnabled) :Module(startEnabled)
 {
@@ -48,7 +52,16 @@ bool ModuleScene2::Start()
 
 update_status ModuleScene2::Update()
 {
+	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene, 60);
 
+	}
+	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
+
+	}
 	return update_status::UPDATE_CONTINUE;
 }
 

@@ -249,6 +249,12 @@ update_status ModulePlayer::Update()
 
 update_status ModulePlayer::PostUpdate()
 {
+	/*if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene2, 60);
+
+	}
+	*/
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_DOWN) {		// Apagar programa con ESC
 		return update_status::UPDATE_STOP;
 	}

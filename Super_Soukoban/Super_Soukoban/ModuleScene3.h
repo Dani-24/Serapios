@@ -1,5 +1,5 @@
-#ifndef __MODULE_SCENE_3_H__
-#define __MODULE_SCENE_3_H__
+#ifndef __MODULE_SCENE3_H__
+#define __MODULE_SCENE3_H__
 
 #include "Module.h"
 #include "Animation.h"

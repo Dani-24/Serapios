@@ -3,9 +3,13 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
+#include "ModuleInput.h"
 #include "ModuleCollisions.h"
 #include "ModuleBox.h"
 #include "ModulePlayer.h"
+#include "ModuleFadeToBlack.h"
+
+#include "External_Libraries/SDL/include/SDL_scancode.h"
 
 ModuleScene::ModuleScene(bool startEnabled) :Module(startEnabled)
 {
@@ -47,6 +51,16 @@ bool ModuleScene::Start()
 
 update_status ModuleScene::Update()
 {
+	if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene2, 60);
+
+	}
+	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
+
+	}
 	
 	return update_status::UPDATE_CONTINUE;
 }
@@ -74,7 +88,7 @@ update_status ModuleScene::PostUpdate()
 				break;
 			case 2:
 				App->render->Blit(wall2, i * 24, j * 24, NULL);
-				App->collisions->AddCollider({ i*24 , j*24 , 24 , 24 }, Collider::Type::WALL);
+				App->collisions->AddCollider({ i * 24 , j * 24 , 24 , 24 }, Collider::Type::WALL);
 				break;
 			case 3:
 				App->render->Blit(ground, i * 24, j * 24, NULL);
