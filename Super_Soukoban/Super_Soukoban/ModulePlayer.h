@@ -50,7 +50,7 @@ public:
 
 	Collider* collider = nullptr;
 
-	uint score = 0;
+	uint steps = 90;
 	int scoreFont = -1;
 	char scoreText[10] = { "\0" };
 

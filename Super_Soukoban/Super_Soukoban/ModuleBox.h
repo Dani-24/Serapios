@@ -27,6 +27,7 @@ public:
 public:
 	iPoint position;
 	SDL_Texture* texture = nullptr;
+	
 
 protected:
 	Animation* currentAnim = nullptr;
@@ -36,6 +37,7 @@ protected:
 private:
 	Animation normalBoxAnim;
 	Animation darkBoxAnim;
+	
 };
 
 // Module Box

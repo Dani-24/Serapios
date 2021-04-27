@@ -269,7 +269,7 @@ update_status ModulePlayer::PostUpdate()
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
 
-	sprintf_s(scoreText, 10, "%4d", score);
+	sprintf_s(scoreText, 10, "%4d", steps);
 	App->fonts->BlitText(350, 15, scoreFont, scoreText);
 	//App->fonts->BlitText(50, 50, scoreFont, "123456");
 

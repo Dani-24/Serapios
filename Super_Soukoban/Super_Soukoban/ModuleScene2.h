@@ -23,6 +23,7 @@ public:
 
 	bool CleanUp();
 
+
 public:
 
 private:
@@ -31,6 +32,8 @@ private:
 	SDL_Texture* wall2 = nullptr;			// 2
 	SDL_Texture* ground = nullptr;			// 3
 	SDL_Texture* point = nullptr;			// 4
+	SDL_Texture* lose = nullptr;
+	SDL_Texture* win = nullptr;
 
 	int map[16][10] = {
 	{0,0,0,0,1,0,0,0,0,0},

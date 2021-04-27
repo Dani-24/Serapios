@@ -6,6 +6,7 @@
 #include "ModulePlayer.h"
 #include "ModuleScene.h"
 
+
 // BOX	-- Maneja una caja
 
 Box::Box(int x, int y) :position(x, y) {
@@ -72,8 +73,10 @@ void Box::Update() {
 			if (App->scene->map[i][j] == 4) {
 				if (position.x == i * 24 && position.y == j * 24) {
 					currentAnim = &darkBoxAnim;
+					
 				}
 			}
+			
 		}
 	}
 
