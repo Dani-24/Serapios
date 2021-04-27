@@ -44,7 +44,7 @@ bool ModuleScene2::Start()
 
 	// Boxes lvl1 :
 	App->boxes->AddBox(144, 96);
-	App->boxes->AddBox(96, 144);
+	App->boxes->AddBox(120, 144);
 	App->boxes->AddBox(192, 120);
 
 	/*App->player->currentScene = 1;*/	// Posición inicial de player en la Scene 2
@@ -64,11 +64,11 @@ update_status ModuleScene2::Update()
 		App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
 
 	}
-	for (int i = 0; i < 3;i++) {
+	/*for (int i = 0; i < 3;i++) {
 		if (App->boxes->) {
 
 		}
-	}
+	}*/
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -114,8 +114,15 @@ update_status ModuleScene2::PostUpdate()
 
 		
 	}
-	if (App->boxes->box->count == 3) {
-
+	for (int i = 0; i < 3; ++i)
+	{
+		if (App->boxes->boxes[i]->currentAnim == &(App->boxes->boxes[i]->darkBoxAnim))
+		{
+			boxEnd[i] = true;
+		}
+	}
+	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true)
+	{
 		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
 
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
@@ -123,8 +130,9 @@ update_status ModuleScene2::PostUpdate()
 			App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
 
 		}
+		LOG("level 2 completed");
+
 	}
-	   
 	
 	return update_status::UPDATE_CONTINUE;
 }

@@ -27,16 +27,19 @@ public:
 public:
 	iPoint position;
 	SDL_Texture* texture = nullptr;
-	
 
-protected:
 	Animation* currentAnim = nullptr;
+    Animation darkBoxAnim;
+
+	
+protected:
+	
 	Collider* collider = nullptr;
 	iPoint spawnPos;
 
 private:
 	Animation normalBoxAnim;
-	Animation darkBoxAnim;
+	
 	
 };
 
@@ -65,12 +68,13 @@ public:
 
 	void HandleBoxSpawn();
 
+    Box* boxes[MAX_BOXES] = { nullptr };
 private:
 	void SpawnBox(const BoxSpawnpoint& info);
 
 	BoxSpawnpoint spawnQueue[MAX_BOXES];
 
-	Box* boxes[MAX_BOXES] = { nullptr };
+	
 
 	SDL_Texture* texture = nullptr;
 

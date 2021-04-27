@@ -270,14 +270,12 @@ update_status ModulePlayer::PostUpdate()
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
 
-<<<<<<< Updated upstream
+
 	sprintf_s(scoreText, 10, "%4d", steps);
 	App->fonts->BlitText(350, 15, scoreFont, scoreText);
-=======
-	sprintf_s(scoreText, 10, "%4d", score);
-	App->fonts->BlitText(350, 33, scoreFont, scoreText);
+
 	App->render->Blit(table, 320, 10, NULL);
->>>>>>> Stashed changes
+
 	//App->fonts->BlitText(50, 50, scoreFont, "123456");
 
 

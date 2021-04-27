@@ -5,8 +5,8 @@
 #include "ModuleTextures.h"
 #include "ModulePlayer.h"
 #include "ModuleScene.h"
-
-
+#include "ModuleScene2.h"
+#include "ModuleScene3.h"
 // BOX	-- Maneja una caja
 
 Box::Box(int x, int y) :position(x, y) {
