@@ -26,7 +26,7 @@ bool ModuleScene::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
-
+	
 	background = App->textures->Load("Assets/tiles/background.png");
 	wall = App->textures->Load("Assets/tiles/wall.png");
 	wall2 = App->textures->Load("Assets/tiles/wall2.png");
@@ -40,20 +40,20 @@ bool ModuleScene::Start()
 	App->boxes->Enable();
 
 	// Boxes lvl1 :
-	/*App->boxes->AddBox(144, 96);
+	App->boxes->AddBox(144, 96);
 	App->boxes->AddBox(96, 144);
-	App->boxes->AddBox(192, 120);*/
+	App->boxes->AddBox(192, 120);
 
-    App->player->currentScene = 0;	// Posición inicial de player en la Scene 1
+    /*App->player->currentScene = 0;*/	// Posición inicial de player en la Scene 1
 
 	return ret;
 }
 
 update_status ModuleScene::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->scene2, 60);
+		App->fade->FadeToBlack(this, (Module*)App->sceneintro, 60);
 
 	}
 	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)
@@ -106,7 +106,7 @@ update_status ModuleScene::PostUpdate()
 //disable the entities
 bool ModuleScene::CleanUp()
 {
-	App->player->Disable();
+	//App->player->Disable();
 	App->boxes->Disable();
 
 	return true;

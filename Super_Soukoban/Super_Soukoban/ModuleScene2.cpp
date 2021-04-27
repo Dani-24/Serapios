@@ -45,7 +45,7 @@ bool ModuleScene2::Start()
 	App->boxes->AddBox(96, 144);
 	App->boxes->AddBox(192, 120);
 
-	App->player->currentScene = 0;	// Posición inicial de player en la Scene 1
+	/*App->player->currentScene = 1;*/	// Posición inicial de player en la Scene 2
 
 	return ret;
 }
@@ -106,7 +106,7 @@ update_status ModuleScene2::PostUpdate()
 //disable the entities
 bool ModuleScene2::CleanUp()
 {
-	App->player->Disable();
+	//App->player->Disable();
 	App->boxes->Disable();
 
 	return true;

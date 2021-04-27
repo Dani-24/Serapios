@@ -90,6 +90,11 @@ bool ModulePlayer::Start()
 		position.x = 200;
 		position.y = 72;
 		break;
+	case 2:
+	    position.x = 250;
+		position.y = 150;
+		break;
+
 	}
 	// X, Y, anchura, altura, 
 	collider = App->collisions->AddCollider({ position.x-5, position.y, 24, 24 }, Collider::Type::PLAYER, this);
@@ -265,7 +270,7 @@ update_status ModulePlayer::PostUpdate()
 	}
 
 	sprintf_s(scoreText, 10, "%4d", score);
-	App->fonts->BlitText(50, 50, scoreFont, scoreText);
+	App->fonts->BlitText(350, 15, scoreFont, scoreText);
 	//App->fonts->BlitText(50, 50, scoreFont, "123456");
 
 

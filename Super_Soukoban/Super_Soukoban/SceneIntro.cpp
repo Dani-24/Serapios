@@ -5,6 +5,7 @@
 #include "ModuleAudio.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
+#include "ModulePlayer.h"
 #include "External_Libraries/SDL/include/SDL_scancode.h"
 
 SceneIntro::SceneIntro(bool startEnabled) :Module(startEnabled) {
@@ -30,8 +31,19 @@ bool SceneIntro::Start() {
 }
 
 update_status SceneIntro::Update() {
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) {
+	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN) {
+		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		App->player->currentScene=0;
+
+	}
+	if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN) {
 		App->fade->FadeToBlack(this, (Module*)App->scene2, 90);
+		App->player->currentScene = 1;
+
+	}
+	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN) {
+		App->fade->FadeToBlack(this, (Module*)App->scene3, 90);
+		App->player->currentScene = 2;
 
 	}
 

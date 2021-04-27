@@ -45,7 +45,7 @@ bool ModuleScene3::Start()
 	App->boxes->AddBox(96, 144);
 	App->boxes->AddBox(192, 120);
 
-	App->player->currentScene = 0;	// Posición inicial de player en la Scene 1
+	/*App->player->currentScene = 2;*/	// Posición inicial de player en la Scene 1
 
 	return ret;
 }
