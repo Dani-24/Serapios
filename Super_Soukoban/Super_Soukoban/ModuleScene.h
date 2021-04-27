@@ -23,6 +23,8 @@ public:
 
 	bool CleanUp();
 
+	uint score = 0;
+
 public:
 	int map[16][10] = {
 	{0,0,0,0,0,0,0,0,0,0},

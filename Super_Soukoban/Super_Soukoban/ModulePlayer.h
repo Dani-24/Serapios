@@ -33,7 +33,7 @@ public:
 	bool destroyed = false;
 	// The player spritesheet
 	SDL_Texture* texture = nullptr;
-
+	SDL_Texture* table = nullptr;
 	// The pointer to the current player animation
 	Animation* currentAnimation = nullptr;
 

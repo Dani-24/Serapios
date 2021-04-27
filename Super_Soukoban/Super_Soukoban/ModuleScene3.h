@@ -23,6 +23,8 @@ public:
 
 	bool CleanUp();
 
+	uint score = 0;
+
 public:
 
 private:
