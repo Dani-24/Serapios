@@ -30,6 +30,8 @@ bool ModuleRender::Init() {
 		LOG(":( Renderer could not be created! SDL_Error: %s\n",SDL_GetError());
 		ret = false;
 	}
+	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
 	return ret;
 }
 

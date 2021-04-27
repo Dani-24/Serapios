@@ -107,6 +107,7 @@ update_status ModuleScene2::PostUpdate()
 			}
 		}
 	}
+	
 
 	if (App->player->steps == 90) {
 		App->boxes->Disable();
@@ -114,7 +115,7 @@ update_status ModuleScene2::PostUpdate()
 
 		
 	}
-	for (int i = 0; i < 3; ++i)
+	/*for (int i = 0; i < 3; ++i)
 	{
 		if (App->boxes->boxes[i]->currentAnim == &(App->boxes->boxes[i]->darkBoxAnim))
 		{
@@ -132,7 +133,7 @@ update_status ModuleScene2::PostUpdate()
 		}
 		LOG("level 2 completed");
 
-	}
+	}*/
 	
 	return update_status::UPDATE_CONTINUE;
 }
