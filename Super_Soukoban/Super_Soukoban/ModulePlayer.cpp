@@ -77,6 +77,7 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 	texture = App->textures->Load("Assets/player.png");
+	table= App->textures->Load("Assets/table1.png");
 	currentAnimation = &idleLeftAnim;
 
 	// Posición inicial (depende del lvl)
@@ -100,7 +101,7 @@ bool ModulePlayer::Start()
 	collider = App->collisions->AddCollider({ position.x-5, position.y, 24, 24 }, Collider::Type::PLAYER, this);
 
 	char lookupTable[] = { "0123456789 0123456789" };
-	scoreFont = App->fonts->Load("Assets/font.png", lookupTable, 2);
+	scoreFont = App->fonts->Load("Assets/font1.png", lookupTable, 2);
 
 	return ret;
 }
@@ -269,8 +270,14 @@ update_status ModulePlayer::PostUpdate()
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
 
+<<<<<<< Updated upstream
 	sprintf_s(scoreText, 10, "%4d", steps);
 	App->fonts->BlitText(350, 15, scoreFont, scoreText);
+=======
+	sprintf_s(scoreText, 10, "%4d", score);
+	App->fonts->BlitText(350, 33, scoreFont, scoreText);
+	App->render->Blit(table, 320, 10, NULL);
+>>>>>>> Stashed changes
 	//App->fonts->BlitText(50, 50, scoreFont, "123456");
 
 
