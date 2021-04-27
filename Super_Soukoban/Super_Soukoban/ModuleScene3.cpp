@@ -106,7 +106,7 @@ update_status ModuleScene3::PostUpdate()
 //disable the entities
 bool ModuleScene3::CleanUp()
 {
-	App->player->Disable();
+	//App->player->Disable();
 	App->boxes->Disable();
 
 	return true;
