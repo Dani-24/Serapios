@@ -43,11 +43,11 @@ bool ModuleScene2::Start()
 	App->boxes->Enable();
 
 	// Boxes lvl1 :
-	App->boxes->AddBox(144, 96);
-	App->boxes->AddBox(120, 144);
-	App->boxes->AddBox(192, 120);
-	App->player->position.x = 100;
-	App->player->position.y = 48;
+	App->boxes->AddBox(144, 72);
+	App->boxes->AddBox(144, 49);
+	App->boxes->AddBox(168, 49);
+	App->player->position.x = 125;
+	App->player->position.y = 20;
 
 	/*App->player->currentScene = 1;*/	// Posición inicial de player en la Scene 2
 

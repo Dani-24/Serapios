@@ -43,8 +43,10 @@ bool ModuleScene3::Start()
 	App->boxes->Enable();
 
 	// Boxes lvl1 :
-	App->boxes->AddBox(144, 96);
-	App->boxes->AddBox(96, 144);
+	App->boxes->AddBox(168, 96);
+	App->boxes->AddBox(168, 72);
+	App->boxes->AddBox(192, 168);
+	App->boxes->AddBox(168, 144);
 	App->boxes->AddBox(192, 120);
 
 	App->player->position.x = 120;
@@ -115,7 +117,7 @@ update_status ModuleScene3::PostUpdate()
 	}
 
 	//win
-	for (int i = 0; i < 3; ++i)
+	for (int i = 0; i < 4; ++i)
 	{
 		if (App->boxes->boxes[i] != nullptr) {
 			if (App->boxes->boxes[i]->currentAnim == &(App->boxes->boxes[i]->darkBoxAnim))
@@ -125,7 +127,7 @@ update_status ModuleScene3::PostUpdate()
 		}
 	}
 
-	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true)
+	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true && boxEnd[3] == true)
 	{
 		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
 
