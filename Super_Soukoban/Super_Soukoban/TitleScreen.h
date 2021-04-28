@@ -59,9 +59,4 @@ public:
 
 };
 
-class TitleScreen :
-	public Module
-{
-};
-
 #endif

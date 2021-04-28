@@ -1,4 +1,4 @@
-#include "TitleScreen.h" //ADRIAN: CLASE TITLESCREEN PARA EL MENU
+#include "TitleScreen.h"  //ADRIAN: CLASE TITLESCREEN PARA EL MENU
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -9,7 +9,6 @@
 #include "ModuleFonts.h"
 
 #include <stdio.h>
-
 
 #include "External_Libraries/SDL/include/SDL.h"				// Required for SDL base systems functionality
 #include "External_Libraries/SDL_image/include/SDL_image.h"	// Required for image loading functionality
@@ -28,7 +27,7 @@ TitleScreen::~TitleScreen()
 // Load assets
 bool TitleScreen::Start()
 {
-	LOG("Loading Ttitle Screen assets");
+	LOG("Loading background assets");
 
 	bool ret = true;
 
