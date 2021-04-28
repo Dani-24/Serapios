@@ -81,8 +81,9 @@ bool ModulePlayer::Start()
 	currentAnimation = &idleLeftAnim;
 
 	// Posición inicial (depende del lvl)
-	
-	switch (currentScene) {
+	position.x;
+	position.y;
+	/*switch (currentScene) {
 	case 0:
 		position.x = 173;
 		position.y = 48;
@@ -96,7 +97,7 @@ bool ModulePlayer::Start()
 		position.y = 150;
 		break;
 
-	}
+	}*/
 	// X, Y, anchura, altura, 
 	collider = App->collisions->AddCollider({ position.x-5, position.y, 24, 24 }, Collider::Type::PLAYER, this);
 

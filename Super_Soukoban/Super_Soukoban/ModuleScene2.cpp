@@ -46,6 +46,8 @@ bool ModuleScene2::Start()
 	App->boxes->AddBox(144, 96);
 	App->boxes->AddBox(120, 144);
 	App->boxes->AddBox(192, 120);
+	App->player->position.x = 100;
+	App->player->position.y = 48;
 
 	/*App->player->currentScene = 1;*/	// Posición inicial de player en la Scene 2
 
@@ -115,13 +117,28 @@ update_status ModuleScene2::PostUpdate()
 
 		
 	}
-	/*for (int i = 0; i < 3; ++i)
+	for (int i = 0; i < 3; ++i)
 	{
-		if (App->boxes->boxes[i]->currentAnim == &(App->boxes->boxes[i]->darkBoxAnim))
-		{
-			boxEnd[i] = true;
+		if (App->boxes->boxes[i] != nullptr) {
+			if (App->boxes->boxes[i]->currentAnim == &(App->boxes->boxes[i]->darkBoxAnim))
+			{
+				boxEnd[i] = true;
+			}
 		}
 	}
+
+	/*for (int i = 0; i < 16; ++i)
+	{
+		for (int j = 0; j < 10; ++j)
+		{
+			if (map[i][j] == 4) {
+			if (App->boxes->boxes[i]->position.x == i * 24 && (App->boxes->boxes[i]->position.y == j * 24)) {
+					boxEnd[i] = true;
+				}
+			}
+
+		}
+	}*/
 	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true)
 	{
 		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
@@ -133,7 +150,7 @@ update_status ModuleScene2::PostUpdate()
 		}
 		LOG("level 2 completed");
 
-	}*/
+	}
 	
 	return update_status::UPDATE_CONTINUE;
 }

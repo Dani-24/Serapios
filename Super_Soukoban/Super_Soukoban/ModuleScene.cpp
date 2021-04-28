@@ -44,6 +44,8 @@ bool ModuleScene::Start()
 	App->boxes->AddBox(120, 144);
 	App->boxes->AddBox(192, 120);
 
+	App->player->position.x = 173;
+	App->player->position.y = 48;
     /*App->player->currentScene = 0;*/	// Posición inicial de player en la Scene 1
 
 	return ret;

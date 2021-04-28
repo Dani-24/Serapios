@@ -76,7 +76,18 @@ void Box::Update() {
 					
 				}
 			}
-			
+			if (App->scene2->map[i][j] == 4) {
+				if (position.x == i * 24 && position.y == j * 24) {
+					currentAnim = &darkBoxAnim;
+
+				}
+			}
+			if (App->scene3->map[i][j] == 4) {
+				if (position.x == i * 24 && position.y == j * 24) {
+					currentAnim = &darkBoxAnim;
+
+				}
+			}
 		}
 	}
 
