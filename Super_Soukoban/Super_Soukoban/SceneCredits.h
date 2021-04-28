@@ -1,19 +1,20 @@
-#ifndef __TITLE_SCREEN_H__  // ADRIAN: .H DE TITLESCREEN
-#define __TITLE_SCREEN_H__
+#ifndef __SCENE_CREDITS_H__			//Miguel
+#define __SCENE_CREDITS_H__	
 
 #include "Module.h"
 #include "Animation.h"
+#include <stdio.h> //Miguel
 
 struct SDL_Texture;
 
-class TitleScreen : public Module
+class SceneCredits : public Module
 {
 public:
 	//Constructor
-	TitleScreen(bool startEnabled);
+	SceneCredits(bool startEnabled);
 
 	//Destructor
-	~TitleScreen();
+	~SceneCredits();
 
 	// Called when the module is activated
 	// Loads the necessary textures for the map background
@@ -27,41 +28,24 @@ public:
 	// Performs the render call of all the parts of the scene's background
 	update_status PostUpdate() override;
 
-
-
-
-
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
-	SDL_Texture* Pointer = nullptr;
 
+	//Animacion del fondo negro y del logo - Miguel -
+	Animation black;
+	Animation logo;
 
-	int p_x = 75;
-	int p_y = 145;
+	// Font credits index - Miguel -
+	uint credits = 000;
+	int creditsFont = -1;
+	char creditsText[10] = { "\0" };
 
-	SDL_Rect p_pos;
+	// Font names index - Miguel -
+	uint names = 000;
+	int namesFont = -1;
+	char namesText[10] = { "\0" };
 
-
-	//The intro animation
-	Animation intro;
-
-	// Font index
-	int menuFont = -1;
-
-	//Menu Buttons
-	const int B_Play = 2;
-	const int B_Coop = 1;
-	const int B_Edit = 0;
-
-	int M_Index = 2;
-
-
-};
-
-class TitleScreen :
-	public Module
-{
 };
 
 #endif

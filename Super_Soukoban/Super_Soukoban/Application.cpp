@@ -15,22 +15,26 @@
 #include "ModuleWindow.h"
 #include "ModuleFonts.h"
 #include "SceneIntro.h"
+#include "SceneCredits.h"
+#include "TitleScreen.h"
 //moduke
 Application::Application() {
     modules[0] = window = new ModuleWindow(true);
     modules[1] = input = new ModuleInput(true);
 	modules[2] = textures = new ModuleTextures(true);
 	modules[3] = audio = new ModuleAudio(true);
-	modules[4] = sceneintro = new SceneIntro(true);
-	modules[5] = scene = new ModuleScene(false);
-	modules[6] = scene2 = new ModuleScene2(false);
-	modules[7] = scene3 = new ModuleScene3(false);
-    modules[8] = player = new ModulePlayer(false);
-	modules[9] = boxes = new ModuleBox(false); 
-	modules[10] = collisions = new ModuleCollisions(false);
-	modules[11] = fade = new ModuleFadeToBlack(true);
-	modules[12] = fonts = new ModuleFonts(true);
-	modules[13] = render = new ModuleRender(true);
+	modules[4] = sceneCredits = new SceneCredits(true);
+	modules[5] = sceneintro = new SceneIntro(false);
+	modules[6] = titleScreen = new TitleScreen(false);
+	modules[7] = scene = new ModuleScene(false);
+	modules[8] = scene2 = new ModuleScene2(false);
+	modules[9] = scene3 = new ModuleScene3(false);
+    modules[10] = player = new ModulePlayer(false);
+	modules[11] = boxes = new ModuleBox(false); 
+	modules[12] = collisions = new ModuleCollisions(false);
+	modules[13] = fade = new ModuleFadeToBlack(true);
+	modules[14] = fonts = new ModuleFonts(true);
+	modules[15] = render = new ModuleRender(true);
 	
 }
 

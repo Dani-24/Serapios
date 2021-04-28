@@ -23,6 +23,10 @@ public:
 
 	//sprite loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* bgTexture1 = nullptr;
+	//The intro animation 
+	Animation intro;
+	Animation logo;
 };
 
 #endif

@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 14	// editar si se requiere
+#define NUM_MODULES 16	// editar si se requiere
 
 class Module;
 class ModuleAudio;
@@ -20,6 +20,8 @@ class ModuleScene3;
 class ModuleWindow;
 class ModuleFonts;
 class SceneIntro;
+class TitleScreen;
+class SceneCredits;
 
 class Application
 {
@@ -42,6 +44,8 @@ public:
 	ModulePlayer* player = nullptr;
 	ModuleBox* boxes = nullptr;
 	ModuleRender* render = nullptr;
+	SceneCredits* sceneCredits = nullptr;
+	TitleScreen* titleScreen = nullptr;
 	SceneIntro* sceneintro = nullptr;
 	ModuleScene* scene = nullptr;
 	ModuleScene2* scene2 = nullptr;

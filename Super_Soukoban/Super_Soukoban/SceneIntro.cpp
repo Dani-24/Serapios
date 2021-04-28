@@ -31,6 +31,19 @@ bool SceneIntro::Start() {
 }
 
 update_status SceneIntro::Update() {
+	intro.Update(); // EJECUTA LA ANIMACION DE LA INTRO DEL VIDEOJUEGO "SUPER SOKOUBAN" - Miguel -
+
+	if (intro.HasFinished()) //Si el loop de la animacion incial ha acabado ejecuta el FadeToBlack - Miguel -
+	{
+		App->fade->FadeToBlack(this, (Module*)App->titleScreen, 60);
+	}
+
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->titleScreen, 60);
+
+	}
+
 	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN) {
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->player->currentScene=0;
@@ -53,7 +66,8 @@ update_status SceneIntro::Update() {
 //DRAW BACKGROUD
 
 update_status SceneIntro::PostUpdate() {
-	App->render->Blit(bgTexture, SCREEN_WIDTH/2-115, SCREEN_HEIGHT/2-115 , NULL);
 
+	App->render->Blit(bgTexture, SCREEN_WIDTH / 2 - 115, SCREEN_HEIGHT / 2 - 115, &(intro.GetCurrentFrame()), 0.1f); // intro
+	App->render->Blit(bgTexture1, SCREEN_WIDTH / 2 - 115, SCREEN_HEIGHT / 2 - 115, &(logo.GetCurrentFrame()), 0.1f);
 	return update_status::UPDATE_CONTINUE;
 }
