@@ -30,7 +30,7 @@ bool ModuleRender::Init() {
 		LOG(":( Renderer could not be created! SDL_Error: %s\n",SDL_GetError());
 		ret = false;
 	}
-	//SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+	//SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT); // activa esto para activar rescalado de resolucon para fullscreen, ir a global.h y activar fullscreendesktop 1
 
 	return ret;
 }

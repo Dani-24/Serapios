@@ -55,11 +55,19 @@ update_status ModuleScene::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
+		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneintro, 60);
+
+	}
+	if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)
+	{
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->scene2, 60);
 
 	}
 	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)
 	{
+		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
 
 	}
@@ -108,8 +116,8 @@ update_status ModuleScene::PostUpdate()
 //disable the entities
 bool ModuleScene::CleanUp()
 {
-	//App->player->Disable();
+	App->player->Disable();
 	App->boxes->Disable();
-
+	App->collisions->Disable();
 	return true;
 }
