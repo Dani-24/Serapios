@@ -46,7 +46,11 @@ public:
 	Animation downAnim;
 	Animation leftAnim;
 	Animation rightAnim;
-	// + animation movimientos de box??
+	
+	Animation boxupAnim;
+	Animation boxdownAnim;
+	Animation boxleftAnim;
+	Animation boxrightAnim;
 
 	Collider* collider = nullptr;
 

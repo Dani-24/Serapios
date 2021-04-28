@@ -28,7 +28,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) :Module(startEnabled)
 	leftAnim.PushBack({ 154,9,14,24 });
 	leftAnim.PushBack({ 178,9,14,24 });
 	leftAnim.loop = true;
-	leftAnim.speed = 0.2f;
+	leftAnim.speed = 0.3f;
 
 	upAnim.PushBack({ 9, 43,14,24 });
 	upAnim.PushBack({ 33,43,14,24 });
@@ -39,7 +39,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) :Module(startEnabled)
 	upAnim.PushBack({ 154,43,14,24 });
 	upAnim.PushBack({ 178,43,14,24 });
 	upAnim.loop = true;
-	upAnim.speed = 0.2f;
+	upAnim.speed = 0.3f;
 
 	rightAnim.PushBack({ 211,9,14,24 });
 	rightAnim.PushBack({ 235,9,14,24 });
@@ -50,7 +50,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) :Module(startEnabled)
 	rightAnim.PushBack({ 355,9,14,24 });
 	rightAnim.PushBack({ 379,9,14,24 });
 	rightAnim.loop = true;
-	rightAnim.speed = 0.2f;
+	rightAnim.speed = 0.3f;
 
 	downAnim.PushBack({ 210,43,14,24 });
 	downAnim.PushBack({ 234,43,14,24 });
@@ -61,8 +61,37 @@ ModulePlayer::ModulePlayer(bool startEnabled) :Module(startEnabled)
 	downAnim.PushBack({ 354,43,14,24 });
 	downAnim.PushBack({ 378,43,14,24 });
 	downAnim.loop = true;
-	downAnim.speed = 0.2f;
+	downAnim.speed = 0.3f;
 
+	boxleftAnim.PushBack({ 9,75,16,21 });
+	boxleftAnim.PushBack({ 33,76,17,20 });
+	boxleftAnim.PushBack({ 57,76,18,20 });
+	boxleftAnim.PushBack({ 81,75,17,21 });
+	boxleftAnim.PushBack({ 105,76,16,20 });
+	boxleftAnim.PushBack({ 129,76,17,20 });
+	//boxleftAnim.PushBack({ 156,76,18,20 });	// sprites mal hechos por lo que no encaja :D 
+	//boxleftAnim.PushBack({ 171,75,18,21 });
+	boxleftAnim.loop = true;
+	boxleftAnim.speed = 0.2f;
+
+	boxupAnim.PushBack({ 11,104,12,21 });
+	boxupAnim.PushBack({ 35,104,12,21 });
+	boxupAnim.PushBack({ 59,104,12,22 });
+	boxupAnim.PushBack({ 83,104,12,24 });
+	boxupAnim.PushBack({ 107,104,12,21 });
+	boxupAnim.PushBack({ 131,104,12,21 });
+	boxupAnim.PushBack({ 155,104,12,22 });
+	boxupAnim.PushBack({ 179,104,12,24 });
+	boxupAnim.loop = true;
+	boxupAnim.speed = 0.2f;
+
+	boxdownAnim.PushBack({});
+	boxdownAnim.loop = true;
+	boxdownAnim.speed = 0.2f;
+
+	boxrightAnim.PushBack({});
+	boxrightAnim.loop = true;
+	boxrightAnim.speed = 0.2f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -78,7 +107,7 @@ bool ModulePlayer::Start()
 
 	texture = App->textures->Load("Assets/player.png");
 	table= App->textures->Load("Assets/table1.png");
-	currentAnimation = &idleLeftAnim;
+	currentAnimation = &boxleftAnim;//&idleLeftAnim;
 
 	// Posición inicial (depende del lvl)
 	position.x;
