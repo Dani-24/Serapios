@@ -142,16 +142,16 @@ update_status ModulePlayer::Update()
 	
 	// Player movement , collisions and animations 
 	
-	if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT && nPosX == 0) {		// mov Derecha
+	if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov Derecha
 		nPosX = position.x + 24;
 	}
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT && nPosY == 0) {		// mov arriba
+	if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov arriba
 		nPosY = position.y - 24;
 	}
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT && nPosX == 0) {		// mov izquierda
+	if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov izquierda
 		nPosX = position.x - 24;
 	}
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT && nPosY == 0) {		// mov abajo
+	if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov abajo
 		nPosY = position.y + 24;
 	}
 	if (nPosX != 0) {							// LEFT
