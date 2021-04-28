@@ -10,6 +10,7 @@
 #include "External_libraries/SDL/include/SDL_scancode.h"
 #include <stdio.h> // Camarada
 #include "ModuleScene.h"
+#include "ModuleBox.h"
 
 ModulePlayer::ModulePlayer(bool startEnabled) :Module(startEnabled)
 {
@@ -139,30 +140,42 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::Update()
 {
 	
-	// Player movement and animations 
+	// Player movement , collisions and animations 
 	
-	if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT && nPosX == 0) {
+	if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT && nPosX == 0) {		// mov Derecha
 		nPosX = position.x + 24;
 	}
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT && nPosY == 0) {
+	if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT && nPosY == 0) {		// mov arriba
 		nPosY = position.y - 24;
 	}
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT && nPosX == 0) {
+	if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT && nPosX == 0) {		// mov izquierda
 		nPosX = position.x - 24;
 	}
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT && nPosY == 0) {
+	if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT && nPosY == 0) {		// mov abajo
 		nPosY = position.y + 24;
 	}
-	if (nPosX != 0) {
+	if (nPosX != 0) {							// LEFT
 		if (nPosX < position.x) {
 			for (int i = 0; i < 16; ++i)
 			{
 				for (int j = 0; j < 10; ++j)
 				{
-					if (App->scene->map[i][j] == 1 || App->scene->map[i][j] == 2) {
+					if (App->scene->map[i][j] == 1 || App->scene->map[i][j] == 2) {		// colision pared
 						if (position.x - 29 == i * 24 && position.y == j * 24) {
 							canMove = false;
 							nPosX = 0;
+						}
+						for (int k = 0; k < numBox; k++) {						// colision pared + caja
+							if (position.x - 53 == i * 24 && position.y == j * 24 && position.x - 29 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y) {
+								canMove = false;
+								nPosX = 0;
+							}
+							for (int f = 0; f < numBox; f++) {				// collision box + box
+								if (position.x - 29 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y && position.x - 53 == App->boxes->boxes[f]->position.x && position.y == App->boxes->boxes[f]->position.y) {
+									canMove = false;
+									nPosX = 0;
+								}
+							}
 						}
 					}
 				}
@@ -175,7 +188,7 @@ update_status ModulePlayer::Update()
 			}
 			canMove = true;
 		}
-		else if (nPosX > position.x) {
+		else if (nPosX > position.x) {			// RIGHT
 			for (int i = 0; i < 16; ++i)
 			{
 				for (int j = 0; j < 10; ++j)
@@ -185,6 +198,19 @@ update_status ModulePlayer::Update()
 							canMove = false;
 							nPosX = 0;
 						}
+						for (int k = 0; k < numBox; k++) {
+							if (position.x + 43 == i * 24 && position.y == j * 24 && position.x + 19 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y) {
+								canMove = false;
+								nPosX = 0;
+							}
+							for (int f = 0; f < numBox; f++) {				// collision box + box
+								if (position.x + 19 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y && position.x + 43 == App->boxes->boxes[f]->position.x && position.y == App->boxes->boxes[f]->position.y) {
+									canMove = false;
+									nPosX = 0;
+								}
+							}
+						}
+
 					}
 				}
 			}
@@ -200,7 +226,7 @@ update_status ModulePlayer::Update()
 			nPosX = 0;
 		}
 	}
-	else if (nPosY != 0) {
+	else if (nPosY != 0) {				// UP
 		if (nPosY < position.y) {
 			for (int i = 0; i < 16; ++i)
 			{
@@ -210,6 +236,18 @@ update_status ModulePlayer::Update()
 						if (position.x - 5 == i * 24 && position.y - 24 == j * 24) {
 							canMove = false;
 							nPosY = 0;
+						}
+						for (int k = 0; k < numBox; k++) {
+							if (position.x - 5 == i * 24 && position.x - 5 == App->boxes->boxes[k]->position.x && position.y - 48 == j * 24 && position.y - 24 == App->boxes->boxes[k]->position.y) {
+								canMove = false;
+								nPosY = 0;
+							}
+							for (int f = 0; f < numBox; f++) {				// collision box + box
+								if (position.x - 5 == App->boxes->boxes[k]->position.x && position.y - 24 == App->boxes->boxes[k]->position.y && position.x - 5 == App->boxes->boxes[f]->position.x && position.y - 48 == App->boxes->boxes[f]->position.y) {
+									canMove = false;
+									nPosY = 0;
+								}
+							}
 						}
 					}
 				}
@@ -222,7 +260,7 @@ update_status ModulePlayer::Update()
 			}
 			canMove = true;
 		}
-		else if (nPosY > position.y) {
+		else if (nPosY > position.y) {					// DOWN
 			for (int i = 0; i < 16; ++i)
 			{
 				for (int j = 0; j < 10; ++j)
@@ -232,6 +270,19 @@ update_status ModulePlayer::Update()
 							canMove = false;
 							nPosY = 0;
 						}
+						for (int k = 0; k < numBox; k++) {
+							if (position.x - 5 == i * 24 && position.x - 5 == App->boxes->boxes[k]->position.x && position.y + 48 == j * 24 && position.y + 24 == App->boxes->boxes[k]->position.y) {
+								canMove = false;
+								nPosY = 0;
+							}
+							for (int f = 0; f < numBox; f++) {				// collision box + box
+								if (position.x - 5 == App->boxes->boxes[k]->position.x && position.y + 24 == App->boxes->boxes[k]->position.y && position.x - 5 == App->boxes->boxes[f]->position.x && position.y + 48 == App->boxes->boxes[f]->position.y) {
+									canMove = false;
+									nPosY = 0;
+								}
+							}
+						}
+
 					}
 				}
 			}

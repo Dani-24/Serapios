@@ -31,7 +31,7 @@ Application::Application() {
 	modules[9] = scene3 = new ModuleScene3(false);
     modules[10] = player = new ModulePlayer(false);
 	modules[11] = boxes = new ModuleBox(false); 
-	modules[12] = collisions = new ModuleCollisions(false);
+	modules[12] = collisions = new ModuleCollisions(true);
 	modules[13] = fade = new ModuleFadeToBlack(true);
 	modules[14] = fonts = new ModuleFonts(true);
 	modules[15] = render = new ModuleRender(true);

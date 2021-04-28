@@ -60,6 +60,7 @@ public:
 
 	bool canMove = true;
 	int currentScene;
+	uint numBox;
 };
 
 #endif //!__MODULE_PLAYER_H__

@@ -38,6 +38,7 @@ bool ModuleScene2::Start()
 
 	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
 
+	App->player->numBox = 3;
 	//to active the entities
 	App->player->Enable();
 	App->boxes->Enable();

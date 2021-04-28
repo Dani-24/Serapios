@@ -42,6 +42,7 @@ bool ModuleScene3::Start()
 	App->player->Enable();
 	App->boxes->Enable();
 
+	App->player->numBox = 5;
 	// Boxes lvl1 :
 	App->boxes->AddBox(168, 96);
 	App->boxes->AddBox(168, 72);
