@@ -44,12 +44,15 @@ int map[16][10] = {
 	{0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0}
 	};
+bool boxEnd[4] = { false };
 private:
 	SDL_Texture* background = nullptr;		// 0
 	SDL_Texture* wall = nullptr;			// 1
 	SDL_Texture* wall2 = nullptr;			// 2
 	SDL_Texture* ground = nullptr;			// 3
 	SDL_Texture* point = nullptr;			// 4
+	SDL_Texture* lose = nullptr;
+	SDL_Texture* win = nullptr;
 
 	
 };

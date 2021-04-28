@@ -33,6 +33,8 @@ bool ModuleScene3::Start()
 	wall2 = App->textures->Load("Assets/tiles/wall2.png");
 	ground = App->textures->Load("Assets/tiles/ground.png");
 	point = App->textures->Load("Assets/tiles/point.png");
+	lose = App->textures->Load("Assets/lose.png");
+	win = App->textures->Load("Assets/win.png");
 
 	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
 
@@ -102,6 +104,38 @@ update_status ModuleScene3::PostUpdate()
 				break;
 			}
 		}
+	}
+
+	//lose
+	if (App->player->steps == 90) {
+		App->boxes->Disable();
+		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
+
+
+	}
+
+	//win
+	for (int i = 0; i < 3; ++i)
+	{
+		if (App->boxes->boxes[i] != nullptr) {
+			if (App->boxes->boxes[i]->currentAnim == &(App->boxes->boxes[i]->darkBoxAnim))
+			{
+				boxEnd[i] = true;
+			}
+		}
+	}
+
+	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true)
+	{
+		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
+
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		{
+			App->fade->FadeToBlack(this, (Module*)App->scene, 60);
+
+		}
+		LOG("level 3 completed");
+
 	}
 
 	return update_status::UPDATE_CONTINUE;
