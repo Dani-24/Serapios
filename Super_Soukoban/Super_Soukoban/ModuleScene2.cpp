@@ -110,13 +110,15 @@ update_status ModuleScene2::PostUpdate()
 		}
 	}
 	
-
+	//lose
 	if (App->player->steps == 90) {
 		App->boxes->Disable();
 		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
 
 		
 	}
+
+	//win
 	for (int i = 0; i < 3; ++i)
 	{
 		if (App->boxes->boxes[i] != nullptr) {
@@ -127,20 +129,16 @@ update_status ModuleScene2::PostUpdate()
 		}
 	}
 
-	/*for (int i = 0; i < 16; ++i)
-	{
-		for (int j = 0; j < 10; ++j)
-		{
-			if (map[i][j] == 4) {
-			if (App->boxes->boxes[i]->position.x == i * 24 && (App->boxes->boxes[i]->position.y == j * 24)) {
-					boxEnd[i] = true;
-				}
-			}
+	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN) {
+		
+		boxEnd[0] = true;
+		boxEnd[1] = true;
+		boxEnd[2] = true;
+	}
 
-		}
-	}*/
 	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true)
 	{
+		App->boxes->Disable();
 		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
 
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
@@ -148,6 +146,7 @@ update_status ModuleScene2::PostUpdate()
 			App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
 
 		}
+		
 		LOG("level 2 completed");
 
 	}
