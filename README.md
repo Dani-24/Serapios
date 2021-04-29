@@ -55,7 +55,7 @@ F4 - Direct Lose -  Space to reset the stage
 
 Space (if lose) - Restart the current Stage 
 
-If you win the program ends
+*In case that you win the program ends*
 
 ### Player Movement:
 
