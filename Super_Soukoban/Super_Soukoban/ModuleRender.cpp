@@ -30,7 +30,7 @@ bool ModuleRender::Init() {
 		LOG(":( Renderer could not be created! SDL_Error: %s\n",SDL_GetError());
 		ret = false;
 	}
-	//SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT); // activa esto para activar rescalado de resolucon para fullscreen, ir a global.h y activar fullscreendesktop 1
+	//SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT); // active that and change fullscreen desktop 0 to 1 and size 1 to have a fullscreen despktop
 
 	return ret;
 }
@@ -41,15 +41,15 @@ update_status ModuleRender::PreUpdate() {
 	return update_status::UPDATE_CONTINUE;
 }
 
-update_status ModuleRender::Update() {
-	
+update_status ModuleRender::Update()
+{
 	// Aquí van movimientos manuales de la camara (Soukoban no tiene)
 
 	return update_status::UPDATE_CONTINUE;
 }
 
-update_status ModuleRender::PostUpdate() {
-	
+update_status ModuleRender::PostUpdate()
+{
 	SDL_RenderPresent(renderer);
 
 	return update_status::UPDATE_CONTINUE;

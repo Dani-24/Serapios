@@ -1,5 +1,4 @@
 #include "ModuleScene3.h"
-#include "ModuleScene2.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -36,10 +35,9 @@ bool ModuleScene3::Start()
 	win = App->textures->Load("Assets/win.png");
 
 	// Music and FX
-	levelMusic = App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);;
-	winMusic = App->audio->LoadFx("Assets/Music/Win_Sound_Loop.ogg"); // deberia ser un PlayMusic. (Mirar mas tarde para que no solape)
+	levelMusic = App->audio->PlayMusic("Assets/Music/stage1.ogg", 1.0f);;
+	winMusic = App->audio->LoadFx("Assets/Music/Win_Sound_Loop.ogg"); 
 
-	winFx = App->audio->LoadFx("Assets/SFX/Win_Sound_Init.wav");
 	loseFx = App->audio->LoadFx("Assets/SFX/Lost_Sound.wav");
 
 	nextFx = App->audio->LoadFx("Assets/SFX/Menu2_confirm.wav");
@@ -115,7 +113,7 @@ update_status ModuleScene3::Update()
 
 update_status ModuleScene3::PostUpdate()
 {
-	// Aqui se dibuja el fondo
+	// draw the background and tiles
 
 	int type = 0;
 	for (int i = 0; i < 16; ++i)

@@ -4,11 +4,13 @@
 #include"Modulefonts.h"
 #include<string.h>
 
-ModuleFonts::ModuleFonts(bool isEnabled) : Module(isEnabled) {
+ModuleFonts::ModuleFonts(bool isEnabled) : Module(isEnabled) 
+{
 
 }
 
-ModuleFonts::~ModuleFonts() {
+ModuleFonts::~ModuleFonts() 
+{
 
 }
 

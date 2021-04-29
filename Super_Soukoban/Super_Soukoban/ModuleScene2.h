@@ -18,7 +18,7 @@ public:
 	// Updates the scene's background animations
 	update_status Update() override;
 
-	// Renderiza
+	// Renderize
 	update_status PostUpdate() override;
 
 	bool CleanUp();

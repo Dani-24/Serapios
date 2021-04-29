@@ -37,8 +37,8 @@ bool ModuleScene::Start()
 
 	// Music and FX
 
-	levelMusic = App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
-	winMusic = App->audio->LoadFx("Assets/Music/Win_Sound_Loop.ogg"); // deberia ser un PlayMusic. (Mirar mas tarde para que no solape)
+	levelMusic = App->audio->PlayMusic("Assets/Music/stage1.ogg", 1.0f);
+	winMusic = App->audio->LoadFx("Assets/Music/Win_Sound_Loop.ogg"); 
 
 	winFx = App->audio->LoadFx("Assets/SFX/Win_Sound_Init.wav");
 	loseFx = App->audio->LoadFx("Assets/SFX/Lost_Sound.wav");
@@ -114,7 +114,7 @@ update_status ModuleScene::Update()
 
 update_status ModuleScene::PostUpdate()
 {
-	// Aqui se dibuja el fondo
+	// draw the background and tiles
 
 	int type = 0;
 	for (int i = 0; i < 16; ++i)
@@ -208,9 +208,12 @@ update_status ModuleScene::PostUpdate()
 //disable the entities
 bool ModuleScene::CleanUp()
 {
+	App->player->CleanUp();
 	App->player->Disable();
+	App->boxes->CleanUp();
 	App->boxes->Disable();
-	App->collisions->CleanUp(); // clean colliders or they will stack and then crash the game
+	App->collisions->CleanUp();
 	App->collisions->Disable();
+
 	return true;
 }

@@ -18,7 +18,7 @@ public:
 	// Updates the scene's background animations
 	update_status Update() override;
 
-	// Renderiza
+	// Renderize
 	update_status PostUpdate() override;
 
 	bool CleanUp();
@@ -44,7 +44,7 @@ int map[16][10] = {
 	{0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0}
 	};
-bool boxEnd[4] = { false };
+bool boxEnd[4] = { false,false,false,false };
 private:
 	SDL_Texture* background = nullptr;		// 0
 	SDL_Texture* wall = nullptr;			// 1

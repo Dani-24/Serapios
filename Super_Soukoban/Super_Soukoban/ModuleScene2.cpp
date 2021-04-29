@@ -9,9 +9,6 @@
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 
-#include "External_Libraries/SDL_mixer/include/SDL_mixer.h"
-#pragma comment( lib, "External_Libraries/SDL_mixer/libx86/SDL2_mixer.lib")
-//#include "External_Libraries/SDL_mixer/include/SDL_mixer.h"
 #include "External_Libraries/SDL/include/SDL_scancode.h"
 
 ModuleScene2::ModuleScene2(bool startEnabled) :Module(startEnabled)
@@ -37,14 +34,11 @@ bool ModuleScene2::Start()
 	point = App->textures->Load("Assets/tiles/point.png");
 	lose= App->textures->Load("Assets/lose.png");
 	win = App->textures->Load("Assets/win.png");
-
 	// Music and FX
+	levelMusic = App->audio->PlayMusic("Assets/Music/stage1.ogg", 1.0f);
 	
-		levelMusic = App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
-	
-	winMusic = App->audio->LoadFx("Assets/Music/Win_Sound_Loop.ogg"); // deberia ser un PlayMusic. (Mirar mas tarde para que no solape)
+	winMusic = App->audio->LoadFx("Assets/Music/Win_Sound_Loop.ogg"); 
 
-	winFx = App->audio->LoadFx("Assets/SFX/Win_Sound_Init.wav");
 	loseFx = App->audio->LoadFx("Assets/SFX/Lost_Sound.wav");
 
 	nextFx = App->audio->LoadFx("Assets/SFX/Menu2_confirm.wav");
@@ -71,7 +65,7 @@ bool ModuleScene2::Start()
 	App->player->limit = 120;
 	App->player->steps = 0;
 
-	// Boxes lvl1 :
+	// Boxes lvl2 :
 	App->boxes->AddBox(144, 72);
 	App->boxes->AddBox(144, 49);
 	App->boxes->AddBox(168, 49);
@@ -79,7 +73,6 @@ bool ModuleScene2::Start()
 	// Player position: (multiples de 24.) Add +5 to position.x 
 	App->player->position.x = 125;
 	App->player->position.y = 24;
-
 
 	return ret;
 }
@@ -115,10 +108,9 @@ update_status ModuleScene2::Update()
 	return update_status::UPDATE_CONTINUE;
 }
 
-
 update_status ModuleScene2::PostUpdate()
 {
-	// Aqui se dibuja el fondo
+	// draw the background and tiles
 
 	int type = 0;
 	for (int i = 0; i < 16; ++i)
@@ -196,11 +188,11 @@ update_status ModuleScene2::PostUpdate()
 			winF = true;
 
 		}
-		//App->boxes->Disable();
+		
 		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
 		LOG("level 2 completed");
 		CleanUp();
-		//App->audio->PlayFx(winFx);
+		
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
 			App->audio->PlayFx(nextFx);
@@ -213,7 +205,9 @@ update_status ModuleScene2::PostUpdate()
 //disable the entities
 bool ModuleScene2::CleanUp()
 {
+	App->player->CleanUp();
 	App->player->Disable();
+	App->boxes->CleanUp();
 	App->boxes->Disable();
 	App->collisions->CleanUp();
 	App->collisions->Disable();

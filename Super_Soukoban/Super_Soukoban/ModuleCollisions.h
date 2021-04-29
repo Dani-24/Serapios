@@ -1,7 +1,7 @@
 #ifndef __MODULE_COLLISIONS_H__
 #define __MODULE_COLLISIONS_H__
 
-#define MAX_COLLIDERS 50 // Se intuye que es (cambiar si se necesita)
+#define MAX_COLLIDERS 50 
 #include "Module.h"
 #include "Collider.h"
 
@@ -12,7 +12,7 @@ public:
 
 	update_status PreUpdate();	// comprobar collisiones
 	update_status Update();		// debug mode on/off
-	update_status PostUpdate();	// dibuja colliders (si debug m. on)
+	update_status PostUpdate();	// draw colliders 
 
 	bool CleanUp();
 
