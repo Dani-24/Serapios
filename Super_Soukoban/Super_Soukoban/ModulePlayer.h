@@ -24,6 +24,8 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 public:
+	bool godMode;
+
 	// Position of the player in the map
 	iPoint position;	
 	int nPosX = 0;

@@ -14,6 +14,8 @@
 
 ModulePlayer::ModulePlayer(bool startEnabled) :Module(startEnabled)
 {
+	godMode = false;
+
 	// Aqui van las animaciones del player
 	idleLeftAnim.PushBack({ 9,9,14,24 });
 	idleUpAnim.PushBack({ 9,43,14,24 });
@@ -125,163 +127,181 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::Update()
 {
+
+	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN) {
+		godMode = !godMode;
+	}
 	
-	// Player movement , collisions and animations 
-	
-	if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov Derecha
-		nPosX = position.x + 24;
-	}
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov arriba
-		nPosY = position.y - 24;
-	}
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov izquierda
-		nPosX = position.x - 24;
-	}
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov abajo
-		nPosY = position.y + 24;
-	}
-	if (nPosX != 0) {							// LEFT
-		if (nPosX < position.x) {
-			for (int i = 0; i < 16; ++i)
-			{
-				for (int j = 0; j < 10; ++j)
+	if (godMode == true) {	// Player Godmode movement (cause bugs because the player movement set is quit from the tiles )
+		if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT) {
+			position.x += 1;
+		}
+		if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT) {	
+			position.y -= 1;
+		}
+		if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT) {	
+			position.x -= 1;
+		}
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT) {		
+			position.y += 1;
+		}
+	}			// Player real movement , collisions and animations 
+	else {
+		if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov Derecha
+			nPosX = position.x + 24;
+		}
+		if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov arriba
+			nPosY = position.y - 24;
+		}
+		if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov izquierda
+			nPosX = position.x - 24;
+		}
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov abajo
+			nPosY = position.y + 24;
+		}
+		if (nPosX != 0) {							// LEFT
+			if (nPosX < position.x) {
+				for (int i = 0; i < 16; ++i)
 				{
-					if (map[i][j] == 1 || map[i][j] == 2) {		// colision pared
-						if (position.x - 29 == i * 24 && position.y == j * 24) {
-							canMove = false;
-							nPosX = 0;
-						}
-						for (int k = 0; k < numBox; k++) {						// colision pared + caja
-							if (position.x - 53 == i * 24 && position.y == j * 24 && position.x - 29 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y) {
+					for (int j = 0; j < 10; ++j)
+					{
+						if (map[i][j] == 1 || map[i][j] == 2) {		// colision pared
+							if (position.x - 29 == i * 24 && position.y == j * 24) {
 								canMove = false;
 								nPosX = 0;
 							}
-							for (int f = 0; f < numBox; f++) {				// collision box + box
-								if (position.x - 29 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y && position.x - 53 == App->boxes->boxes[f]->position.x && position.y == App->boxes->boxes[f]->position.y) {
+							for (int k = 0; k < numBox; k++) {						// colision pared + caja
+								if (position.x - 53 == i * 24 && position.y == j * 24 && position.x - 29 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y) {
 									canMove = false;
 									nPosX = 0;
+								}
+								for (int f = 0; f < numBox; f++) {				// collision box + box
+									if (position.x - 29 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y && position.x - 53 == App->boxes->boxes[f]->position.x && position.y == App->boxes->boxes[f]->position.y) {
+										canMove = false;
+										nPosX = 0;
+									}
 								}
 							}
 						}
 					}
 				}
+				if (canMove == true) {
+					position.x -= 1;
+				}
+				if (currentAnimation != &leftAnim) {
+					currentAnimation = &leftAnim;
+				}
+				canMove = true;
 			}
-			if (canMove == true) {
-				position.x -= 1;
-			}
-			if (currentAnimation != &leftAnim) {
-				currentAnimation = &leftAnim;
-			}
-			canMove = true;
-		}
-		else if (nPosX > position.x) {			// RIGHT
-			for (int i = 0; i < 16; ++i)
-			{
-				for (int j = 0; j < 10; ++j)
+			else if (nPosX > position.x) {			// RIGHT
+				for (int i = 0; i < 16; ++i)
 				{
-					if (map[i][j] == 1 ||map[i][j] == 2) {
-						if (position.x + 19 == i * 24 && position.y == j * 24) {
-							canMove = false;
-							nPosX = 0;
-						}
-						for (int k = 0; k < numBox; k++) {
-							if (position.x + 43 == i * 24 && position.y == j * 24 && position.x + 19 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y) {
+					for (int j = 0; j < 10; ++j)
+					{
+						if (map[i][j] == 1 || map[i][j] == 2) {
+							if (position.x + 19 == i * 24 && position.y == j * 24) {
 								canMove = false;
 								nPosX = 0;
 							}
-							for (int f = 0; f < numBox; f++) {				// collision box + box
-								if (position.x + 19 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y && position.x + 43 == App->boxes->boxes[f]->position.x && position.y == App->boxes->boxes[f]->position.y) {
-									canMove = false;//aquí peta si haces literalmente 1 solo paso mas del limite
+							for (int k = 0; k < numBox; k++) {
+								if (position.x + 43 == i * 24 && position.y == j * 24 && position.x + 19 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y) {
+									canMove = false;
 									nPosX = 0;
 								}
+								for (int f = 0; f < numBox; f++) {				// collision box + box
+									if (position.x + 19 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y && position.x + 43 == App->boxes->boxes[f]->position.x && position.y == App->boxes->boxes[f]->position.y) {
+										canMove = false;//aquí peta si haces literalmente 1 solo paso mas del limite
+										nPosX = 0;
+									}
+								}
 							}
-						}
 
+						}
 					}
 				}
+				if (canMove == true) {
+					position.x += 1;
+				}
+				if (currentAnimation != &rightAnim) {
+					currentAnimation = &rightAnim;
+				}
+				canMove = true;
 			}
-			if (canMove == true) {
-				position.x += 1;
+			else if (nPosX == position.x) {
+				nPosX = 0; steps++;				// Contador de pasos
 			}
-			if (currentAnimation != &rightAnim) {
-				currentAnimation = &rightAnim;
-			}
-			canMove = true;
 		}
-		else if (nPosX == position.x) {
-			nPosX = 0; steps++;				// Contador de pasos
-		}
-	}
-	else if (nPosY != 0) {				// UP
-		if (nPosY < position.y) {
-			for (int i = 0; i < 16; ++i)
-			{
-				for (int j = 0; j < 10; ++j)
+		else if (nPosY != 0) {				// UP
+			if (nPosY < position.y) {
+				for (int i = 0; i < 16; ++i)
 				{
-					if (map[i][j] == 1 || map[i][j] == 2) {
-						if (position.x - 5 == i * 24 && position.y - 24 == j * 24) {
-							canMove = false;
-							nPosY = 0;
-						}
-						for (int k = 0; k < numBox; k++) {
-							if (position.x - 5 == i * 24 && position.x - 5 == App->boxes->boxes[k]->position.x && position.y - 48 == j * 24 && position.y - 24 == App->boxes->boxes[k]->position.y) {
+					for (int j = 0; j < 10; ++j)
+					{
+						if (map[i][j] == 1 || map[i][j] == 2) {
+							if (position.x - 5 == i * 24 && position.y - 24 == j * 24) {
 								canMove = false;
 								nPosY = 0;
 							}
-							for (int f = 0; f < numBox; f++) {				// collision box + box
-								if (position.x - 5 == App->boxes->boxes[k]->position.x && position.y - 24 == App->boxes->boxes[k]->position.y && position.x - 5 == App->boxes->boxes[f]->position.x && position.y - 48 == App->boxes->boxes[f]->position.y) {
+							for (int k = 0; k < numBox; k++) {
+								if (position.x - 5 == i * 24 && position.x - 5 == App->boxes->boxes[k]->position.x && position.y - 48 == j * 24 && position.y - 24 == App->boxes->boxes[k]->position.y) {
 									canMove = false;
 									nPosY = 0;
+								}
+								for (int f = 0; f < numBox; f++) {				// collision box + box
+									if (position.x - 5 == App->boxes->boxes[k]->position.x && position.y - 24 == App->boxes->boxes[k]->position.y && position.x - 5 == App->boxes->boxes[f]->position.x && position.y - 48 == App->boxes->boxes[f]->position.y) {
+										canMove = false;
+										nPosY = 0;
+									}
 								}
 							}
 						}
 					}
 				}
+				if (canMove == true) {
+					position.y -= 1;
+				}
+				if (currentAnimation != &upAnim) {
+					currentAnimation = &upAnim;
+				}
+				canMove = true;
 			}
-			if (canMove == true) {
-				position.y -= 1;
-			}
-			if (currentAnimation != &upAnim) {
-				currentAnimation = &upAnim;
-			}
-			canMove = true;
-		}
-		else if (nPosY > position.y) {					// DOWN
-			for (int i = 0; i < 16; ++i)
-			{
-				for (int j = 0; j < 10; ++j)
+			else if (nPosY > position.y) {					// DOWN
+				for (int i = 0; i < 16; ++i)
 				{
-					if (map[i][j] == 1 || map[i][j] == 2) {
-						if (position.x - 5 == i * 24 && position.y + 24 == j * 24) {
-							canMove = false;
-							nPosY = 0;
-						}
-						for (int k = 0; k < numBox; k++) {
-							if (position.x - 5 == i * 24 && position.x - 5 == App->boxes->boxes[k]->position.x && position.y + 48 == j * 24 && position.y + 24 == App->boxes->boxes[k]->position.y) {
+					for (int j = 0; j < 10; ++j)
+					{
+						if (map[i][j] == 1 || map[i][j] == 2) {
+							if (position.x - 5 == i * 24 && position.y + 24 == j * 24) {
 								canMove = false;
 								nPosY = 0;
 							}
-							for (int f = 0; f < numBox; f++) {				// collision box + box
-								if (position.x - 5 == App->boxes->boxes[k]->position.x && position.y + 24 == App->boxes->boxes[k]->position.y && position.x - 5 == App->boxes->boxes[f]->position.x && position.y + 48 == App->boxes->boxes[f]->position.y) {
+							for (int k = 0; k < numBox; k++) {
+								if (position.x - 5 == i * 24 && position.x - 5 == App->boxes->boxes[k]->position.x && position.y + 48 == j * 24 && position.y + 24 == App->boxes->boxes[k]->position.y) {
 									canMove = false;
 									nPosY = 0;
 								}
+								for (int f = 0; f < numBox; f++) {				// collision box + box
+									if (position.x - 5 == App->boxes->boxes[k]->position.x && position.y + 24 == App->boxes->boxes[k]->position.y && position.x - 5 == App->boxes->boxes[f]->position.x && position.y + 48 == App->boxes->boxes[f]->position.y) {
+										canMove = false;
+										nPosY = 0;
+									}
+								}
 							}
-						}
 
+						}
 					}
 				}
+				if (canMove == true) {
+					position.y += 1;
+				}
+				if (currentAnimation != &downAnim) {
+					currentAnimation = &downAnim;
+				}
+				canMove = true;
 			}
-			if (canMove == true) {
-				position.y += 1;
+			else if (nPosY == position.y) {
+				nPosY = 0; steps++;
 			}
-			if (currentAnimation != &downAnim) {
-				currentAnimation = &downAnim;
-			}
-			canMove = true;
-		}
-		else if (nPosY == position.y) {
-			nPosY = 0; steps++;
 		}
 	}
 

@@ -153,7 +153,10 @@ update_status ModuleScene::PostUpdate()
 		
 		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
 		CleanUp();
-
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)	// Restart the level when losing
+		{
+			App->fade->FadeToBlack(this, (Module*)App->scene, 60);
+		}
 	}
 	
 
@@ -173,7 +176,7 @@ update_status ModuleScene::PostUpdate()
 		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
 		LOG("level 1 completed");
 		CleanUp();
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)	// go to the next level when winning
 		{
 			App->fade->FadeToBlack(this, (Module*)App->scene2, 60);
 

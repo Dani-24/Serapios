@@ -151,7 +151,10 @@ update_status ModuleScene2::PostUpdate()
 		
 		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
 		CleanUp();
-		
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		{
+			App->fade->FadeToBlack(this, (Module*)App->scene2, 60);
+		}
 	}
 
 	//win
