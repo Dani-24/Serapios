@@ -22,7 +22,34 @@ Super Soukoban is a game that consists on pushing a box above a sphere, but the 
 
 
 ## Controls
-The controls in this game are quite simple, the man can only be moved to four different directions, Up, Down, Left and Right, the controls to this are the keys A for the left way, D for the right way, S for going down and, finally, W for going up. F1 is used for displate the colliders and, finally, F2 is for direct WIN/LOSE.
+
+Initial animation:
+
+Space - skip animation
+
+
+Initial menu:
+
+ESC - exit de game
+Space - Start de game at Stage 1
+1 - Go to Stage 1
+2 - Go to Stage 2
+3 - Go to Stage 3
+
+
+Ingame (any stage):
+
+ESC: exit to Initial menu (it plays the Initial Animation)
+1,2,3 - Go to the selected Stage (reload the Stage if it's the same)
+Space (if win) - Go to the next Stage
+Space (if lose) - Restart the current Stage 
+
+Player Movement:
+
+A - Left
+S - Down
+D - Right
+W - Up
 
 ## Additional comments
 

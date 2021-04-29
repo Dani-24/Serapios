@@ -74,7 +74,7 @@ bool ModuleScene::Start()
 
 update_status ModuleScene::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)	// Back to Init menu
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)	// Back to Init menu
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneintro, 60);
@@ -161,14 +161,13 @@ update_status ModuleScene::PostUpdate()
 	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true)
 	{
 		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
-
+		LOG("level 1 completed");
+		CleanUp();
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
 			App->fade->FadeToBlack(this, (Module*)App->scene2, 60);
 
 		}
-		LOG("level 1 completed");
-
 	}
 
 	return update_status::UPDATE_CONTINUE;

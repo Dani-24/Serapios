@@ -85,6 +85,9 @@ update_status TitleScreen::Update()
 		App->fade->FadeToBlack(this, (Module*)App->scene3, 90);
 
 	}
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_DOWN) {		// Apagar programa con ESC desde el menú ppl (Tiene que pasar la cinematica primero)
+		return update_status::UPDATE_STOP;
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }

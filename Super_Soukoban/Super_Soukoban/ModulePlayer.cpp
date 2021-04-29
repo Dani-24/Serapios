@@ -323,9 +323,6 @@ update_status ModulePlayer::Update()
 update_status ModulePlayer::PostUpdate()
 {
 	
-	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_DOWN) {		// Apagar programa con ESC
-		return update_status::UPDATE_STOP;
-	}
 	if (IsEnabled())
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();

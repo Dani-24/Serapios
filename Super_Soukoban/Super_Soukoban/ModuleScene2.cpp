@@ -75,7 +75,7 @@ bool ModuleScene2::Start()
 
 update_status ModuleScene2::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)	// Back to Init menu
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)	// Back to Init menu
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneintro, 60);
@@ -141,9 +141,9 @@ update_status ModuleScene2::PostUpdate()
 	
 	//lose
 	if (App->player->steps == App->player->limit) {
-		App->boxes->Disable();
+		
 		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
-
+		CleanUp();
 		
 	}
 
