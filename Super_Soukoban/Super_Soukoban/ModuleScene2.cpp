@@ -54,6 +54,12 @@ bool ModuleScene2::Start()
 	App->boxes->Enable();
 	App->collisions->Enable();
 	App->collisions->CleanUp();
+
+	// Set up stage, steps and step limit
+	App->player->stage = 02;
+	App->player->limit = 120;
+	App->player->steps = 0;
+
 	// Boxes lvl1 :
 	App->boxes->AddBox(144, 72);
 	App->boxes->AddBox(144, 49);
@@ -134,7 +140,7 @@ update_status ModuleScene2::PostUpdate()
 	}
 	
 	//lose
-	if (App->player->steps == 90) {
+	if (App->player->steps == App->player->limit) {
 		App->boxes->Disable();
 		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
 

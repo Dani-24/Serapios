@@ -332,6 +332,9 @@ update_status ModulePlayer::PostUpdate()
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
 	else {
+		steps = 0000;
+		limit = 00;
+		stage = 00;
 		delete collider;
 	}
 

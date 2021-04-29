@@ -42,7 +42,13 @@ bool ModuleScene::Start()
 	App->player->Enable();
 	App->boxes->Enable();
 	App->collisions->Enable();
-	App->collisions->CleanUp();
+	App->collisions->CleanUp();	//cleans colliders in case that exists some collider from another lvl
+
+	// Set up stage, steps and step limit
+	App->player->stage = 01;
+	App->player->limit = 90;
+	App->player->steps = 0;
+
 	// Tell module Player how is the map
 	for (int i = 0; i < 16; ++i)
 	{
@@ -134,10 +140,10 @@ update_status ModuleScene::PostUpdate()
 	}
 
 	//lose
-	if (App->player->steps == 90) {
-		//CleanUp();
-		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
+	if (App->player->steps == App->player->limit) {
 		
+		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
+		CleanUp();
 
 	}
 

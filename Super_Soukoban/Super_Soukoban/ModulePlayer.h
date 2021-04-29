@@ -55,8 +55,8 @@ public:
 	Collider* collider = nullptr;
 
 	uint steps = 0000;
-	uint limit = 90;
-	uint stage = 01;
+	uint limit = 00;
+	uint stage = 00;
 
 	int scoreFont = -1;
 	char scoreText[10] = { "\0" };
