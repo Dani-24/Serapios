@@ -88,7 +88,14 @@ ModulePlayer::ModulePlayer(bool startEnabled) :Module(startEnabled)
 	boxupAnim.loop = true;
 	boxupAnim.speed = 0.2f;
 
-	boxdownAnim.PushBack({});
+	boxdownAnim.PushBack({ 211,104,13,24 });
+	boxdownAnim.PushBack({ 235,104,13,24 });
+	boxdownAnim.PushBack({ 259,104,13,24 });
+	boxdownAnim.PushBack({ 283,104,13,24 });
+	boxdownAnim.PushBack({ 307,104,13,24 });
+	boxdownAnim.PushBack({ 331,104,13,24 });
+	boxdownAnim.PushBack({ 355,104,13,24 });
+	boxdownAnim.PushBack({ 379,104,13,24 });
 	boxdownAnim.loop = true;
 	boxdownAnim.speed = 0.2f;
 
