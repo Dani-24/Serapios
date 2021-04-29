@@ -45,6 +45,14 @@ ESC: exit to Initial menu (it plays the Initial Animation)
 
 1,2,3 - Go to the selected Stage (reload the Stage if it's the same)
 
+F1 - God Mode 
+
+F2 - Display Colliders
+
+F3 - Direct Win
+
+F4 - Direct Lose
+
 Space (if win) - Go to the next Stage
 
 Space (if lose) - Restart the current Stage 
