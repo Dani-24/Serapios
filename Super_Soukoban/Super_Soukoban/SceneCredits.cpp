@@ -65,7 +65,7 @@ update_status SceneCredits::Update()
 	
 	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->titleScreen, 60);
+		App->fade->FadeToBlack(this, (Module*)App->sceneintro, 60);
 
 	}
 
