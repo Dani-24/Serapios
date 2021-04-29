@@ -46,9 +46,9 @@ Space (if lose) - Restart the current Stage
 
 Player Movement:
 
-A - Left
-S - Down
-D - Right
+A - Left ||
+S - Down ||
+D - Right||
 W - Up
 
 ## Additional comments
