@@ -42,8 +42,8 @@ bool ModuleScene3::Start()
 	//to active the entities
 	App->player->Enable();
 	App->boxes->Enable();
-	//App->scene2->Disabled();
-
+	App->collisions->Enable();
+	App->collisions->CleanUp();
 	// Tell module Player how is the map
 	for (int i = 0; i < 16; ++i)
 	{

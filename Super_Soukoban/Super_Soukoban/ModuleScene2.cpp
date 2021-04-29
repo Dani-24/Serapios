@@ -52,7 +52,8 @@ bool ModuleScene2::Start()
 	//to active the entities
 	App->player->Enable();
 	App->boxes->Enable();
-
+	App->collisions->Enable();
+	App->collisions->CleanUp();
 	// Boxes lvl1 :
 	App->boxes->AddBox(144, 72);
 	App->boxes->AddBox(144, 49);

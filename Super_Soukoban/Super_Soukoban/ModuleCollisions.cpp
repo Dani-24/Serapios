@@ -4,6 +4,9 @@
 #include "ModuleInput.h"
 #include "External_Libraries/SDL/include/SDL_scancode.h"
 
+// This module should be called ModuleDRAWCollisions. The only function is to print the color of the colliders and nothing more, because in Super Soukoban collisions
+// are completely different to the simple collision of box1 intersects with box2 and was better to put the collisions directly in the player and boxes movements.
+
 ModuleCollisions::ModuleCollisions(bool startEnabled) :Module(startEnabled)
 {
 	for (uint i = 0; i < MAX_COLLIDERS;i++) {
