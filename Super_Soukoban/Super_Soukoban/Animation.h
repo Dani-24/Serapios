@@ -10,7 +10,6 @@ public:
 	float speed = 1.0f;
 	SDL_Rect frames[MAX_FRAMES];
 	bool loop = true;
-	// Animacion de ida y vuelta:
 	bool pingpong = false;
 
 private:
