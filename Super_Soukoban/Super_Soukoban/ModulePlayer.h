@@ -71,7 +71,7 @@ public:
 
 	bool canMove = true;
 	int currentScene;
-	uint numBox;
+	uint numBox=0;
 
 	int map[16][10] = {	// mapa, se va a llamar desde cada scene para cambiarse
 	{0,0,0,0,0,0,0,0,0,0},

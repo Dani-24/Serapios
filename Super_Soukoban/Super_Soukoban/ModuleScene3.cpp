@@ -27,9 +27,6 @@ bool ModuleScene3::Start()
 	LOG("Loading background assets 2");
 
 	bool ret = true;
-	dWin = false;
-	dLose = false;
-
 	background = App->textures->Load("Assets/tiles/background.png");
 	wall = App->textures->Load("Assets/tiles/wall.png");
 	wall2 = App->textures->Load("Assets/tiles/wall2.png");
@@ -48,7 +45,7 @@ bool ModuleScene3::Start()
 	nextFx = App->audio->LoadFx("Assets/SFX/Menu2_confirm.wav");
 	backFx = App->audio->LoadFx("Assets/SFX/Menu3_back.wav");
 
-	//to active the entities
+	//active the entities
 	App->player->Enable();
 	App->boxes->Enable();
 	App->collisions->Enable();
@@ -64,7 +61,6 @@ bool ModuleScene3::Start()
 	}
 
 	App->player->numBox = 5;
-
 
 	// Set up stage, steps and step limit
 	App->player->stage = 03;
@@ -198,7 +194,9 @@ update_status ModuleScene3::PostUpdate()
 //disable the entities
 bool ModuleScene3::CleanUp()
 {
+	App->player->CleanUp();
 	App->player->Disable();
+	App->boxes->CleanUp();
 	App->boxes->Disable();
 	App->collisions->CleanUp();
 	App->collisions->Disable();

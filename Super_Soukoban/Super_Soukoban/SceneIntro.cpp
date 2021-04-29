@@ -66,10 +66,10 @@ bool SceneIntro::Start() {
 	return ret;
 }
 
-update_status SceneIntro::Update() {
-	intro.Update(); // EJECUTA LA ANIMACION DE LA INTRO DEL VIDEOJUEGO "SUPER SOKOUBAN" - Miguel -
+update_status SceneIntro::Update() {	// plays Game logo + animation
+	intro.Update();
 
-	if (intro.HasFinished()) //Si el loop de la animacion incial ha acabado ejecuta el FadeToBlack - Miguel -
+	if (intro.HasFinished())
 	{
 		App->fade->FadeToBlack(this, (Module*)App->titleScreen, 60);
 	}
@@ -79,7 +79,6 @@ update_status SceneIntro::Update() {
 		App->fade->FadeToBlack(this, (Module*)App->titleScreen, 60);
 
 	}
-
 	
 	return update_status::UPDATE_CONTINUE;
 }
