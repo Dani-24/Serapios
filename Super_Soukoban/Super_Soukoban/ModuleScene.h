@@ -56,6 +56,14 @@ private:
 
 	bool dWin;
 	bool dLose;
+
+	uint levelMusic = 0;
+	uint winMusic = 0;
+	uint winFx = 0;
+	uint loseFx = 0;
+
+	uint nextFx = 0;
+	uint backFx = 0;
 };
 
 #endif // __MODULE_SCENE_H__

@@ -37,7 +37,15 @@ bool ModuleScene2::Start()
 	lose= App->textures->Load("Assets/lose.png");
 	win = App->textures->Load("Assets/win.png");
 
-	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
+	// Music and FX
+	levelMusic = App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);;
+	winMusic = App->audio->LoadFx("Assets/Music/Win_Sound_Loop.ogg"); // deberia ser un PlayMusic. (Mirar mas tarde para que no solape)
+
+	winFx = App->audio->LoadFx("Assets/SFX/Win_Sound_Init.wav");
+	loseFx = App->audio->LoadFx("Assets/SFX/Lost_Sound.wav");
+
+	nextFx = App->audio->LoadFx("Assets/SFX/Menu2_confirm.wav");
+	backFx = App->audio->LoadFx("Assets/SFX/Menu3_back.wav");
 
 	// Tell module Player how is the map
 	for (int i = 0; i < 16; ++i)
@@ -78,6 +86,7 @@ update_status ModuleScene2::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)	// Back to Init menu
 	{
+		App->audio->PlayFx(backFx);
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneintro, 60);
 
@@ -153,6 +162,7 @@ update_status ModuleScene2::PostUpdate()
 		CleanUp();
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
+			App->audio->PlayFx(nextFx);
 			App->fade->FadeToBlack(this, (Module*)App->scene2, 60);
 		}
 	}
@@ -176,6 +186,7 @@ update_status ModuleScene2::PostUpdate()
 		CleanUp();
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
+			App->audio->PlayFx(nextFx);
 			App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
 		}
 	}

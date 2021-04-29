@@ -37,8 +37,15 @@ bool ModuleScene::Start()
 	lose = App->textures->Load("Assets/lose.png");
 	win = App->textures->Load("Assets/win.png");
 
+	// Music and FX
+	levelMusic = App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);;
+	winMusic = App->audio->LoadFx("Assets/Music/Win_Sound_Loop.ogg"); // deberia ser un PlayMusic. (Mirar mas tarde para que no solape)
 
-	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
+	winFx = App->audio->LoadFx("Assets/SFX/Win_Sound_Init.wav");
+	loseFx = App->audio->LoadFx("Assets/SFX/Lost_Sound.wav");
+
+	nextFx = App->audio->LoadFx("Assets/SFX/Menu2_confirm.wav");
+	backFx = App->audio->LoadFx("Assets/SFX/Menu3_back.wav");
 
 	//to active the entities
 	App->player->Enable();
@@ -79,6 +86,7 @@ update_status ModuleScene::Update()
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)	// Back to Init menu
 	{
 		CleanUp();
+		App->audio->PlayFx(backFx);
 		App->fade->FadeToBlack(this, (Module*)App->sceneintro, 60);
 
 	}
@@ -150,11 +158,11 @@ update_status ModuleScene::PostUpdate()
 
 	//lose
 	if (App->player->steps == App->player->limit || dLose==true) {	// dLose= f4 direct loose
-		
 		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
 		CleanUp();
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)	// Restart the level when losing
 		{
+			App->audio->PlayFx(nextFx);
 			App->fade->FadeToBlack(this, (Module*)App->scene, 60);
 		}
 	}
@@ -170,19 +178,19 @@ update_status ModuleScene::PostUpdate()
 			}
 		}
 	}
-
 	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true || dWin==true) // dWin= F3 direct win
 	{
+		levelMusic = 0; // quita la musica
+
 		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
 		LOG("level 1 completed");
 		CleanUp();
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)	// go to the next level when winning
 		{
+			App->audio->PlayFx(nextFx);
 			App->fade->FadeToBlack(this, (Module*)App->scene2, 60);
-
 		}
 	}
-
 	return update_status::UPDATE_CONTINUE;
 }
 //disable the entities
