@@ -144,19 +144,15 @@ update_status ModulePlayer::Update()
 	
 	if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov Derecha
 		nPosX = position.x + 24;
-		steps++;//contador de pasos
 	}
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov arriba
 		nPosY = position.y - 24;
-		steps++;//contador de pasos
 	}
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov izquierda
 		nPosX = position.x - 24;
-		steps++;//contador de pasos
 	}
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov abajo
 		nPosY = position.y + 24;
-		steps++;//contador de pasos
 	}
 	if (nPosX != 0) {							// LEFT
 		if (nPosX < position.x) {
@@ -227,7 +223,7 @@ update_status ModulePlayer::Update()
 			canMove = true;
 		}
 		else if (nPosX == position.x) {
-			nPosX = 0;
+			nPosX = 0; steps++;				// Contador de pasos
 		}
 	}
 	else if (nPosY != 0) {				// UP
@@ -299,7 +295,7 @@ update_status ModulePlayer::Update()
 			canMove = true;
 		}
 		else if (nPosY == position.y) {
-			nPosY = 0;
+			nPosY = 0; steps++;
 		}
 	}
 
