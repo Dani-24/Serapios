@@ -225,7 +225,7 @@ update_status ModulePlayer::Update()
 								}
 								for (int f = 0; f < numBox; f++) {				// collision box + box
 									if (position.x + 19 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y && position.x + 43 == App->boxes->boxes[f]->position.x && position.y == App->boxes->boxes[f]->position.y) {
-										canMove = false;//aquí peta si haces literalmente 1 solo paso mas del limite
+										canMove = false;
 										nPosX = 0;
 									}
 								}
