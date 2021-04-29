@@ -17,6 +17,13 @@ Box::Box(int x, int y) :position(x, y) {
 	darkBoxAnim.PushBack({ 40,0,24,24 });
 
 	collider = App->collisions->AddCollider({ 0,0,24,24 }, Collider::Type::BOX, (Module*)App->boxes);
+	for (int i = 0; i < 16; ++i)
+	{
+		for (int j = 0; j < 10; ++j)
+		{
+			map[i][j] = App->boxes->mandaMap[i][j];
+		}
+	}
 }
 
 Box::~Box() {
@@ -32,19 +39,19 @@ void Box::Update() {
 
 	// aqui va el mov de la caja
 	bool d = true;
-	if (position.x - 17 == App->player->position.x && position.y == App->player->position.y) {	//17?
+	if (position.x - 17 == App->player->position.x && position.y == App->player->position.y) {	
 		position.x += 1;
 		d = true;
 	}
-	if (position.x + 27 == App->player->position.x && position.y == App->player->position.y) {	//17?
+	if (position.x + 27 == App->player->position.x && position.y == App->player->position.y) {
 		position.x -= 1;
 		d = false;
 	}
-	if (position.y - 22 == App->player->position.y && position.x == App->player->position.x - 5) {	//17?
+	if (position.y - 22 == App->player->position.y && position.x == App->player->position.x - 5) {
 		position.y += 1;
 		d = false;
 	}
-	if (position.y + 22 == App->player->position.y && position.x == App->player->position.x - 5) {	//17?
+	if (position.y + 22 == App->player->position.y && position.x == App->player->position.x - 5) {
 		position.y -= 1;
 		d = true;
 	}
@@ -70,22 +77,9 @@ void Box::Update() {
 	{
 		for (int j = 0; j < 10; ++j)
 		{
-			if (App->scene->map[i][j] == 4) {
+			if (map[i][j] == 4) {
 				if (position.x == i * 24 && position.y == j * 24) {
 					currentAnim = &darkBoxAnim;
-					
-				}
-			}
-			if (App->scene2->map[i][j] == 4) {
-				if (position.x == i * 24 && position.y == j * 24) {
-					currentAnim = &darkBoxAnim;
-
-				}
-			}
-			if (App->scene3->map[i][j] == 4) {
-				if (position.x == i * 24 && position.y == j * 24) {
-					currentAnim = &darkBoxAnim;
-
 				}
 			}
 		}

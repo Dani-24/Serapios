@@ -38,6 +38,15 @@ bool ModuleScene2::Start()
 
 	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
 
+	// Tell module Player how is the map
+	for (int i = 0; i < 16; ++i)
+	{
+		for (int j = 0; j < 10; ++j)
+		{
+			App->player->map[i][j] = map[i][j];
+			App->boxes->mandaMap[i][j] = map[i][j];
+		}
+	}
 	App->player->numBox = 3;
 	//to active the entities
 	App->player->Enable();

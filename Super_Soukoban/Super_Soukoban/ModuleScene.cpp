@@ -42,6 +42,16 @@ bool ModuleScene::Start()
 	App->player->Enable();
 	App->boxes->Enable();
 
+	// Tell module Player how is the map
+	for (int i = 0; i < 16; ++i)
+	{
+		for (int j = 0; j < 10; ++j)
+		{
+			App->player->map[i][j] = map[i][j];
+			App->boxes->mandaMap[i][j] = map[i][j];
+		}
+	}
+
 	App->player->numBox = 3;
 	// Boxes lvl1 :
 	App->boxes->AddBox(144, 96);
@@ -152,8 +162,8 @@ update_status ModuleScene::PostUpdate()
 //disable the entities
 bool ModuleScene::CleanUp()
 {
-	//App->player->Disable();
+	App->player->Disable();
 	App->boxes->Disable();
-	/*App->collisions->Disable();*/
+	App->collisions->Disable();
 	return true;
 }

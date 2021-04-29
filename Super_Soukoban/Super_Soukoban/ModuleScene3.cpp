@@ -43,6 +43,16 @@ bool ModuleScene3::Start()
 	App->player->Enable();
 	App->boxes->Enable();
 	//App->scene2->Disabled();
+
+	// Tell module Player how is the map
+	for (int i = 0; i < 16; ++i)
+	{
+		for (int j = 0; j < 10; ++j)
+		{
+			App->player->map[i][j] = map[i][j];
+			App->boxes->mandaMap[i][j] = map[i][j];
+		}
+	}
 	App->player->numBox = 5;
 	// Boxes lvl1 :
 	App->boxes->AddBox(168, 96);

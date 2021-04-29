@@ -23,10 +23,10 @@ Application::Application() {
     modules[1] = input = new ModuleInput(true);
 	modules[2] = textures = new ModuleTextures(true);
 	modules[3] = audio = new ModuleAudio(true);
-	modules[4] = sceneCredits = new SceneCredits(true);
+	modules[4] = sceneCredits = new SceneCredits(false);	//true
 	modules[5] = sceneintro = new SceneIntro(false);
 	modules[6] = titleScreen = new TitleScreen(false);
-	modules[7] = scene = new ModuleScene(false);
+	modules[7] = scene = new ModuleScene(true);				//false				// ahora ejecuta el lvl1 directamente
 	modules[8] = scene2 = new ModuleScene2(false);
 	modules[9] = scene3 = new ModuleScene3(false);
     modules[10] = player = new ModulePlayer(false);

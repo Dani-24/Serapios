@@ -108,26 +108,12 @@ bool ModulePlayer::Start()
 
 	texture = App->textures->Load("Assets/player.png");
 	table= App->textures->Load("Assets/table2.png");
-	currentAnimation = &boxleftAnim;//&idleLeftAnim;
+	currentAnimation = &idleLeftAnim;
 
 	// Posición inicial (depende del lvl)
 	position.x;
 	position.y;
-	/*switch (currentScene) {
-	case 0:
-		position.x = 173;
-		position.y = 48;
-		break;
-	case 1:
-		position.x = 200;
-		position.y = 72;
-		break;
-	case 2:
-	    position.x = 250;
-		position.y = 150;
-		break;
 
-	}*/
 	// X, Y, anchura, altura, 
 	collider = App->collisions->AddCollider({ position.x-5, position.y, 24, 24 }, Collider::Type::PLAYER, this);
 
@@ -160,7 +146,7 @@ update_status ModulePlayer::Update()
 			{
 				for (int j = 0; j < 10; ++j)
 				{
-					if (App->scene->map[i][j] == 1 || App->scene->map[i][j] == 2) {		// colision pared
+					if (map[i][j] == 1 || map[i][j] == 2) {		// colision pared
 						if (position.x - 29 == i * 24 && position.y == j * 24) {
 							canMove = false;
 							nPosX = 0;
@@ -193,7 +179,7 @@ update_status ModulePlayer::Update()
 			{
 				for (int j = 0; j < 10; ++j)
 				{
-					if (App->scene->map[i][j] == 1 || App->scene->map[i][j] == 2) {
+					if (map[i][j] == 1 ||map[i][j] == 2) {
 						if (position.x + 19 == i * 24 && position.y == j * 24) {
 							canMove = false;
 							nPosX = 0;
@@ -232,7 +218,7 @@ update_status ModulePlayer::Update()
 			{
 				for (int j = 0; j < 10; ++j)
 				{
-					if (App->scene->map[i][j] == 1 || App->scene->map[i][j] == 2) {
+					if (map[i][j] == 1 || map[i][j] == 2) {
 						if (position.x - 5 == i * 24 && position.y - 24 == j * 24) {
 							canMove = false;
 							nPosY = 0;
@@ -265,7 +251,7 @@ update_status ModulePlayer::Update()
 			{
 				for (int j = 0; j < 10; ++j)
 				{
-					if (App->scene->map[i][j] == 1 || App->scene->map[i][j] == 2) {
+					if (map[i][j] == 1 || map[i][j] == 2) {
 						if (position.x - 5 == i * 24 && position.y + 24 == j * 24) {
 							canMove = false;
 							nPosY = 0;
