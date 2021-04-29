@@ -31,24 +31,34 @@ Space - skip animation
 Initial menu:
 
 ESC - exit de game
+
 Space - Start de game at Stage 1
+
 1 - Go to Stage 1
+
 2 - Go to Stage 2
+
 3 - Go to Stage 3
 
 
 Ingame (any stage):
 
 ESC: exit to Initial menu (it plays the Initial Animation)
+
 1,2,3 - Go to the selected Stage (reload the Stage if it's the same)
+
 Space (if win) - Go to the next Stage
+
 Space (if lose) - Restart the current Stage 
 
 Player Movement:
 
-A - Left ||
-S - Down ||
-D - Right||
+A - Left 
+
+S - Down 
+
+D - Right 
+
 W - Up
 
 ## Additional comments
