@@ -83,13 +83,15 @@ update_status TitleScreen::Update()
 			App->audio->PlayFx(selectFx);
 		}
 	}
-
-	if (M_Index == B_Play)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		if (M_Index == B_Play)
 		{
 			App->audio->PlayFx(nextFx);
 			App->fade->FadeToBlack(this, (Module*)App->scene, 60);
+		}
+		else {
+			App->audio->PlayFx(backFx);
 		}
 	}
 
