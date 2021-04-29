@@ -7,7 +7,8 @@
 #include "ModuleScene.h"
 #include "ModuleScene2.h"
 #include "ModuleScene3.h"
-// BOX	-- Maneja una caja
+
+// BOX	-- how a box works
 
 Box::Box(int x, int y) :position(x, y) {
 	spawnPos = position;
@@ -17,6 +18,8 @@ Box::Box(int x, int y) :position(x, y) {
 	darkBoxAnim.PushBack({ 40,0,24,24 });
 
 	collider = App->collisions->AddCollider({ 0,0,24,24 }, Collider::Type::BOX, (Module*)App->boxes);
+
+	// The current scene sends the corresponding map
 	for (int i = 0; i < 16; ++i)
 	{
 		for (int j = 0; j < 10; ++j)
@@ -37,7 +40,7 @@ const Collider* Box::GetCollider() const {
 
 void Box::Update() {
 
-	// aqui va el mov de la caja
+	// Box movement due to player collision
 	bool d = true;
 	if (position.x - 17 == App->player->position.x && position.y == App->player->position.y) {	
 		position.x += 1;
@@ -73,6 +76,7 @@ void Box::Update() {
 		d = true;
 	}
 
+	// Collision Box x Point (Where you need to move the box to win)
 	for (int i = 0; i < 16; ++i)
 	{
 		for (int j = 0; j < 10; ++j)
@@ -103,7 +107,7 @@ void Box::OnCollision(Collider* collider) {
 
 }
 
-// MODULE BOX	-- maneja las cajas 
+// MODULE BOX	-- It allows the current scene to make more than 1 Box
 
 ModuleBox::ModuleBox(bool startEnabled) : Module(startEnabled){
 	for (uint i = 0; i < MAX_BOXES; ++i) {
@@ -130,8 +134,7 @@ update_status ModuleBox::Update() {
 		}
 	}
 
-	if (!IsEnabled()) {
-		
+	if (!IsEnabled()) { // Just for security
 		CleanUp();
 	}
 
@@ -157,11 +160,10 @@ bool ModuleBox::CleanUp() {
 			boxes[i] = nullptr;
 		}
 	}
-
 	return true;
 }
 
-bool ModuleBox::AddBox(int x, int y) {
+bool ModuleBox::AddBox(int x, int y) {	// Sends the necessary information to HandleBoxSpawn and SpawnBox to create a new Box
 	bool ret = false;
 
 	for (uint i = 0; i < MAX_BOXES; i++) {
@@ -174,7 +176,6 @@ bool ModuleBox::AddBox(int x, int y) {
 			break;
 		}
 	}
-
 	return ret;
 }
 
@@ -200,5 +201,4 @@ void ModuleBox::SpawnBox(const BoxSpawnpoint& info) {
 }
 
 void ModuleBox::OnCollision(Collider* c1, Collider* c2) {
-	
 }

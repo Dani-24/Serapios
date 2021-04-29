@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 16	// editar si se requiere
+#define NUM_MODULES 16
 
 class Module;
 class ModuleAudio;

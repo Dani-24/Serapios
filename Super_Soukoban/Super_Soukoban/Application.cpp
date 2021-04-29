@@ -17,13 +17,13 @@
 #include "SceneIntro.h"
 #include "SceneCredits.h"
 #include "TitleScreen.h"
-//moduke
+
 Application::Application() {
     modules[0] = window = new ModuleWindow(true);
     modules[1] = input = new ModuleInput(true);
 	modules[2] = textures = new ModuleTextures(true);
 	modules[3] = audio = new ModuleAudio(true);
-	modules[4] = sceneCredits = new SceneCredits(true);	// Change true -> false, and then false-> true in another scene if you want to change the screen when F5
+	modules[4] = sceneCredits = new SceneCredits(true);
 	modules[5] = sceneintro = new SceneIntro(false);
 	modules[6] = titleScreen = new TitleScreen(false);
 	modules[7] = scene = new ModuleScene(false);
@@ -35,7 +35,6 @@ Application::Application() {
 	modules[13] = fade = new ModuleFadeToBlack(true);
 	modules[14] = fonts = new ModuleFonts(true);
 	modules[15] = render = new ModuleRender(true);
-	
 }
 
 Application::~Application() {
@@ -48,15 +47,12 @@ Application::~Application() {
 bool Application::Init()
 {
 	bool ret = true;
-
 	for (int i = 0; i < NUM_MODULES && ret; ++i) {
 		ret = modules[i]->Init();
 	}
-
 	for (int i = 0; i < NUM_MODULES && ret; ++i) {
 		ret = modules[i]->IsEnabled() ? modules[i]->Start():true;
 	}
-
 	return ret;
 }
 
@@ -64,15 +60,17 @@ update_status Application::Update()
 {
 	update_status ret = update_status::UPDATE_CONTINUE;
 
-	for (int i = 0; i < NUM_MODULES && ret == update_status::UPDATE_CONTINUE; ++i)
-		ret = modules[i]->IsEnabled() ? modules[i]->PreUpdate():update_status::UPDATE_CONTINUE;
+	for (int i = 0; i < NUM_MODULES && ret == update_status::UPDATE_CONTINUE; i++) {
+		ret = modules[i]->IsEnabled() ? modules[i]->PreUpdate() : update_status::UPDATE_CONTINUE;
+	}
 
-	for (int i = 0; i < NUM_MODULES && ret == update_status::UPDATE_CONTINUE; ++i)
+	for (int i = 0; i < NUM_MODULES && ret == update_status::UPDATE_CONTINUE; i++) {
 		ret = modules[i]->IsEnabled() ? modules[i]->Update() : update_status::UPDATE_CONTINUE;
+	}
 
-	for (int i = 0; i < NUM_MODULES && ret == update_status::UPDATE_CONTINUE; ++i)
+	for (int i = 0; i < NUM_MODULES && ret == update_status::UPDATE_CONTINUE; i++) {
 		ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : update_status::UPDATE_CONTINUE;
-
+	}
 	return ret;
 }
 

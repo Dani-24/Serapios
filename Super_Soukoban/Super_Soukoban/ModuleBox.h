@@ -31,7 +31,7 @@ public:
 	Animation* currentAnim = nullptr;
     Animation darkBoxAnim;
 
-	int map[16][10] = {	// mapa, se va a llamar desde cada scene para cambiarse
+	int map[16][10] = {	// scene map. Obtained from Module Box 
 	{0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0},
@@ -50,14 +50,11 @@ public:
 	{0,0,0,0,0,0,0,0,0,0}
 	};
 protected:
-	
 	Collider* collider = nullptr;
 	iPoint spawnPos;
 
 private:
 	Animation normalBoxAnim;
-	
-	
 };
 
 // Module Box
@@ -87,7 +84,7 @@ public:
 
     Box* boxes[MAX_BOXES] = { nullptr };
 
-	int mandaMap[16][10] = {	// mapa, se va a llamar desde cada scene para cambiarse
+	int mandaMap[16][10] = {	// map obtained from the current Scene
 	{0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0},
@@ -109,11 +106,7 @@ private:
 	void SpawnBox(const BoxSpawnpoint& info);
 
 	BoxSpawnpoint spawnQueue[MAX_BOXES];
-
-	
-
 	SDL_Texture* texture = nullptr;
-
 };
 #endif // !_MODULEBOX_H_
 
