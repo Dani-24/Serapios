@@ -20,7 +20,6 @@ bool ModuleTextures::Init()
 	LOG("Init Image library");
 	bool ret = true;
 
-	// Load support for the PNG image format :D
 	int flags = IMG_INIT_PNG;
 	int init = IMG_Init(flags);
 
@@ -84,7 +83,7 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 
 	return texture;
 }
-//removes memory
+
 bool ModuleTextures::Unload(SDL_Texture* texture)
 {
 	bool ret = false;
@@ -103,7 +102,7 @@ bool ModuleTextures::Unload(SDL_Texture* texture)
 	}
 	return ret;
 }
-//size texture
+
 void ModuleTextures::GetTextureSize(const SDL_Texture* texture, uint& width, uint& height)const
 {
 	SDL_QueryTexture((SDL_Texture*)texture, NULL, NULL, (int*)&width, (int*)&height);
