@@ -22,18 +22,18 @@ public:
 
 	bool CleanUp();
 
-	//poner una musica concreto
+	//to play music
 	bool PlayMusic(const char* path, float fade_time = DEFAULT_MUSIC_FADE_TIME);
 
 	bool PauseMusic();
 
-	//inicializar efecto de sonido
+	//inicialize fx
 	uint LoadFx(const char* path);
 
-	//poner efecto de sonido
+	//play fx
 	bool PlayFx(uint index, int repeat = 0);
 private:
-	//la musica que esta sonando
+	//current music
 	Mix_Music* music = nullptr;
 
 	Mix_Chunk* soundFx[MAX_FX] = { nullptr };

@@ -35,7 +35,7 @@ bool ModuleAudio::Init() {
 		LOG("could not initialize Mixer lib.Mix_Init :( SDL_Error: %s\n", Mix_GetError());
 		ret = false;
 	}
-	//inicializa sdl mixer
+	//inicialize sdl mixer
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 	{
 		LOG("SDL_mixer could not initialize! SDL_Mixer :( SDL_Mixer Error: %s\n", Mix_GetError());

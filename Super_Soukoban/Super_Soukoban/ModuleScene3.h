@@ -44,7 +44,7 @@ int map[16][10] = {
 	{0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0}
 	};
-bool boxEnd[4] = { false,false,false,false };
+bool boxEnd[4] = { false };
 private:
 	SDL_Texture* background = nullptr;		// 0
 	SDL_Texture* wall = nullptr;			// 1

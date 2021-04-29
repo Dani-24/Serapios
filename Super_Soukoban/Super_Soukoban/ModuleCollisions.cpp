@@ -13,13 +13,13 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) :Module(startEnabled)
 		colliders[i] = nullptr;
 }
 
-	// Colliders paredes:
+	// Colliders wall:
 	matrix[Collider::Type::WALL][Collider::Type::WALL] = false;
 	matrix[Collider::Type::WALL][Collider::Type::BOX] = true;
 	matrix[Collider::Type::WALL][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::WALL][Collider::Type::POINT] = false;
 
-	// Colliders cajas:
+	// Colliders box:
 	matrix[Collider::Type::BOX][Collider::Type::WALL] = true;
 	matrix[Collider::Type::BOX][Collider::Type::BOX] = true;
 	matrix[Collider::Type::BOX][Collider::Type::PLAYER] = true;
@@ -30,7 +30,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) :Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::BOX] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::POINT] = false;
-
+	  
+	// Colliders point:
 	matrix[Collider::Type::POINT][Collider::Type::WALL] = false;
 	matrix[Collider::Type::POINT][Collider::Type::BOX] = true;
 	matrix[Collider::Type::POINT][Collider::Type::PLAYER] = false;
@@ -86,7 +87,7 @@ update_status ModuleCollisions::PreUpdate() {
 
 update_status ModuleCollisions::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN) // tecla de debug
+	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN) //  debug key
 		debug = !debug;
 
 	return update_status::UPDATE_CONTINUE;
@@ -110,7 +111,7 @@ void ModuleCollisions::DebugDraw()
 
 		switch (colliders[i]->type)
 		{
-		case Collider::Type::NONE: // colores de los colliders en RGB
+		case Collider::Type::NONE: 
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
 			break;
 		case Collider::Type::WALL:

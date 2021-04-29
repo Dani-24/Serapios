@@ -16,7 +16,7 @@ class SceneIntro : public Module {
 		//updates the scene's background animations
 		update_status Update() override;
 
-		//forms de render call of all the parts of the scene's backgroud
+		//forms the render call of all the parts of the scene's backgroud
 		update_status PostUpdate() override;
 
 public:

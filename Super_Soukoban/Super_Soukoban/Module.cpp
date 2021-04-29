@@ -1,13 +1,14 @@
-#include "Module.h" //adrian
+#include "Module.h" 
 
 Module::Module(bool startEnabled) : isEnabled(startEnabled)
 {
 
 }
-
+//initialize the modules
 bool Module::Init() {
 	return true;
 }
+//starts the modules
 bool Module::Start() {
 	return true;
 }
@@ -21,7 +22,7 @@ update_status Module::Update() {
 update_status Module::PostUpdate() {
 	return update_status::UPDATE_CONTINUE;
 }
-
+//clean the modules
 bool Module::CleanUp() {
 	return true;
 }
@@ -29,7 +30,7 @@ bool Module::CleanUp() {
 void Module::OnCollision(Collider* c1, Collider* c2) {
 
 }
-
+// to enable and disable modules
 void Module::Enable()
 {
 	if (!isEnabled)

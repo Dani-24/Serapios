@@ -30,7 +30,7 @@ bool TitleScreen::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
-
+	//title 
 	bgTexture = App->textures->Load("Assets/main_menu_title.png");
 	Pointer = App->textures->Load("Assets/selector.png");
 	scroller = App->textures->Load("Assets/scroller.png");
@@ -66,7 +66,7 @@ update_status TitleScreen::Update()
 	if (scroller2Y < -1036) {
 		scroller2Y = 1034;
 	}
-
+	//key commands 
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN) {
 		if (M_Index < 2)
 		{
@@ -107,7 +107,7 @@ update_status TitleScreen::Update()
 		App->fade->FadeToBlack(this, (Module*)App->scene3, 90);
 
 	}
-	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_DOWN) {		// Apagar programa con ESC desde el menú ppl (Tiene que pasar la cinematica primero)
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_DOWN) {		// ESC to close the game
 		return update_status::UPDATE_STOP;
 	}
 

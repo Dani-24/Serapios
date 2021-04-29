@@ -43,7 +43,7 @@ update_status ModuleRender::PreUpdate() {
 
 update_status ModuleRender::Update()
 {
-	// Aquí van movimientos manuales de la camara (Soukoban no tiene)
+	
 
 	return update_status::UPDATE_CONTINUE;
 }

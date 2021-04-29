@@ -9,10 +9,9 @@ struct SDL_Texture;
 class TitleScreen : public Module
 {
 public:
-	//Constructor
+
 	TitleScreen(bool startEnabled);
 
-	//Destructor
 	~TitleScreen();
 
 	// Called when the module is activated
@@ -26,10 +25,6 @@ public:
 	// Called at the end of the application loop.
 	// Performs the render call of all the parts of the scene's background
 	update_status PostUpdate() override;
-
-
-
-
 
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
@@ -45,7 +40,6 @@ public:
 	int p_y = 145;
 
 	SDL_Rect p_pos;
-
 
 	//The intro animation
 	Animation intro;

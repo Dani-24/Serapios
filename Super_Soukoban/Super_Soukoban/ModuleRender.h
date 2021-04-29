@@ -24,7 +24,7 @@ public:
 	SDL_Renderer* renderer = nullptr;
 	SDL_Rect camera = { 0,0,SCREEN_WIDTH,SCREEN_HEIGHT };	// Colocacion Camara
 
-	int cameraSpeed = 1; // Vel.mov. de la camara con las teclas 
+	int cameraSpeed = 1; 
 
 };
 
