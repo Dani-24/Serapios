@@ -53,6 +53,7 @@ bool ModuleScene3::Start()
 			App->boxes->mandaMap[i][j] = map[i][j];
 		}
 	}
+
 	App->player->numBox = 5;
 	// Boxes lvl1 :
 	App->boxes->AddBox(168, 96);
@@ -61,24 +62,38 @@ bool ModuleScene3::Start()
 	App->boxes->AddBox(168, 144);
 	App->boxes->AddBox(192, 120);
 
-	App->player->position.x = 120;
-	App->player->position.y = 48;
-
-	/*App->player->currentScene = 2;*/	// Posición inicial de player en la Scene 1
+	// Player position: (multiples de 24.) Add +5 to position.x 
+	App->player->position.x = 149;
+	App->player->position.y = 72;
 
 	return ret;
 }
 
 update_status ModuleScene3::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)	// Back to Init menu
 	{
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->sceneintro, 60);
+
+	}
+	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)		// Go to lvl 1
+	{
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->scene, 60);
+
+	}
+
+	if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)		// Go to lvl 2 
+	{
+		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->scene2, 60);
 
 	}
-	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)		// Reset lvl 3
 	{
-		App->fade->FadeToBlack(this, (Module*)App->scene, 60);
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
 
 	}
 	return update_status::UPDATE_CONTINUE;
@@ -157,8 +172,9 @@ update_status ModuleScene3::PostUpdate()
 //disable the entities
 bool ModuleScene3::CleanUp()
 {
-	//App->player->Disable();
+	App->player->Disable();
 	App->boxes->Disable();
+	App->collisions->Disable();
 	
 	return true;
 }

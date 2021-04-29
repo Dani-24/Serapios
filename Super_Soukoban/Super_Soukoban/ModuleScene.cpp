@@ -58,28 +58,35 @@ bool ModuleScene::Start()
 	App->boxes->AddBox(120, 144);
 	App->boxes->AddBox(192, 120);
 
-	App->player->position.x = 173;
+	// Player position: (multiples de 24.) Add +5 to position.x (Bc player sprite doesn't fit with 24x24 so it needs that adjustment) 
+	App->player->position.x = 173;		
 	App->player->position.y = 48;
-    /*App->player->currentScene = 0;*/	// Posición inicial de player en la Scene 1
 
 	return ret;
 }
 
 update_status ModuleScene::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)	// Back to Init menu
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneintro, 60);
 
 	}
-	if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)		// Reset lvl 1
+	{
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->scene, 60);
+
+	}
+
+	if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)		// Go to lvl 2 
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->scene2, 60);
 
 	}
-	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)		// Go to lvl 3
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->scene3, 60);

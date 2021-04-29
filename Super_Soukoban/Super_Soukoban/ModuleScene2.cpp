@@ -48,6 +48,7 @@ bool ModuleScene2::Start()
 		}
 	}
 	App->player->numBox = 3;
+
 	//to active the entities
 	App->player->Enable();
 	App->boxes->Enable();
@@ -56,31 +57,42 @@ bool ModuleScene2::Start()
 	App->boxes->AddBox(144, 72);
 	App->boxes->AddBox(144, 49);
 	App->boxes->AddBox(168, 49);
-	App->player->position.x = 125;
-	App->player->position.y = 20;
 
-	/*App->player->currentScene = 1;*/	// Posición inicial de player en la Scene 2
+	// Player position: (multiples de 24.) Add +5 to position.x 
+	App->player->position.x = 125;
+	App->player->position.y = 24;
+
 
 	return ret;
 }
 
 update_status ModuleScene2::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)	// Back to Init menu
 	{
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->sceneintro, 60);
+
+	}
+	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)		// Go to lvl 1
+	{
+		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->scene, 60);
 
 	}
-	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)
+	
+	if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)		// Reset lvl 2 
 	{
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->scene2, 60);
+
+	}
+	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)		// Go to lvl 3
+	{
+		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
 
 	}
-	/*for (int i = 0; i < 3;i++) {
-		if (App->boxes->) {
-
-		}
-	}*/
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -166,9 +178,9 @@ update_status ModuleScene2::PostUpdate()
 //disable the entities
 bool ModuleScene2::CleanUp()
 {
-	//App->player->Disable();
+	App->player->Disable();
 	App->boxes->Disable();
-
+	App->collisions->Disable();
 	return true;
 }
 

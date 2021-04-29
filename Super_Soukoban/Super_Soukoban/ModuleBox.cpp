@@ -130,6 +130,11 @@ update_status ModuleBox::Update() {
 		}
 	}
 
+	if (!IsEnabled()) {
+		
+		CleanUp();
+	}
+
 	return update_status::UPDATE_CONTINUE;
 }
 
