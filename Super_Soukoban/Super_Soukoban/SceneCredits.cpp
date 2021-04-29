@@ -86,8 +86,8 @@ update_status SceneCredits::PostUpdate()
 	App->fonts->BlitText(SCREEN_WIDTH / 2 - 70, SCREEN_HEIGHT / 2 - 40, namesFont, "design and development");
 
 	App->fonts->BlitText(SCREEN_WIDTH / 2 - 55, SCREEN_HEIGHT / 2 - 15, creditsFont, "project teachers");
-	App->fonts->BlitText(SCREEN_WIDTH / 2 - 55, SCREEN_HEIGHT / 2, namesFont, "jesus alonso");
-	App->fonts->BlitText(SCREEN_WIDTH / 2 - 40, SCREEN_HEIGHT / 2 + 15, namesFont, "ramon santamaria");
+	App->fonts->BlitText(SCREEN_WIDTH / 2 - 40, SCREEN_HEIGHT / 2, namesFont, "jesus alonso");
+	App->fonts->BlitText(SCREEN_WIDTH / 2 - 55, SCREEN_HEIGHT / 2 + 15, namesFont, "ramon santamaria");
 
 	App->fonts->BlitText(SCREEN_WIDTH / 2 - 30, SCREEN_HEIGHT / 2 + 40, creditsFont, "developers");
 	App->fonts->BlitText(SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 + 55, namesFont, "dani toledo, xavier lopez");
