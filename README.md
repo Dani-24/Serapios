@@ -49,13 +49,13 @@ F1 - Fly Mode (Allows freemove from player (*it can cause some bugs when turning
 
 F2 - Display Colliders
 
-F3 - Direct Win
+F3 - Direct Win  -  Space to go to the next stage
 
-F4 - Direct Lose
-
-Space (if win) - Go to the next Stage
+F4 - Direct Lose -  Space to reset the stage
 
 Space (if lose) - Restart the current Stage 
+
+If you win the program ends
 
 ### Player Movement:
 
