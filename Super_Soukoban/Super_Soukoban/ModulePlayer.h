@@ -24,7 +24,7 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 public:
-	bool godMode;
+	bool flyMode; // =GodMode (Have several bugs when disabled)
 
 	// Position of the player in the map
 	iPoint position;	

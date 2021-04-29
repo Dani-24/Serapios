@@ -14,7 +14,7 @@
 
 ModulePlayer::ModulePlayer(bool startEnabled) :Module(startEnabled)
 {
-	godMode = false;
+	flyMode = false;
 
 	// Aqui van las animaciones del player
 	idleLeftAnim.PushBack({ 9,9,14,24 });
@@ -144,10 +144,10 @@ update_status ModulePlayer::Update()
 {
 
 	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN) {
-		godMode = !godMode;
+		flyMode = !flyMode;
 	}
 	
-	if (godMode == true) {	// Player Godmode movement (cause bugs because the player movement set is quit from the tiles )
+	if (flyMode == true) {	// Player Godmode movement (cause bugs because the player movement set is quit from the tiles )
 		if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT) {
 			position.x += 1;
 		}
