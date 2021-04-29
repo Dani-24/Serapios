@@ -35,9 +35,13 @@ public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* Pointer = nullptr;
+	SDL_Texture* scroller = nullptr;
+	SDL_Texture* scroller2 = nullptr;
+	int scrollerY = 0;
+	int scroller2Y = 1036;
+	SDL_Texture* menu_box = nullptr;
 
-
-	int p_x = 75;
+	int p_x = 155;
 	int p_y = 145;
 
 	SDL_Rect p_pos;

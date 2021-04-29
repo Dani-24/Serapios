@@ -31,8 +31,11 @@ bool TitleScreen::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/background_menu.png");
+	bgTexture = App->textures->Load("Assets/main_menu_title.png");
 	Pointer = App->textures->Load("Assets/selector.png");
+	scroller = App->textures->Load("Assets/scroller.png");
+	scroller2 = App->textures->Load("Assets/scroller.png");
+	menu_box = App->textures->Load("Assets/main_menu_options.png");
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -53,8 +56,16 @@ bool TitleScreen::Start()
 }
 
 update_status TitleScreen::Update()
-
 {
+	scrollerY -= 1;
+	scroller2Y -= 1;
+
+	if (scrollerY < -1036) {
+		scrollerY = 1034;
+	}
+	if (scroller2Y < -1036) {
+		scroller2Y = 1034;
+	}
 
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN) {
 		if (M_Index < 2)
@@ -107,6 +118,11 @@ update_status TitleScreen::Update()
 update_status TitleScreen::PostUpdate()
 {
 	// Draw everything --------------------------------------
+	App->render->Blit(scroller, 0, scrollerY, NULL);
+	App->render->Blit(scroller2, 0, scroller2Y, NULL);
+	App->render->Blit(menu_box, 150, 140, NULL);
+
+
 	App->render->Blit(bgTexture, SCREEN_WIDTH / 2 - 115, SCREEN_HEIGHT / 2 - 120, NULL);
 	App->render->Blit(Pointer, p_x, p_y, NULL);
 
