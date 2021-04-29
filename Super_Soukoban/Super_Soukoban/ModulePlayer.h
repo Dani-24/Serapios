@@ -55,8 +55,17 @@ public:
 	Collider* collider = nullptr;
 
 	uint steps = 0000;
+	uint limit = 90;
+	uint stage = 01;
+
 	int scoreFont = -1;
 	char scoreText[10] = { "\0" };
+
+	int limitFont = -1;
+	char limitText[10] = { "\0" };
+
+	int stageFont = -1;
+	char stageText[10] = { "\0" };
 
 	bool canMove = true;
 	int currentScene;

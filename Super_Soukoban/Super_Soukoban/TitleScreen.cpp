@@ -7,7 +7,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
-
+#include "ModulePlayer.h"
 #include <stdio.h>
 
 #include "External_Libraries/SDL/include/SDL.h"				// Required for SDL base systems functionality
@@ -81,6 +81,21 @@ update_status TitleScreen::Update()
 	}
 	*/
 
+	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN) {
+		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		App->player->currentScene = 0;
+
+	}
+	if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN) {
+		App->fade->FadeToBlack(this, (Module*)App->scene2, 90);
+		App->player->currentScene = 1;
+
+	}
+	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN) {
+		App->fade->FadeToBlack(this, (Module*)App->scene3, 90);
+		App->player->currentScene = 2;
+
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }

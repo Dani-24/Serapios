@@ -117,9 +117,9 @@ update_status ModuleScene::PostUpdate()
 
 	//lose
 	if (App->player->steps == 90) {
-		App->boxes->Disable();
+		//CleanUp();
 		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
-
+		
 
 	}
 
@@ -152,8 +152,8 @@ update_status ModuleScene::PostUpdate()
 //disable the entities
 bool ModuleScene::CleanUp()
 {
-	App->player->Disable();
+	//App->player->Disable();
 	App->boxes->Disable();
-	App->collisions->Disable();
+	/*App->collisions->Disable();*/
 	return true;
 }

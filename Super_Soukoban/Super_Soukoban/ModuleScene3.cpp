@@ -1,4 +1,5 @@
 #include "ModuleScene3.h"
+#include "ModuleScene2.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -41,7 +42,7 @@ bool ModuleScene3::Start()
 	//to active the entities
 	App->player->Enable();
 	App->boxes->Enable();
-
+	//App->scene2->Disabled();
 	App->player->numBox = 5;
 	// Boxes lvl1 :
 	App->boxes->AddBox(168, 96);
@@ -148,6 +149,6 @@ bool ModuleScene3::CleanUp()
 {
 	//App->player->Disable();
 	App->boxes->Disable();
-
+	
 	return true;
 }

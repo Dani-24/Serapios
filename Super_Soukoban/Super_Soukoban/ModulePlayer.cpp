@@ -107,7 +107,7 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 	texture = App->textures->Load("Assets/player.png");
-	table= App->textures->Load("Assets/table1.png");
+	table= App->textures->Load("Assets/table2.png");
 	currentAnimation = &boxleftAnim;//&idleLeftAnim;
 
 	// Posición inicial (depende del lvl)
@@ -144,15 +144,19 @@ update_status ModulePlayer::Update()
 	
 	if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov Derecha
 		nPosX = position.x + 24;
+		steps++;//contador de pasos
 	}
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov arriba
 		nPosY = position.y - 24;
+		steps++;//contador de pasos
 	}
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov izquierda
 		nPosX = position.x - 24;
+		steps++;//contador de pasos
 	}
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov abajo
 		nPosY = position.y + 24;
+		steps++;//contador de pasos
 	}
 	if (nPosX != 0) {							// LEFT
 		if (nPosX < position.x) {
@@ -205,7 +209,7 @@ update_status ModulePlayer::Update()
 							}
 							for (int f = 0; f < numBox; f++) {				// collision box + box
 								if (position.x + 19 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y && position.x + 43 == App->boxes->boxes[f]->position.x && position.y == App->boxes->boxes[f]->position.y) {
-									canMove = false;
+									canMove = false;//aquí peta si haces literalmente 1 solo paso mas del limite
 									nPosX = 0;
 								}
 							}
@@ -353,9 +357,15 @@ update_status ModulePlayer::PostUpdate()
 
 
 	sprintf_s(scoreText, 10, "%4d", steps);
-	App->fonts->BlitText(350, 15, scoreFont, scoreText);
+	App->fonts->BlitText(339, 24, scoreFont, scoreText);
 
-	App->render->Blit(table, 320, 10, NULL);
+	sprintf_s(limitText, 10, "%4d", limit);
+	App->fonts->BlitText(339, 34, scoreFont, limitText);
+
+	sprintf_s(stageText, 10, "%2d", stage);
+	App->fonts->BlitText(356, 12, scoreFont, stageText);
+
+	App->render->Blit(table, 310, 10, NULL);
 
 	//App->fonts->BlitText(50, 50, scoreFont, "123456");
 
