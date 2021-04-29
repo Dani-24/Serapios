@@ -79,23 +79,20 @@ update_status SceneCredits::PostUpdate()
 	App->render->Blit(bgTexture, 0, 0, &(black.GetCurrentFrame()), 0.3f); //Dibuja la animacion del logo - Miguel -
 
 	// Dibuja el texto - Miguel -
-	App->fonts->BlitText(SCREEN_WIDTH / 2-1 , 1, creditsFont, creditsText);
-	App->fonts->BlitText(SCREEN_WIDTH / 2-1, 1, namesFont, namesText);
-	App->fonts->BlitText(SCREEN_WIDTH / 2-15, 15, creditsFont, "this is a project created at");
-	App->fonts->BlitText(SCREEN_WIDTH / 2-10, 30, creditsFont, "citm for the project 1 subject ");
-	App->fonts->BlitText(SCREEN_WIDTH / 2 - 70, 45, creditsFont, "from the degree");
-	App->fonts->BlitText(SCREEN_WIDTH / 2 - 95, 60, namesFont, "videogame");
-	App->fonts->BlitText(SCREEN_WIDTH / 2 - 45, 75, namesFont, "design and development");
+	App->fonts->BlitText(SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 - 100, creditsFont, "this is a project created at");
+	App->fonts->BlitText(SCREEN_WIDTH / 2 - 110, SCREEN_HEIGHT / 2 - 85, creditsFont, "citm for the project 1 subject ");
+	App->fonts->BlitText(SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2 - 70, creditsFont, "from the degree");
+	App->fonts->BlitText(SCREEN_WIDTH / 2 - 30, SCREEN_HEIGHT / 2 - 55, namesFont, "videogame");
+	App->fonts->BlitText(SCREEN_WIDTH / 2 - 70, SCREEN_HEIGHT / 2 - 40, namesFont, "design and development");
 
-	App->fonts->BlitText(SCREEN_WIDTH / 2 - 65, 100, creditsFont, "project teachers");
-	App->fonts->BlitText(SCREEN_WIDTH / 2 - 65, 115, namesFont, "jesus alonso");
-	App->fonts->BlitText(SCREEN_WIDTH / 2 - 80, 130, namesFont, "ramon santamaria");
+	App->fonts->BlitText(SCREEN_WIDTH / 2 - 55, SCREEN_HEIGHT / 2 - 15, creditsFont, "project teachers");
+	App->fonts->BlitText(SCREEN_WIDTH / 2 - 55, SCREEN_HEIGHT / 2, namesFont, "jesus alonso");
+	App->fonts->BlitText(SCREEN_WIDTH / 2 - 40, SCREEN_HEIGHT / 2 + 15, namesFont, "ramon santamaria");
 
-	App->fonts->BlitText(SCREEN_WIDTH / 2 - 90, 155, creditsFont, "developers");
-	App->fonts->BlitText(SCREEN_WIDTH / 2 - 20, 170, namesFont, "dani toledo, xavier lopez");
-	App->fonts->BlitText(SCREEN_WIDTH / 2 - 20, 185, namesFont, "laia pachon, adrian ramirez");
-	App->fonts->BlitText(SCREEN_WIDTH / 2 - 50, 200, namesFont, "and miguel rodriguez");
-
+	App->fonts->BlitText(SCREEN_WIDTH / 2 - 30, SCREEN_HEIGHT / 2 + 40, creditsFont, "developers");
+	App->fonts->BlitText(SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 + 55, namesFont, "dani toledo, xavier lopez");
+	App->fonts->BlitText(SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 + 70, namesFont, "laia pachon, adrian ramirez");
+	App->fonts->BlitText(SCREEN_WIDTH / 2 - 70, SCREEN_HEIGHT / 2 + 85, namesFont, "and miguel rodriguez");
 
 	return update_status::UPDATE_CONTINUE;
 }
