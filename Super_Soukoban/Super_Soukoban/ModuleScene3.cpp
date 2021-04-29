@@ -158,6 +158,11 @@ update_status ModuleScene3::PostUpdate()
 	//lose
 	if (App->player->steps == App->player->limit || dLose==true) {
 		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
+		if (loseF != true) {
+
+			App->audio->PlayFx(loseFx);
+			loseF = true;
+		}
 		CleanUp();
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
@@ -179,6 +184,11 @@ update_status ModuleScene3::PostUpdate()
 
 	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true && boxEnd[3] == true || dWin==true)
 	{
+		if (winF != true) {
+			App->audio->PlayFx(winMusic);
+			winF = true;
+		}
+
 		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
 		LOG("level 3 completed");
 		CleanUp();

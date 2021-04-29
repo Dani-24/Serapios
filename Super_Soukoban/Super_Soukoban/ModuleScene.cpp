@@ -26,9 +26,7 @@ bool ModuleScene::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
-	dWin=false;
-	dLose=false;
-	
+
 	background = App->textures->Load("Assets/tiles/background.png");
 	wall = App->textures->Load("Assets/tiles/wall.png");
 	wall2 = App->textures->Load("Assets/tiles/wall2.png");
@@ -38,6 +36,7 @@ bool ModuleScene::Start()
 	win = App->textures->Load("Assets/win.png");
 
 	// Music and FX
+
 	levelMusic = App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
 	winMusic = App->audio->LoadFx("Assets/Music/Win_Sound_Loop.ogg"); // deberia ser un PlayMusic. (Mirar mas tarde para que no solape)
 
@@ -157,7 +156,14 @@ update_status ModuleScene::PostUpdate()
 
 	//lose
 	if (App->player->steps == App->player->limit || dLose==true) {	// dLose= f4 direct loose
+
 		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
+		if (loseF != true) {
+
+			App->audio->PlayFx(loseFx);
+			loseF = true;
+
+		}
 		CleanUp();
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)	// Restart the level when losing
 		{
@@ -180,6 +186,13 @@ update_status ModuleScene::PostUpdate()
 	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true || dWin==true) // dWin= F3 direct win
 	{
 		levelMusic = 0; // quita la musica
+
+		if (winF != true) {
+
+			App->audio->PlayFx(winMusic);
+			winF = true;
+
+		}
 
 		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
 		LOG("level 1 completed");

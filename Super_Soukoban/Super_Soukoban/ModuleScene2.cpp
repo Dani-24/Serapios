@@ -9,6 +9,9 @@
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 
+#include "External_Libraries/SDL_mixer/include/SDL_mixer.h"
+#pragma comment( lib, "External_Libraries/SDL_mixer/libx86/SDL2_mixer.lib")
+//#include "External_Libraries/SDL_mixer/include/SDL_mixer.h"
 #include "External_Libraries/SDL/include/SDL_scancode.h"
 
 ModuleScene2::ModuleScene2(bool startEnabled) :Module(startEnabled)
@@ -26,8 +29,6 @@ bool ModuleScene2::Start()
 	LOG("Loading background assets 3");
 
 	bool ret = true;
-	dWin = false;
-	dLose = false;
 
 	background = App->textures->Load("Assets/tiles/background.png");
 	wall = App->textures->Load("Assets/tiles/wall.png");
@@ -38,7 +39,9 @@ bool ModuleScene2::Start()
 	win = App->textures->Load("Assets/win.png");
 
 	// Music and FX
-	levelMusic = App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);;
+	
+		levelMusic = App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
+	
 	winMusic = App->audio->LoadFx("Assets/Music/Win_Sound_Loop.ogg"); // deberia ser un PlayMusic. (Mirar mas tarde para que no solape)
 
 	winFx = App->audio->LoadFx("Assets/SFX/Win_Sound_Init.wav");
@@ -149,20 +152,28 @@ update_status ModuleScene2::PostUpdate()
 	}
 
 	if (App->input->keys[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && dWin == false) {
+       
 		dLose = true;
 	}
 	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && dLose == false) {
+
 		dWin = true;
 	}
 	//lose
 	if (App->player->steps == App->player->limit || dLose ==true) {
-		
+
+		if (loseF != true) {
+
+			App->audio->PlayFx(loseFx);
+			loseF = true;
+		}
 		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
+		
 		CleanUp();
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
 			App->audio->PlayFx(nextFx);
-			App->fade->FadeToBlack(this, (Module*)App->scene2, 60);
+			App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
 		}
 	}
 
@@ -179,14 +190,21 @@ update_status ModuleScene2::PostUpdate()
 
 	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true || dWin==true)
 	{
-		App->boxes->Disable();
+		if (winF != true) {
+
+			App->audio->PlayFx(winMusic);
+			winF = true;
+
+		}
+		//App->boxes->Disable();
 		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
 		LOG("level 2 completed");
 		CleanUp();
+		//App->audio->PlayFx(winFx);
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
 			App->audio->PlayFx(nextFx);
-			App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
+			App->fade->FadeToBlack(this, (Module*)App->titleScreen, 60);
 		}
 	}
 	

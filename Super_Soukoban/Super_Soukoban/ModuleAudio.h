@@ -25,6 +25,8 @@ public:
 	//poner una musica concreto
 	bool PlayMusic(const char* path, float fade_time = DEFAULT_MUSIC_FADE_TIME);
 
+	bool PauseMusic();
+
 	//inicializar efecto de sonido
 	uint LoadFx(const char* path);
 

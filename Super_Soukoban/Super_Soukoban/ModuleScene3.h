@@ -56,6 +56,8 @@ private:
 
 	bool dWin=false;
 	bool dLose=false;
+	bool winF = false;
+	bool loseF = false;
 
 	uint levelMusic = 0;
 	uint winMusic = 0;

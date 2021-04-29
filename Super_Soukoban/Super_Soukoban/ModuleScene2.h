@@ -53,8 +53,12 @@ private:
 	SDL_Texture* lose = nullptr;
 	SDL_Texture* win = nullptr;
 
-	bool dWin;
-	bool dLose;
+	bool dWin = false;
+	bool dLose = false;
+
+	bool winF = false;
+	bool loseF= false;
+
 
 	uint levelMusic = 0;
 	uint winMusic = 0;
