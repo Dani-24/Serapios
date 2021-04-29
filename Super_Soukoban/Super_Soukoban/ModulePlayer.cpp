@@ -99,7 +99,15 @@ ModulePlayer::ModulePlayer(bool startEnabled) :Module(startEnabled)
 	boxdownAnim.loop = true;
 	boxdownAnim.speed = 0.2f;
 
-	boxrightAnim.PushBack({});
+	boxrightAnim.PushBack({ 204,75,19,21 });
+	boxrightAnim.PushBack({ 228,75,19,21 }); 
+	boxrightAnim.PushBack({ 252,75,19,21 });
+	boxrightAnim.PushBack({ 276,75,19,21 });
+	boxrightAnim.PushBack({ 300,75,19,21 }); 
+	boxrightAnim.PushBack({ 324,75,19,21 });
+	boxrightAnim.PushBack({ 348,75,19,21 });
+	boxrightAnim.PushBack({ 372,75,19,21 });
+
 	boxrightAnim.loop = true;
 	boxrightAnim.speed = 0.2f;
 }
@@ -118,8 +126,6 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Assets/player.png");
 	table= App->textures->Load("Assets/table2.png");
 	currentAnimation = &idleLeftAnim;
-	
-	//currentAnimation = &boxdownAnim;	// para probar si van los sprites
 	
 	// Posición inicial (depende del lvl)
 	position.x;
