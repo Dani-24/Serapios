@@ -23,33 +23,50 @@ Super Soukoban is a game that consists on pushing a box above a sphere, but the 
 
 ## Controls
 
-Initial animation:
+### Initial animation:
 
 Space - skip animation
 
-
-Initial menu:
+### Initial menu:
 
 ESC - exit de game
+
 Space - Start de game at Stage 1
+
 1 - Go to Stage 1
+
 2 - Go to Stage 2
+
 3 - Go to Stage 3
 
-
-Ingame (any stage):
+### Ingame (any stage):
 
 ESC: exit to Initial menu (it plays the Initial Animation)
+
 1,2,3 - Go to the selected Stage (reload the Stage if it's the same)
+
+F1 - God Mode 
+
+F2 - Display Colliders
+
+F3 - Direct Win
+
+F4 - Direct Lose
+
 Space (if win) - Go to the next Stage
+
 Space (if lose) - Restart the current Stage 
 
-Player Movement:
+### Player Movement:
 
-A - Left
-S - Down
-D - Right
+A - Left 
+
+S - Down 
+
+D - Right 
+
 W - Up
+
 
 ## Additional comments
 
