@@ -26,6 +26,8 @@ bool ModuleScene::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
+	dWin=false;
+	dLose=false;
 	
 	background = App->textures->Load("Assets/tiles/background.png");
 	wall = App->textures->Load("Assets/tiles/wall.png");
@@ -139,13 +141,21 @@ update_status ModuleScene::PostUpdate()
 		}
 	}
 
+	if (App->input->keys[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && dWin == false) {
+		dLose = true;
+	}
+	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && dLose == false) {
+		dWin = true;
+	}
+
 	//lose
-	if (App->player->steps == App->player->limit) {
+	if (App->player->steps == App->player->limit || dLose==true) {	// dLose= f4 direct loose
 		
 		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
 		CleanUp();
 
 	}
+	
 
 	//win
 	for (int i = 0; i < 3; ++i)
@@ -158,7 +168,7 @@ update_status ModuleScene::PostUpdate()
 		}
 	}
 
-	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true)
+	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true || dWin==true) // dWin= F3 direct win
 	{
 		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
 		LOG("level 1 completed");

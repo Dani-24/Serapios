@@ -53,6 +53,9 @@ private:
 	SDL_Texture* point = nullptr;			// 4
 	SDL_Texture* lose = nullptr;
 	SDL_Texture* win = nullptr;
+
+	bool dWin;
+	bool dLose;
 };
 
 #endif // __MODULE_SCENE_H__

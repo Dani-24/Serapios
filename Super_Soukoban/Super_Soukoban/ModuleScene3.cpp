@@ -27,7 +27,8 @@ bool ModuleScene3::Start()
 	LOG("Loading background assets 2");
 
 	bool ret = true;
-	//pos = 1;
+	dWin = false;
+	dLose = false;
 
 	background = App->textures->Load("Assets/tiles/background.png");
 	wall = App->textures->Load("Assets/tiles/wall.png");
@@ -141,11 +142,21 @@ update_status ModuleScene3::PostUpdate()
 		}
 	}
 
+	if (App->input->keys[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && dWin == false) {
+		dLose = true;
+	}
+	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && dLose == false) {
+		dWin = true;
+	}
+
 	//lose
-	if (App->player->steps == App->player->limit) {
+	if (App->player->steps == App->player->limit || dLose==true) {
 		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
 		CleanUp();
-
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		{
+			App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
+		}
 	}
 
 	//win
@@ -159,17 +170,15 @@ update_status ModuleScene3::PostUpdate()
 		}
 	}
 
-	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true && boxEnd[3] == true)
+	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true && boxEnd[3] == true || dWin==true)
 	{
 		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
-
+		LOG("level 3 completed");
+		CleanUp();
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
 			App->fade->FadeToBlack(this, (Module*)App->scene, 60);
-
 		}
-		LOG("level 3 completed");
-
 	}
 
 	return update_status::UPDATE_CONTINUE;
