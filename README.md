@@ -45,7 +45,7 @@ ESC: exit to Initial menu (it plays the Initial Animation)
 
 1,2,3 - Go to the selected Stage (reload the Stage if it's the same)
 
-F1 - God Mode 
+F1 - God Mode (Allows freemove from player (*it can cause some bugs when turning off))
 
 F2 - Display Colliders
 
