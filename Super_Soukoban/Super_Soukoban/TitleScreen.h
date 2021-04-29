@@ -56,7 +56,11 @@ public:
 
 	int M_Index = 2;
 
-
+	// Music and FX
+	uint titleMenuMusic = 0;
+	uint selectFx = 0;
+	uint nextFx = 0;
+	uint backFx = 0;
 };
 
 #endif

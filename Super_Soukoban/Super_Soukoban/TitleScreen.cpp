@@ -43,6 +43,12 @@ bool TitleScreen::Start()
 	char lookupTable[] = { "!  ,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz" };
 	menuFont = App->fonts->Load("Assets/Fonts/rtype_font.png", lookupTable, 1);
 
+	// music and fx
+	titleMenuMusic = App->audio->PlayMusic("Assets/Music/TitleMenu.ogg", 1.0f);
+	selectFx = App->audio->LoadFx("Assets/SFX/Menu1_select.wav");
+	nextFx = App->audio->LoadFx("Assets/SFX/Menu2_confirm.wav");
+	backFx = App->audio->LoadFx("Assets/SFX/Menu3_back.wav");
+
 	return ret;
 }
 
@@ -55,6 +61,7 @@ update_status TitleScreen::Update()
 		{
 			M_Index++;
 			p_y -= 13;
+			App->audio->PlayFx(selectFx);
 		}
 	}
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN) {
@@ -62,6 +69,7 @@ update_status TitleScreen::Update()
 		{
 			M_Index--;
 			p_y += 13;
+			App->audio->PlayFx(selectFx);
 		}
 	}
 
@@ -69,6 +77,7 @@ update_status TitleScreen::Update()
 	{
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
+			App->audio->PlayFx(nextFx);
 			App->fade->FadeToBlack(this, (Module*)App->scene, 60);
 		}
 	}

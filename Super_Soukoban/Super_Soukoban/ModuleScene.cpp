@@ -38,7 +38,7 @@ bool ModuleScene::Start()
 	win = App->textures->Load("Assets/win.png");
 
 	// Music and FX
-	levelMusic = App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);;
+	levelMusic = App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
 	winMusic = App->audio->LoadFx("Assets/Music/Win_Sound_Loop.ogg"); // deberia ser un PlayMusic. (Mirar mas tarde para que no solape)
 
 	winFx = App->audio->LoadFx("Assets/SFX/Win_Sound_Init.wav");
@@ -51,7 +51,6 @@ bool ModuleScene::Start()
 	App->player->Enable();
 	App->boxes->Enable();
 	App->collisions->Enable();
-	App->collisions->CleanUp();	//cleans colliders in case that exists some collider from another lvl
 
 	// Set up stage, steps and step limit
 	App->player->stage = 01;
@@ -198,6 +197,7 @@ bool ModuleScene::CleanUp()
 {
 	App->player->Disable();
 	App->boxes->Disable();
+	App->collisions->CleanUp(); // clean colliders or they will stack and then crash the game
 	App->collisions->Disable();
 	return true;
 }

@@ -52,7 +52,7 @@ bool ModuleScene3::Start()
 	App->player->Enable();
 	App->boxes->Enable();
 	App->collisions->Enable();
-	App->collisions->CleanUp();
+
 	// Tell module Player how is the map
 	for (int i = 0; i < 16; ++i)
 	{
@@ -200,6 +200,7 @@ bool ModuleScene3::CleanUp()
 {
 	App->player->Disable();
 	App->boxes->Disable();
+	App->collisions->CleanUp();
 	App->collisions->Disable();
 	
 	return true;

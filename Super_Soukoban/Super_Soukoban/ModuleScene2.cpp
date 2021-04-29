@@ -62,7 +62,6 @@ bool ModuleScene2::Start()
 	App->player->Enable();
 	App->boxes->Enable();
 	App->collisions->Enable();
-	App->collisions->CleanUp();
 
 	// Set up stage, steps and step limit
 	App->player->stage = 02;
@@ -198,6 +197,7 @@ bool ModuleScene2::CleanUp()
 {
 	App->player->Disable();
 	App->boxes->Disable();
+	App->collisions->CleanUp();
 	App->collisions->Disable();
 	return true;
 }
