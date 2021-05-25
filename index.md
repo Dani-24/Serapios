@@ -1,2 +1,4 @@
 # Super Soukoban
-## Super Soukoban is an arcade game for de Super Nintendo Entertainment System launched in 1993
+## By Serapios
+
+### Super Soukoban is an arcade game for the Super Nintendo Entertainment System launched in 1993
