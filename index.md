@@ -1,3 +1,3 @@
-# This is a web. Enjoy;
+# This is a web. Enjoy
 
-:shipit:
+## :shipit:
