@@ -5,6 +5,9 @@ Project 1 - Our first amazing arcade game 🦎
 ### Link to the Github project:
 https://github.com/Dani-24/Serapios
 
+### Link to the Project web:
+https://Dani-24.github.io/Serapios/
+
 ## Description
 <p> We are Serapios, a group of students from CITM and there is where we are going to work on our first project: Super Soukoban.
 
