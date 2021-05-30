@@ -4,15 +4,18 @@
  Super Soukoban is an arcade game for the Super Nintendo Entertainment System launched in 1993. Is similar as a puzzle, and what the player has to do is pushing the boxes in the correct way and put them above the pink spheres. The history of the main character is to earn money and buy a new car so the girl choose him instead of the man of the blue car.
  ***
  ## WHO WE ARE?
- We are five catalan students of CITM, UPC, located in Terrassa, Spain. Our names are:
+ We are five catalan students of CITM, UPC, located in Terrassa, Spain. Our team name is Serapios and our names are:
  - Dani Toledo
  - Xavi López
  - Laia Pachón
  - Miguel Rodríguez
  - Adrián Ramírez
 
-<img align="left" width="700" height="500" src="https://cdn.discordapp.com/attachments/818140279147724820/848592806691471360/IMG-20210527-WA0023_1.jpg">
 
+serapios logo
+
+<img align="left" width="700" height="500" src="https://cdn.discordapp.com/attachments/818140279147724820/848592806691471360/IMG-20210527-WA0023_1.jpg">
+team photo
 
 ### Dani Toledo:
  Code and leader
