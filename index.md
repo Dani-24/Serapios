@@ -11,10 +11,13 @@
  - Miguel Rodríguez
  - Adrián Ramírez
 
+<img width="500" height="500" src="https://cdn.discordapp.com/attachments/818140279147724820/835096871692533771/serapios_logo.png">
 
 serapios logo
 
+
 <img align="left" width="700" height="500" src="https://cdn.discordapp.com/attachments/818140279147724820/848592806691471360/IMG-20210527-WA0023_1.jpg">
+
 team photo
 
 ### Dani Toledo:
