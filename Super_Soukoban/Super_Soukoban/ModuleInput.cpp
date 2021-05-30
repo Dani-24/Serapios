@@ -5,7 +5,8 @@
 
 
 ModuleInput::ModuleInput(bool startEnabled) :Module(startEnabled) {
-
+	for (uint i = 0; i < MAX_KEYS; ++i) keys[i] = KEY_IDLE;
+	memset(&pads[0], 0, sizeof(GamePad) * MAX_PADS);
 }
 
 ModuleInput::~ModuleInput() {
@@ -51,13 +52,51 @@ update_status ModuleInput::PreUpdate() {
 			keys[i] = (keys[i] == KEY_REPEAT || keys[i] == KEY_DOWN) ? KEY_UP : KEY_IDLE;
 	}
 
+
+	while (SDL_PollEvent(&event) != 0)
+	{
+		switch (event.type)
+		{
+		case(SDL_CONTROLLERDEVICEADDED):
+		{
+			HandleDeviceConnection(event.cdevice.which);
+			break;
+		}
+		case(SDL_CONTROLLERDEVICEREMOVED):
+		{
+			HandleDeviceRemoval(event.cdevice.which);
+			break;
+		}
+		case(SDL_QUIT):
+		{
+			return update_status::UPDATE_STOP;
+			break;
+		}
+		}
+	}
+
+	UpdateGamepadsInput();
+
 	return update_status::UPDATE_CONTINUE;
 }
 
 bool ModuleInput::CleanUp() {
 	LOG("Quitting SDL input event subsystem ");
 
+	for (uint i = 0; i < MAX_PADS; ++i)
+	{
+		if (pads[i].haptic != nullptr)
+		{
+			SDL_HapticStopAll(pads[i].haptic);
+			SDL_HapticClose(pads[i].haptic);
+		}
+		if (pads[i].controller != nullptr) SDL_GameControllerClose(pads[i].controller);
+	}
+
+	SDL_QuitSubSystem(SDL_INIT_HAPTIC);
+	SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
+
 	return true;
 }
 
@@ -151,7 +190,6 @@ bool ModuleInput::ShakeController(int id, int duration, float strength)
 {
 	bool ret = false;
 
-	// Check if the given id is valid within the array bounds
 	if (id < 0 || id >= MAX_PADS) return ret;
 
 	// Check if the gamepad is active and allows rumble

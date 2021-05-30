@@ -10,6 +10,8 @@
 #include "External_libraries/SDL/include/SDL_scancode.h"
 #include <stdio.h> // Camarada
 #include "ModuleScene.h"
+#include "ModuleScene2.h"
+#include "ModuleScene3.h"
 #include "ModuleBox.h"
 
 ModulePlayer::ModulePlayer(bool startEnabled) :Module(startEnabled)
@@ -142,36 +144,54 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::Update()
 {
+	GamePad& pad = App->input->pads[0];
 
+	// Debug key for gamepad rumble testing purposes
+	if (App->input->keys[SDL_SCANCODE_7] == KEY_DOWN)
+	{
+		App->input->ShakeController(0, 12, 0.33f);
+	}
+
+	// Debug key for gamepad rumble testing purposes
+	if (App->input->keys[SDL_SCANCODE_8] ==KEY_DOWN)
+	{
+		App->input->ShakeController(0, 36, 0.66f);
+	}
+
+	// Debug key for gamepad rumble testing purposes
+	if (App->input->keys[SDL_SCANCODE_9] == KEY_DOWN)
+	{
+		App->input->ShakeController(0, 60, 1.0f);
+	}
 	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN) {
 		flyMode = !flyMode;
 	}
 	
 	if (flyMode == true) {	// Player Godmode movement (cause bugs because the player movement set is quit from the tiles )
-		if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT) {
+		if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT || pad.left_x > 0.0f) {
 			position.x += 1;
 		}
-		if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT) {	
+		if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT || pad.left_y < 0.0f) {
 			position.y -= 1;
 		}
-		if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT) {	
+		if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT || pad.left_x < 0.0f) {
 			position.x -= 1;
 		}
-		if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT) {		
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT || pad.left_y > 0.0f) {
 			position.y += 1;
 		}
 	}			// Player real movement , collisions and animations 
 	else {
-		if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov Derecha
+		if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT || pad.left_x > 0.0f && nPosX == 0 && nPosY == 0) {		// mov Derecha
 			nPosX = position.x + 24;
 		}
-		if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov arriba
+		if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT || pad.left_y < 0.0f && nPosX == 0 && nPosY == 0) {		// mov arriba
 			nPosY = position.y - 24;
 		}
-		if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov izquierda
+		if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT || pad.left_x < 0.0f && nPosX == 0 && nPosY == 0) {		// mov izquierda
 			nPosX = position.x - 24;
 		}
-		if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov abajo
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT || pad.left_y > 0.0f && nPosX == 0 && nPosY == 0) {		// mov abajo
 			nPosY = position.y + 24;
 		}
 		if (nPosX != 0) {							// LEFT
@@ -348,6 +368,19 @@ update_status ModulePlayer::Update()
 		}
 	}
 	
+
+	//// If no up/down movement detected, set the current animation back to idle
+	//if (pad.enabled)
+	//{
+	//	if (pad.left_x == 0.0f && pad.left_y == 0.0f) currentAnimation = &idleAnim;
+	//}
+	//else if (App->input->keys[SDL_SCANCODE_S] ==  KEY_IDLE &&
+	//	App->input->keys[SDL_SCANCODE_W] ==  KEY_IDLE) currentAnimation = &idleAnim;
+
+	// Switch gamepad debug info
+	if (App->input->keys[SDL_SCANCODE_F5] == KEY_DOWN)
+		debugGamepadInfo = !debugGamepadInfo;
+
 	collider->SetPos(position.x-5, position.y);	// player hitbox
 
 	currentAnimation->Update();
@@ -369,8 +402,9 @@ update_status ModulePlayer::PostUpdate()
 		stage = 00;
 		delete collider;
 	}
-
-
+	if (debugGamepadInfo == true) DebugDrawGamepadInfo();
+	//else App->fonts->DrawText(5, 10, scoreFont, "press f5 to display gamepad debug info");
+	
 	sprintf_s(scoreText, 10, "%4d", steps);
 	App->fonts->BlitText(339, 24, scoreFont, scoreText);
 
@@ -394,4 +428,51 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	
 
 	// que pasa al colisionar? pues aquí va
+}
+void ModulePlayer::DebugDrawGamepadInfo()
+{
+	GamePad& pad = App->input->pads[0];
+
+	sprintf_s(scoreText, 150, "pad 0 %s, press 1/2/3 for rumble", (pad.enabled) ? "plugged" : "not detected");
+	App->fonts->BlitText(5, 10, scoreFont, scoreText);
+
+	sprintf_s(scoreText, 150, "buttons %s %s %s %s %s %s %s %s %s %s %s",
+		(pad.a) ? "a" : "",
+		(pad.b) ? "b" : "",
+		(pad.x) ? "x" : "",
+		(pad.y) ? "y" : "",
+		(pad.start) ? "start" : "",
+		(pad.back) ? "back" : "",
+		(pad.guide) ? "guide" : "",
+		(pad.l1) ? "lb" : "",
+		(pad.r1) ? "rb" : "",
+		(pad.l3) ? "l3" : "",
+		(pad.r3) ? "r3" : ""
+	);
+	App->fonts->BlitText(5, 20, scoreFont, scoreText);
+
+	sprintf_s(scoreText, 150, "dpad %s %s %s %s",
+		(pad.up) ? "up" : "",
+		(pad.down) ? "down" : "",
+		(pad.left) ? "left" : "",
+		(pad.right) ? "right" : ""
+	);
+	App->fonts->BlitText(5, 30, scoreFont, scoreText);
+
+	sprintf_s(scoreText, 150, "left trigger  %0.2f", pad.l2);
+	App->fonts->BlitText(5, 40, scoreFont, scoreText);
+	sprintf_s(scoreText, 150, "right trigger %0.2f", pad.r2);
+	App->fonts->BlitText(5, 50, scoreFont, scoreText);
+
+	sprintf_s(scoreText, 150, "left thumb    %.2fx, %0.2fy", pad.left_x, pad.left_y);
+	App->fonts->BlitText(5, 60, scoreFont, scoreText);
+
+	sprintf_s(scoreText, 150, "   deadzone   %0.2f", pad.left_dz);
+	App->fonts->BlitText(5, 70, scoreFont, scoreText);
+
+	sprintf_s(scoreText, 150, "right thumb   %.2fx, %0.2fy", pad.right_x, pad.right_y);
+	App->fonts->BlitText(5, 80, scoreFont, scoreText);
+
+	sprintf_s(scoreText, 150, "   deadzone   %0.2f", pad.right_dz);
+	App->fonts->BlitText(5, 90, scoreFont, scoreText);
 }

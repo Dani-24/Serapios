@@ -22,8 +22,13 @@ public:
 	update_status PostUpdate() override;
 	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
+	// Draws gamepad debug info in the screen
+	void DebugDrawGamepadInfo();
 
 public:
+
+	// Debugdraw for gamepad data
+	bool debugGamepadInfo = false;
 	bool flyMode; // =GodMode (Have several bugs when disabled)
 
 	// Position of the player in the map

@@ -26,7 +26,6 @@ enum KEY_STATE
 
 struct GamePad
 {
-	// Input data
 	bool start, back, guide;
 	bool x, y, a, b, l1, r1, l3, r3;
 	bool up, down, left, right;
