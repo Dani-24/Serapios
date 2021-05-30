@@ -18,7 +18,7 @@ serapios logo
 
 <img align="left" width="700" height="500" src="https://cdn.discordapp.com/attachments/818140279147724820/848592806691471360/IMG-20210527-WA0023_1.jpg">
 
-team photo
+
 
 ### Dani Toledo:
  Code and leader
@@ -32,6 +32,8 @@ team photo
  UI designer
 ***
 
+ team photo
+ 
 ## Controls
 ### Initial animation:
 
