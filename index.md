@@ -15,7 +15,7 @@
  - Miguel Rodríguez
  - Adrián Ramírez
 
-<img width="500" height="500" src="https://cdn.discordapp.com/attachments/818140279147724820/835096871692533771/serapios_logo.png">
+<img width="300" height="300" src="https://cdn.discordapp.com/attachments/818140279147724820/835096871692533771/serapios_logo.png">
 
 serapios logo
 
