@@ -120,7 +120,7 @@ ModuleBox::~ModuleBox() {
 }
 
 bool ModuleBox::Start() {
-	texture = App->textures->Load("Assets/boxes.png");
+	texture = App->textures->Load("assets/sprites/boxes.png");
 	return true;
 }
 

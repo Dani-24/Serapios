@@ -126,8 +126,8 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/player.png");
-	table= App->textures->Load("Assets/table2.png");
+	texture = App->textures->Load("assets/sprites/player.png");
+	table= App->textures->Load("assets/UI/table.png");
 	currentAnimation = &idleLeftAnim;
 	
 	// Posición inicial (depende del lvl)
@@ -138,7 +138,7 @@ bool ModulePlayer::Start()
 	collider = App->collisions->AddCollider({ position.x-5, position.y, 24, 24 }, Collider::Type::PLAYER, this);
 
 	char lookupTable[] = { "0123456789 0123456789" };
-	scoreFont = App->fonts->Load("Assets/font1.png", lookupTable, 2);
+	scoreFont = App->fonts->Load("assets/fonts/font1.png", lookupTable, 2);
 
 	return ret;
 }

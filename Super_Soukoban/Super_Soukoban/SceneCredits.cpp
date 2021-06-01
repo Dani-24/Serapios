@@ -37,14 +37,14 @@ bool SceneCredits::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/logo.png");
+	bgTexture = App->textures->Load("assets/UI/logo.png");
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
-	creditsFont = App->fonts->Load("Assets/Fonts/rtype_font3.png", lookupTable, 2);
-	namesFont = App->fonts->Load("Assets/Fonts/rtype_font.png", lookupTable, 1);
+	creditsFont = App->fonts->Load("assets/fonts/rtype_font3.png", lookupTable, 2);
+	namesFont = App->fonts->Load("assets/fonts/rtype_font.png", lookupTable, 1);
 
 	return ret;
 }

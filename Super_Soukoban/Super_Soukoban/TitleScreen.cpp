@@ -31,11 +31,11 @@ bool TitleScreen::Start()
 
 	bool ret = true;
 	//title 
-	bgTexture = App->textures->Load("Assets/main_menu_title.png");
-	Pointer = App->textures->Load("Assets/selector.png");
-	scroller = App->textures->Load("Assets/scroller.png");
-	scroller2 = App->textures->Load("Assets/scroller.png");
-	menu_box = App->textures->Load("Assets/main_menu_options.png");
+	bgTexture = App->textures->Load("assets/UI/main_menu_title.png");
+	Pointer = App->textures->Load("assets/UI/selector.png");
+	scroller = App->textures->Load("assets/UI/scroller.png");
+	scroller2 = App->textures->Load("assets/UI/scroller.png");
+	menu_box = App->textures->Load("assets/UI/main_menu_options.png");
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -44,13 +44,13 @@ bool TitleScreen::Start()
 	p_pos.y = p_y;
 
 	char lookupTable[] = { "!  ,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz" };
-	menuFont = App->fonts->Load("Assets/Fonts/rtype_font.png", lookupTable, 1);
+	menuFont = App->fonts->Load("assets/fonts/rtype_font.png", lookupTable, 1);
 
 	// music and fx
-	titleMenuMusic = App->audio->PlayMusic("Assets/Music/TitleMenu.ogg", 1.0f);
-	selectFx = App->audio->LoadFx("Assets/SFX/Menu1_select.wav");
-	nextFx = App->audio->LoadFx("Assets/SFX/Menu2_confirm.wav");
-	backFx = App->audio->LoadFx("Assets/SFX/Menu3_back.wav");
+	titleMenuMusic = App->audio->PlayMusic("assets/sound/music/title_menu.ogg", 1.0f);
+	selectFx = App->audio->LoadFx("assets/sound/SFX/menu1_select.wav");
+	nextFx = App->audio->LoadFx("assets/sound/SFX/menu2_confirm.wav");
+	backFx = App->audio->LoadFx("assets/sound/SFX/menu3_back.wav");
 
 	return ret;
 }

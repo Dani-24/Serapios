@@ -26,22 +26,22 @@ bool ModuleScene3::Start()
 	LOG("Loading background assets 2");
 
 	bool ret = true;
-	background = App->textures->Load("Assets/tiles/background.png");
-	wall = App->textures->Load("Assets/tiles/wall.png");
-	wall2 = App->textures->Load("Assets/tiles/wall2.png");
-	ground = App->textures->Load("Assets/tiles/ground.png");
-	point = App->textures->Load("Assets/tiles/point.png");
-	lose = App->textures->Load("Assets/lose.png");
-	win = App->textures->Load("Assets/win.png");
+	background = App->textures->Load("assets/tiles/background.png");
+	wall = App->textures->Load("assets/tiles/wall.png");
+	wall2 = App->textures->Load("assets/tiles/wall2.png");
+	ground = App->textures->Load("assets/tiles/ground.png");
+	point = App->textures->Load("assets/tiles/point.png");
+	lose = App->textures->Load("assets/UI/lose.png");
+	win = App->textures->Load("assets/UI/win.png");
 
 	// Music and FX
-	levelMusic = App->audio->PlayMusic("Assets/Music/stage1.ogg", 1.0f);;
-	winMusic = App->audio->LoadFx("Assets/Music/Win_Sound_Loop.ogg"); 
+	levelMusic = App->audio->PlayMusic("assets/sound/music/stage1.ogg", 1.0f);;
+	winMusic = App->audio->LoadFx("assets/sound/music/win_sound_loop.ogg"); 
 
-	loseFx = App->audio->LoadFx("Assets/SFX/Lost_Sound.wav");
+	loseFx = App->audio->LoadFx("assets/sound/SFX/lost_sound.wav");
 
-	nextFx = App->audio->LoadFx("Assets/SFX/Menu2_confirm.wav");
-	backFx = App->audio->LoadFx("Assets/SFX/Menu3_back.wav");
+	nextFx = App->audio->LoadFx("assets/sound/SFX/menu2_confirm.wav");
+	backFx = App->audio->LoadFx("assets/sound/SFX/menu3_back.wav");
 
 	
 	// Tell module Player how is the map
