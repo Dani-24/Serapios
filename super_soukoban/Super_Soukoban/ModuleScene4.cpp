@@ -1,4 +1,4 @@
-#include "ModuleScene2.h"
+#include "ModuleScene4.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -11,38 +11,38 @@
 
 #include "External_Libraries/SDL/include/SDL_scancode.h"
 
-ModuleScene2::ModuleScene2(bool startEnabled) :Module(startEnabled)
+ModuleScene4::ModuleScene4(bool startEnabled) :Module(startEnabled)
 {
 
 }
 
-ModuleScene2::~ModuleScene2()
+ModuleScene4::~ModuleScene4()
 {
 
 }
 
-bool ModuleScene2::Start()
+bool ModuleScene4::Start()
 {
-	LOG("Loading background assets 3");
+	LOG("Loading background assets 2");
 
 	bool ret = true;
-
 	background = App->textures->Load("assets/tiles/background.png");
 	wall = App->textures->Load("assets/tiles/wall.png");
 	wall2 = App->textures->Load("assets/tiles/wall2.png");
 	ground = App->textures->Load("assets/tiles/ground.png");
 	point = App->textures->Load("assets/tiles/point.png");
-	lose= App->textures->Load("assets/UI/lose.png");
+	lose = App->textures->Load("assets/UI/lose.png");
 	win = App->textures->Load("assets/UI/win.png");
+
 	// Music and FX
-	levelMusic = App->audio->PlayMusic("assets/sound/music/stage1.ogg", 1.0f);
-	
-	winMusic = App->audio->LoadFx("assets/sound/music/win_sound_loop.ogg"); 
+	levelMusic = App->audio->PlayMusic("assets/sound/music/stage1.ogg", 1.0f);;
+	winMusic = App->audio->LoadFx("assets/sound/music/win_sound_loop.ogg");
 
 	loseFx = App->audio->LoadFx("assets/sound/SFX/lost_sound.wav");
 
 	nextFx = App->audio->LoadFx("assets/sound/SFX/menu2_confirm.wav");
 	backFx = App->audio->LoadFx("assets/sound/SFX/menu3_back.wav");
+
 
 	// Tell module Player how is the map
 	for (int i = 0; i < 16; ++i)
@@ -53,31 +53,33 @@ bool ModuleScene2::Start()
 			App->boxes->mandaMap[i][j] = map[i][j];
 		}
 	}
-	App->player->numBox = 3;
 
-	//to active the entities
-	
+	App->player->numBox = 4;
+
 	// Set up stage, steps and step limit
-	App->player->stage = 02;
-	App->player->limit = 120;
+	App->player->stage = 04;
+	App->player->limit = 140;
 	App->player->steps = 0;
 
-	// Boxes lvl2 :
-	App->boxes->AddBox(144, 72);
-	App->boxes->AddBox(144, 49);
-	App->boxes->AddBox(168, 49);
+	// Boxes lvl1 :
+	App->boxes->AddBox(168, 96);
+	App->boxes->AddBox(120, 72);
+	App->boxes->AddBox(216, 120);
+	App->boxes->AddBox(240, 96);
+	
 
 	// Player position: (multiples de 24.) Add +5 to position.x 
-	App->player->position.x = 125;
-	App->player->position.y = 24;
+	App->player->position.x = 130;
+	App->player->position.y = 96;
 
+	//active the entities
 	App->player->Enable();
 	App->boxes->Enable();
 
 	return ret;
 }
 
-update_status ModuleScene2::Update()
+update_status ModuleScene4::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)	// Back to Init menu
 	{
@@ -92,14 +94,14 @@ update_status ModuleScene2::Update()
 		App->fade->FadeToBlack(this, (Module*)App->scene, 60);
 
 	}
-	
-	if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)		// Reset lvl 2 
+
+	if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)		// Go to lvl 2 
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->scene2, 60);
 
 	}
-	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)		// Go to lvl 3
+	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)		// Reset lvl 3
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
@@ -114,7 +116,8 @@ update_status ModuleScene2::Update()
 	return update_status::UPDATE_CONTINUE;
 }
 
-update_status ModuleScene2::PostUpdate()
+
+update_status ModuleScene4::PostUpdate()
 {
 	// draw the background and tiles
 
@@ -150,23 +153,20 @@ update_status ModuleScene2::PostUpdate()
 	}
 
 	if (App->input->keys[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN && dWin == false) {
-       
 		dLose = true;
 	}
 	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN && dLose == false) {
-
 		dWin = true;
 	}
-	//lose
-	if (App->player->steps == App->player->limit || dLose ==true) {
 
+	//lose
+	if (App->player->steps == App->player->limit || dLose == true) {
+		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
 		if (loseF != true) {
 
 			App->audio->PlayFx(loseFx);
 			loseF = true;
 		}
-		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
-		
 		CleanUp();
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
@@ -176,7 +176,7 @@ update_status ModuleScene2::PostUpdate()
 	}
 
 	//win
-	for (int i = 0; i < 3; ++i)
+	for (int i = 0; i < 4; ++i)
 	{
 		if (App->boxes->boxes[i] != nullptr) {
 			if (App->boxes->boxes[i]->currentAnim == &(App->boxes->boxes[i]->darkBoxAnim))
@@ -186,33 +186,30 @@ update_status ModuleScene2::PostUpdate()
 		}
 	}
 
-	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true || dWin==true)
+	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true && boxEnd[3] == true || dWin == true)
 	{
 		if (winF != true) {
-
 			App->audio->PlayFx(winMusic);
 			winF = true;
-
 		}
-		
+
 		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
-		LOG("level 2 completed");
+		LOG("level 4 completed");
 		CleanUp();
-		
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
 			App->audio->PlayFx(nextFx);
 			App->fade->FadeToBlack(this, (Module*)App->titleScreen, 60);
 		}
 	}
-	
+
 	return update_status::UPDATE_CONTINUE;
 }
 //disable the entities
-bool ModuleScene2::CleanUp()
+bool ModuleScene4::CleanUp()
 {
 	App->player->Disable();
 	App->boxes->Disable();
+
 	return true;
 }
-

@@ -7,6 +7,7 @@
 #include "ModuleScene.h"
 #include "ModuleScene2.h"
 #include "ModuleScene3.h"
+#include "ModuleScene4.h"
 
 // BOX	-- how a box works
 
