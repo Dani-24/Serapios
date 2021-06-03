@@ -53,11 +53,12 @@ SceneIntro::~SceneIntro() {
 }
 
 bool SceneIntro::Start() {
-	LOG("Loading bacgroud assets :)");
+	LOG("Loading backgroud assets :)");
 
 	bool ret = true;
     
 	bgTexture = App->textures->Load("assets/UI/intro_frames.png");
+
 	App->audio->PlayMusic("assets/sound/music/intro.ogg", 1.0f);
 
 	App->render->camera.x = 0;
