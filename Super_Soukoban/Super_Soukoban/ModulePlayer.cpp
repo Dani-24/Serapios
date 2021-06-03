@@ -100,10 +100,10 @@ ModulePlayer::ModulePlayer(bool startEnabled) :Module(startEnabled)
 	boxdownAnim.speed = 0.2f;
 
 	boxrightAnim.PushBack({ 204,75,19,21 });
-	boxrightAnim.PushBack({ 228,75,19,21 }); 
+	boxrightAnim.PushBack({ 228,75,19,21 });
 	boxrightAnim.PushBack({ 252,75,19,21 });
 	boxrightAnim.PushBack({ 276,75,19,21 });
-	boxrightAnim.PushBack({ 300,75,19,21 }); 
+	boxrightAnim.PushBack({ 300,75,19,21 });
 	boxrightAnim.PushBack({ 324,75,19,21 });
 	boxrightAnim.PushBack({ 348,75,19,21 });
 	boxrightAnim.PushBack({ 372,75,19,21 });
@@ -127,15 +127,15 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 	texture = App->textures->Load("assets/sprites/player.png");
-	table= App->textures->Load("assets/UI/table.png");
+	table = App->textures->Load("assets/UI/table.png");
 	currentAnimation = &idleLeftAnim;
-	
+
 	// Posición inicial (depende del lvl)
 	position.x;
 	position.y;
 
 	// X, Y, anchura, altura, 
-	collider = App->collisions->AddCollider({ position.x-5, position.y, 24, 24 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x - 5, position.y, 24, 24 }, Collider::Type::PLAYER, this);
 
 	char lookupTable[] = { "0123456789 0123456789" };
 	scoreFont = App->fonts->Load("assets/fonts/font1.png", lookupTable, 2);
@@ -184,35 +184,66 @@ void ModulePlayer::playerMovement(int Pos, int nPos, bool direct, int map[16][10
 update_status ModulePlayer::Update()
 {
 
+	GamePad& pad = App->input->pads[0];
+
+	//// If no up/down movement detected, set the current animation back to idle
+	//if (pad.enabled)
+	//{
+	//	if (pad.left_x == 0.0f && pad.left_y == 0.0f) currentAnimation = currentAnimation;
+	//}
+	//else if (App->input->keys[SDL_SCANCODE_S] == KEY_IDLE &&
+	//	App->input->keys[SDL_SCANCODE_W] == KEY_IDLE) currentAnimation = currentAnimation;
+	// Switch gamepad debug info
+	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN)
+		debugGamepadInfo = !debugGamepadInfo;
+
+	// Debug key for gamepad rumble testing purposes
+	if (App->input->keys[SDL_SCANCODE_7] == KEY_DOWN)
+	{
+		App->input->ShakeController(0, 12, 0.33f);
+	}
+
+	// Debug key for gamepad rumble testing purposes
+	if (App->input->keys[SDL_SCANCODE_8] == KEY_DOWN)
+	{
+		App->input->ShakeController(0, 36, 0.66f);
+	}
+
+	// Debug key for gamepad rumble testing purposes
+	if (App->input->keys[SDL_SCANCODE_9] == KEY_DOWN)
+	{
+		App->input->ShakeController(0, 60, 1.0f);
+	}
+
 	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN) {
 		flyMode = !flyMode;
 	}
-	
+
 	if (flyMode == true) {	// Player Godmode movement (cause bugs because the player movement set is quit from the tiles )
-		if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT) {
+		if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT || pad.left_x > 0.0f) {
 			position.x += 1;
 		}
-		if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT) {	
+		if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT || pad.left_y < 0.0f) {
 			position.y -= 1;
 		}
-		if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT) {	
+		if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT || pad.left_x < 0.0f) {
 			position.x -= 1;
 		}
-		if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT) {		
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT || pad.left_y > 0.0f) {
 			position.y += 1;
 		}
 	}			// Player real movement , collisions and animations 
 	else {
-		if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov Derecha
+		if ((App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT || pad.left_x > 0.0f) && nPosX == 0 && nPosY == 0) {		// mov Derecha
 			nPosX = position.x + 24;
 		}
-		if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov arriba
+		if ((App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT || pad.left_y < 0.0f) && nPosX == 0 && nPosY == 0) {		// mov arriba
 			nPosY = position.y - 24;
 		}
-		if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov izquierda
+		if ((App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT || pad.left_x < 0.0f) && nPosX == 0 && nPosY == 0) {		// mov izquierda
 			nPosX = position.x - 24;
 		}
-		if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT && nPosX == 0 && nPosY == 0) {		// mov abajo
+		if ((App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT || pad.left_y > 0.0f) && nPosX == 0 && nPosY == 0) {		// mov abajo
 			nPosY = position.y + 24;
 		}
 		if (nPosX != 0) {							// LEFT
@@ -388,8 +419,8 @@ update_status ModulePlayer::Update()
 			}
 		}
 	}
-	
-	collider->SetPos(position.x-5, position.y);	// player hitbox
+
+	collider->SetPos(position.x - 5, position.y);	// player hitbox
 
 	currentAnimation->Update();
 
@@ -398,7 +429,7 @@ update_status ModulePlayer::Update()
 
 update_status ModulePlayer::PostUpdate()
 {
-	
+
 	if (IsEnabled())
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
@@ -432,7 +463,7 @@ update_status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	
+
 
 	// que pasa al colisionar? pues aquí va
 }

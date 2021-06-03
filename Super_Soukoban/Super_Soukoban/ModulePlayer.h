@@ -25,11 +25,16 @@ public:
 
 	void playerMovement(int Pos, int nPos, bool direct, int map[16][10]);
 
+	
 public:
+
+	// Debugdraw for gamepad data
+	bool debugGamepadInfo = false;
+
 	bool flyMode; // =GodMode (Have several bugs when disabled)
 
 	// Position of the player in the map
-	iPoint position;	
+	iPoint position;
 	int nPosX = 0;
 	int nPosY = 0;
 	// The speed in which we move the player (pixels per frame)
@@ -50,7 +55,7 @@ public:
 	Animation downAnim;
 	Animation leftAnim;
 	Animation rightAnim;
-	
+
 	Animation boxupAnim;
 	Animation boxdownAnim;
 	Animation boxleftAnim;
@@ -73,7 +78,7 @@ public:
 
 	bool canMove = true;
 	int currentScene;
-	uint numBox=0;
+	uint numBox = 0;
 
 	int map[16][10] = {	// mapa, se va a llamar desde cada scene para cambiarse
 	{0,0,0,0,0,0,0,0,0,0},
