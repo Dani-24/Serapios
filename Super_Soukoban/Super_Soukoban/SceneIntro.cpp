@@ -89,6 +89,5 @@ update_status SceneIntro::Update() {	// plays Game logo + animation
 update_status SceneIntro::PostUpdate() {
 
 	App->render->Blit(bgTexture, SCREEN_WIDTH / 2 - 115, SCREEN_HEIGHT / 2 - 115, &(intro.GetCurrentFrame()), 0.1f); // intro
-	App->render->Blit(bgTexture1, SCREEN_WIDTH / 2 - 115, SCREEN_HEIGHT / 2 - 115, &(logo.GetCurrentFrame()), 0.1f);
 	return update_status::UPDATE_CONTINUE;
 }
