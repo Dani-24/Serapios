@@ -84,7 +84,7 @@ update_status TitleScreen::Update()
 			App->audio->PlayFx(selectFx);
 		}
 	}
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN||pad.a)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a)
 	{
 		if (M_Index == B_Play)
 		{
@@ -108,9 +108,8 @@ update_status TitleScreen::Update()
 		App->fade->FadeToBlack(this, (Module*)App->scene3, 90);
 
 	}
-	if (App->input->keys[SDL_SCANCODE_4] == KEY_STATE::KEY_DOWN)		// Reset lvl 4
+	if (App->input->keys[SDL_SCANCODE_4] == KEY_STATE::KEY_DOWN)
 	{
-		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->scene4, 90);
 
 	}

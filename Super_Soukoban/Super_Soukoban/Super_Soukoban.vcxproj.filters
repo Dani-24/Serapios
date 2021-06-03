@@ -94,6 +94,9 @@
     <ClInclude Include="ModuleScene6.h">
       <Filter>Archivos de origen\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="PauseMenu.h">
+      <Filter>Archivos de origen\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -163,6 +166,9 @@
       <Filter>Archivos de origen\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="ModuleScene6.cpp">
+      <Filter>Archivos de origen\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseMenu.cpp">
       <Filter>Archivos de origen\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>

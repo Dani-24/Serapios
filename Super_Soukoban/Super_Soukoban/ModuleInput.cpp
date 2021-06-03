@@ -23,11 +23,11 @@ bool ModuleInput::Init() {
 		LOG("SDL_EVENTS could not initialize! SDL_Error:%s\n", SDL_GetError());
 		ret = false;
 	}
-	if (SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER) < 0)
+	/*if (SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER) < 0)
 	{
 		LOG("SDL_INIT_GAMECONTROLLER could not initialize! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
-	}
+	}*/
 
 	if (SDL_InitSubSystem(SDL_INIT_HAPTIC) < 0)
 	{

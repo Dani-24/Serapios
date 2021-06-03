@@ -22,7 +22,6 @@ public:
 
 	virtual void Update();
 	virtual void Draw();
-	virtual void OnCollision(Collider* collider);
 
 public:
 	iPoint position;
@@ -76,7 +75,6 @@ public:
 
 	bool CleanUp() override;
 
-	void OnCollision(Collider* c1, Collider* c2) override;
 
 	bool AddBox(int x, int y);
 

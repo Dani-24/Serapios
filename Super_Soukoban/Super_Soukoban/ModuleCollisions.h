@@ -1,7 +1,7 @@
 #ifndef __MODULE_COLLISIONS_H__
 #define __MODULE_COLLISIONS_H__
 
-#define MAX_COLLIDERS 50 
+#define MAX_COLLIDERS 1000 
 #include "Module.h"
 #include "Collider.h"
 
@@ -20,8 +20,10 @@ public:
 
 	void DebugDraw();
 
-private:
 	Collider* colliders[MAX_COLLIDERS] = { nullptr };
+
+private:
+	
 	bool matrix[Collider::Type::MAX][Collider::Type::MAX];
 	bool debug = false;
 };

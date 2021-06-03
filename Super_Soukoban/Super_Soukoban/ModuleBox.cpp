@@ -104,16 +104,10 @@ void Box::Draw() {
 	}
 }
 
-void Box::OnCollision(Collider* collider) {
-
-}
 
 // MODULE BOX	-- It allows the current scene to make more than 1 Box
 
 ModuleBox::ModuleBox(bool startEnabled) : Module(startEnabled){
-	for (uint i = 0; i < MAX_BOXES; ++i) {
-		boxes[i] = nullptr;
-	}
 }
 
 ModuleBox::~ModuleBox() {
@@ -199,7 +193,4 @@ void ModuleBox::SpawnBox(const BoxSpawnpoint& info) {
 			break;
 		}
 	}
-}
-
-void ModuleBox::OnCollision(Collider* c1, Collider* c2) {
 }

@@ -14,7 +14,6 @@
 
 ModulePlayer::ModulePlayer(bool startEnabled) :Module(startEnabled)
 {
-	flyMode = false;
 
 	// Aqui van las animaciones del player
 	idleLeftAnim.PushBack({ 9,9,14,24 });
@@ -72,8 +71,6 @@ ModulePlayer::ModulePlayer(bool startEnabled) :Module(startEnabled)
 	boxleftAnim.PushBack({ 81,75,17,21 });
 	boxleftAnim.PushBack({ 105,76,16,20 });
 	boxleftAnim.PushBack({ 129,76,17,20 });
-	//boxleftAnim.PushBack({ 156,76,18,20 });	// sprites mal hechos por lo que no encaja :D 
-	//boxleftAnim.PushBack({ 171,75,18,21 });
 	boxleftAnim.loop = true;
 	boxleftAnim.speed = 0.2f;
 
@@ -100,10 +97,10 @@ ModulePlayer::ModulePlayer(bool startEnabled) :Module(startEnabled)
 	boxdownAnim.speed = 0.2f;
 
 	boxrightAnim.PushBack({ 204,75,19,21 });
-	boxrightAnim.PushBack({ 228,75,19,21 });
+	boxrightAnim.PushBack({ 228,75,19,21 }); 
 	boxrightAnim.PushBack({ 252,75,19,21 });
 	boxrightAnim.PushBack({ 276,75,19,21 });
-	boxrightAnim.PushBack({ 300,75,19,21 });
+	boxrightAnim.PushBack({ 300,75,19,21 }); 
 	boxrightAnim.PushBack({ 324,75,19,21 });
 	boxrightAnim.PushBack({ 348,75,19,21 });
 	boxrightAnim.PushBack({ 372,75,19,21 });
@@ -127,15 +124,15 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 	texture = App->textures->Load("assets/sprites/player.png");
-	table = App->textures->Load("assets/UI/table.png");
+	table= App->textures->Load("assets/UI/table.png");
 	currentAnimation = &idleLeftAnim;
-
+	
 	// Posición inicial (depende del lvl)
 	position.x;
 	position.y;
 
 	// X, Y, anchura, altura, 
-	collider = App->collisions->AddCollider({ position.x - 5, position.y, 24, 24 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x-5, position.y, 24, 24 }, Collider::Type::PLAYER, this);
 
 	char lookupTable[] = { "0123456789 0123456789" };
 	scoreFont = App->fonts->Load("assets/fonts/font1.png", lookupTable, 2);
@@ -143,14 +140,36 @@ bool ModulePlayer::Start()
 	return ret;
 }
 
-void ModulePlayer::playerMovement(int Pos, int nPos, bool direct, int map[16][10]) {	// true es ++ ,  false es --
-	if (direct == false) {
-		if (nPos < Pos) {
+
+update_status ModulePlayer::Update()
+{
+	GamePad& pad = App->input->pads[0];
+
+	if (playerMovement == true) {
+		if ((App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT || pad.left_x > 0.0f || pad.right) && nPosX == 0 && nPosY == 0) {		// mov Derecha
+			nPosX = position.x + 24;
+		}
+		if ((App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT || pad.left_y < 0.0f || pad.up) && nPosX == 0 && nPosY == 0) {		// mov arriba
+			nPosY = position.y - 24;
+		}
+		if ((App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT || pad.left_x < 0.0f || pad.left) && nPosX == 0 && nPosY == 0) {		// mov izquierda
+			nPosX = position.x - 24;
+		}
+		if ((App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT || pad.left_y > 0.0f || pad.down) && nPosX == 0 && nPosY == 0) {		// mov abajo
+			nPosY = position.y + 24;
+		}
+	}
+
+	if (nPosX != 0) 
+	{							// LEFT
+		if (nPosX < position.x) 
+		{
 			for (int i = 0; i < 16; ++i)
 			{
 				for (int j = 0; j < 10; ++j)
 				{
-					if (map[i][j] == 1 || map[i][j] == 2) {		// colision pared
+					if (map[i][j] == 1 || map[i][j] == 2) 
+					{		// colision pared
 						if (position.x - 29 == i * 24 && position.y == j * 24) {
 							canMove = false;
 							nPosX = 0;
@@ -178,182 +197,87 @@ void ModulePlayer::playerMovement(int Pos, int nPos, bool direct, int map[16][10
 			}
 			canMove = true;
 		}
-	}
-}
-
-update_status ModulePlayer::Update()
-{
-
-	GamePad& pad = App->input->pads[0];
-
-	// Switch gamepad debug info
-	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN)
-		debugGamepadInfo = !debugGamepadInfo;
-
-	// Debug key for gamepad rumble testing purposes
-	if (App->input->keys[SDL_SCANCODE_7] == KEY_DOWN)
-	{
-		App->input->ShakeController(0, 12, 0.33f);
-	}
-
-	// Debug key for gamepad rumble testing purposes
-	if (App->input->keys[SDL_SCANCODE_8] == KEY_DOWN)
-	{
-		App->input->ShakeController(0, 36, 0.66f);
-	}
-
-	// Debug key for gamepad rumble testing purposes
-	if (App->input->keys[SDL_SCANCODE_9] == KEY_DOWN)
-	{
-		App->input->ShakeController(0, 60, 1.0f);
-	}
-
-	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN) {
-		flyMode = !flyMode;
-	}
-
-	if (flyMode == true) {	// Player Godmode movement (cause bugs because the player movement set is quit from the tiles )
-		if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT || pad.left_x > 0.0f || pad.right) {
-			position.x += 1;
-		}
-		if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT || pad.left_y < 0.0f || pad.up) {
-			position.y -= 1;
-		}
-		if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT || pad.left_x < 0.0f || pad.left) {
-			position.x -= 1;
-		}
-		if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT || pad.left_y > 0.0f || pad.down) {
-			position.y += 1;
-		}
-	}			// Player real movement , collisions and animations 
-	else {
-		if ((App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT || pad.left_x > 0.0f ||pad.right) && nPosX == 0 && nPosY == 0) {		// mov Derecha
-			nPosX = position.x + 24;
-		}
-		if ((App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT || pad.left_y < 0.0f || pad.up) && nPosX == 0 && nPosY == 0) {		// mov arriba
-			nPosY = position.y - 24;
-		}
-		if ((App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT || pad.left_x < 0.0f || pad.left) && nPosX == 0 && nPosY == 0) {		// mov izquierda
-			nPosX = position.x - 24;
-		}
-		if ((App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT || pad.left_y > 0.0f || pad.down) && nPosX == 0 && nPosY == 0) {		// mov abajo
-			nPosY = position.y + 24;
-		}
-		if (nPosX != 0) {							// LEFT
-			if (nPosX < position.x) {
-				for (int i = 0; i < 16; ++i)
+		else if (nPosX > position.x) {			// RIGHT
+			for (int i = 0; i < 16; ++i)
+			{
+				for (int j = 0; j < 10; ++j)
 				{
-					for (int j = 0; j < 10; ++j)
-					{
-						if (map[i][j] == 1 || map[i][j] == 2) {		// colision pared
-							if (position.x - 29 == i * 24 && position.y == j * 24) {
+					if (map[i][j] == 1 || map[i][j] == 2) {
+						if (position.x + 19 == i * 24 && position.y == j * 24) {
+							canMove = false;
+							nPosX = 0;
+						}
+						for (int k = 0; k < numBox; k++) {
+							if (position.x + 43 == i * 24 && position.y == j * 24 && position.x + 19 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y) {
 								canMove = false;
 								nPosX = 0;
 							}
-							for (int k = 0; k < numBox; k++) {						// colision pared + caja
-								if (position.x - 53 == i * 24 && position.y == j * 24 && position.x - 29 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y) {
+							for (int f = 0; f < numBox; f++) {				// collision box + box
+								if (position.x + 19 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y && position.x + 43 == App->boxes->boxes[f]->position.x && position.y == App->boxes->boxes[f]->position.y) {
 									canMove = false;
 									nPosX = 0;
 								}
-								for (int f = 0; f < numBox; f++) {				// collision box + box
-									if (position.x - 29 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y && position.x - 53 == App->boxes->boxes[f]->position.x && position.y == App->boxes->boxes[f]->position.y) {
-										canMove = false;
-										nPosX = 0;
-									}
-								}
 							}
 						}
-					}
 				}
-				if (canMove == true) {
-					position.x -= 1;
 				}
-				if (currentAnimation != &leftAnim) {
-					currentAnimation = &leftAnim;
-				}
-				canMove = true;
 			}
-			else if (nPosX > position.x) {			// RIGHT
-				for (int i = 0; i < 16; ++i)
-				{
-					for (int j = 0; j < 10; ++j)
-					{
-						if (map[i][j] == 1 || map[i][j] == 2) {
-							if (position.x + 19 == i * 24 && position.y == j * 24) {
-								canMove = false;
-								nPosX = 0;
-							}
-							for (int k = 0; k < numBox; k++) {
-								if (position.x + 43 == i * 24 && position.y == j * 24 && position.x + 19 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y) {
-									canMove = false;
-									nPosX = 0;
-								}
-								for (int f = 0; f < numBox; f++) {				// collision box + box
-									if (position.x + 19 == App->boxes->boxes[k]->position.x && position.y == App->boxes->boxes[k]->position.y && position.x + 43 == App->boxes->boxes[f]->position.x && position.y == App->boxes->boxes[f]->position.y) {
-										canMove = false;
-										nPosX = 0;
-									}
-								}
-							}
-
-						}
-					}
-				}
-				if (canMove == true) {
-					position.x += 1;
-				}
-				if (currentAnimation != &rightAnim) {
-					currentAnimation = &rightAnim;
-				}
-				canMove = true;
+			if (canMove == true) {
+				position.x += 1;
 			}
-			else if (nPosX == position.x) {
-				nPosX = 0; steps++;				// Contador de pasos
+			if (currentAnimation != &rightAnim) {
+				currentAnimation = &rightAnim;
 			}
+			canMove = true;
 		}
-		else if (nPosY != 0) {				// UP
-			if (nPosY < position.y) {
-				for (int i = 0; i < 16; ++i)
+		else if (nPosX == position.x) {
+			nPosX = 0; steps++;				// Contador de pasos
+		}
+	}
+	else if (nPosY != 0) 
+	{				// UP
+		if (nPosY < position.y) {
+			for (int i = 0; i < 16; ++i)
+			{
+				for (int j = 0; j < 10; ++j)
 				{
-					for (int j = 0; j < 10; ++j)
-					{
-						if (map[i][j] == 1 || map[i][j] == 2) {
-							if (position.x - 5 == i * 24 && position.y - 24 == j * 24) {
+					if (map[i][j] == 1 || map[i][j] == 2) {
+						if (position.x - 5 == i * 24 && position.y - 24 == j * 24) {
+							canMove = false;
+							nPosY = 0;
+						}
+						for (int k = 0; k < numBox; k++) {
+							if (position.x - 5 == i * 24 && position.x - 5 == App->boxes->boxes[k]->position.x && position.y - 48 == j * 24 && position.y - 24 == App->boxes->boxes[k]->position.y) {
 								canMove = false;
 								nPosY = 0;
 							}
-							for (int k = 0; k < numBox; k++) {
-								if (position.x - 5 == i * 24 && position.x - 5 == App->boxes->boxes[k]->position.x && position.y - 48 == j * 24 && position.y - 24 == App->boxes->boxes[k]->position.y) {
+							for (int f = 0; f < numBox; f++) {				// collision box + box
+								if (position.x - 5 == App->boxes->boxes[k]->position.x && position.y - 24 == App->boxes->boxes[k]->position.y && position.x - 5 == App->boxes->boxes[f]->position.x && position.y - 48 == App->boxes->boxes[f]->position.y) {
 									canMove = false;
 									nPosY = 0;
 								}
-								for (int f = 0; f < numBox; f++) {				// collision box + box
-									if (position.x - 5 == App->boxes->boxes[k]->position.x && position.y - 24 == App->boxes->boxes[k]->position.y && position.x - 5 == App->boxes->boxes[f]->position.x && position.y - 48 == App->boxes->boxes[f]->position.y) {
-										canMove = false;
-										nPosY = 0;
-									}
-								}
 							}
 						}
 					}
 				}
-				if (canMove == true) {
-					position.y -= 1;
-				}
-				if (currentAnimation != &upAnim) {
-					currentAnimation = &upAnim;
-				}
-				canMove = true;
 			}
-			else if (nPosY > position.y) {					// DOWN
-				for (int i = 0; i < 16; ++i)
+			if (canMove == true) {
+				position.y -= 1;
+			}
+			if (currentAnimation != &upAnim) {
+				currentAnimation = &upAnim;
+			}
+			canMove = true;
+		}
+		else if (nPosY > position.y) {					// DOWN
+			for (int i = 0; i < 16; ++i)
+			{
+				for (int j = 0; j < 10; ++j)
 				{
-					for (int j = 0; j < 10; ++j)
-					{
-						if (map[i][j] == 1 || map[i][j] == 2) {
-							if (position.x - 5 == i * 24 && position.y + 24 == j * 24) {
-								canMove = false;
-								nPosY = 0;
+					if (map[i][j] == 1 || map[i][j] == 2) {
+						if (position.x - 5 == i * 24 && position.y + 24 == j * 24) {
+							canMove = false;
+							nPosY = 0;
 							}
 							for (int k = 0; k < numBox; k++) {
 								if (position.x - 5 == i * 24 && position.x - 5 == App->boxes->boxes[k]->position.x && position.y + 48 == j * 24 && position.y + 24 == App->boxes->boxes[k]->position.y) {
@@ -367,7 +291,6 @@ update_status ModulePlayer::Update()
 									}
 								}
 							}
-
 						}
 					}
 				}
@@ -379,15 +302,16 @@ update_status ModulePlayer::Update()
 				}
 				canMove = true;
 			}
-			else if (nPosY == position.y) {
+		else if (nPosY == position.y) {
 				nPosY = 0; steps++;
 			}
-		}
 	}
 
 	// player stop the animation when stop walking
-	if (nPosX == 0 && nPosY == 0) {
-		if (currentAnimation == &leftAnim) {
+	if (nPosX == 0 && nPosY == 0) 
+	{
+		if (currentAnimation == &leftAnim) 
+		{
 			if (currentAnimation != &idleLeftAnim) {
 				idleLeftAnim.Reset();
 				currentAnimation = &idleLeftAnim;
@@ -412,8 +336,8 @@ update_status ModulePlayer::Update()
 			}
 		}
 	}
-
-	collider->SetPos(position.x - 5, position.y);	// player hitbox
+	
+	collider->SetPos(position.x-5, position.y);	// player hitbox
 
 	currentAnimation->Update();
 
@@ -422,7 +346,7 @@ update_status ModulePlayer::Update()
 
 update_status ModulePlayer::PostUpdate()
 {
-
+	
 	if (IsEnabled())
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
@@ -447,16 +371,5 @@ update_status ModulePlayer::PostUpdate()
 
 	App->render->Blit(table, 310, 10, NULL);
 
-	//App->fonts->BlitText(50, 50, scoreFont, "123456");
-
-
-
 	return update_status::UPDATE_CONTINUE;
-}
-
-void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
-{
-
-
-	// que pasa al colisionar? pues aquí va
 }

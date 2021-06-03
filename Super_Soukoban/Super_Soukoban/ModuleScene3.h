@@ -45,6 +45,8 @@ int map[16][10] = {
 	{0,0,0,0,0,0,0,0,0,0}
 	};
 bool boxEnd[4] = { false };
+bool playMusic = false;
+
 private:
 	SDL_Texture* background = nullptr;		// 0
 	SDL_Texture* wall = nullptr;			// 1
@@ -53,7 +55,7 @@ private:
 	SDL_Texture* point = nullptr;			// 4
 	SDL_Texture* lose = nullptr;
 	SDL_Texture* win = nullptr;
-
+	SDL_Texture* godModeGround = nullptr;
 	bool dWin=false;
 	bool dLose=false;
 	bool winF = false;
@@ -64,8 +66,14 @@ private:
 	uint winFx = 0;
 	uint loseFx = 0;
 
+	uint godMode = 0;
+	bool godModeOn = false;
+	
+
 	uint nextFx = 0;
 	uint backFx = 0;
+
+	int numOfBoxes = 5;
 };
 
 #endif // __MODULE_SCENE_3_H_

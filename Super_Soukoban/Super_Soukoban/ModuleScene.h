@@ -23,8 +23,6 @@ public:
 
 	bool CleanUp();
 
-	uint score = 0;
-
 public:
 	int map[16][10] = {
 	{0,0,0,0,0,0,0,0,0,0},
@@ -45,12 +43,16 @@ public:
 	{0,0,0,0,0,0,0,0,0,0}
 	};
 	bool boxEnd[3] = { false };
+
+	bool playMusic = false;
 private:
 	SDL_Texture* background = nullptr;		// 0
 	SDL_Texture* wall = nullptr;			// 1
 	SDL_Texture* wall2 = nullptr;			// 2
 	SDL_Texture* ground = nullptr;			// 3
 	SDL_Texture* point = nullptr;			// 4
+	SDL_Texture* godModeGround = nullptr;
+
 	SDL_Texture* lose = nullptr;
 	SDL_Texture* win = nullptr;
 
@@ -65,8 +67,13 @@ private:
 	uint winFx = 0;
 	uint loseFx = 0;
 
+	uint godModeMusic = 0;
+	bool godModeOn = false;
+
 	uint nextFx = 0;
 	uint backFx = 0;
+
+	int numOfBoxes = 3;
 };
 
 #endif // __MODULE_SCENE_H__

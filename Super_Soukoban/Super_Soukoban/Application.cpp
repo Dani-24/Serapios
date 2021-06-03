@@ -19,6 +19,7 @@
 #include "SceneIntro.h"
 #include "SceneCredits.h"
 #include "TitleScreen.h"
+#include "PauseMenu.h"
 
 Application::Application() {
     modules[0] = window = new ModuleWindow(true);
@@ -36,9 +37,10 @@ Application::Application() {
     modules[12] = player = new ModulePlayer(false);
 	modules[13] = boxes = new ModuleBox(false); 
 	modules[14] = collisions = new ModuleCollisions(true);
-	modules[15] = fade = new ModuleFadeToBlack(true);
-	modules[16] = fonts = new ModuleFonts(true);
-	modules[17] = render = new ModuleRender(true);
+	modules[15] = pause = new PauseMenu(false);
+	modules[16] = fade = new ModuleFadeToBlack(true);
+	modules[17] = fonts = new ModuleFonts(true);
+	modules[18] = render = new ModuleRender(true);
 }
 
 Application::~Application() {

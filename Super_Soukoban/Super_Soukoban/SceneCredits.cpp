@@ -58,7 +58,7 @@ update_status SceneCredits::Update()
 		App->fade->FadeToBlack(this, (Module*)App->sceneintro, 60);
 	}
 	
-	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN||pad.a)
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneintro, 60);
 	}

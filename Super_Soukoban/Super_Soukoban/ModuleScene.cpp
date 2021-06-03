@@ -8,6 +8,7 @@
 #include "ModuleBox.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
+#include "PauseMenu.h"
 
 #include "External_Libraries/SDL/include/SDL_scancode.h"
 
@@ -23,7 +24,8 @@ ModuleScene::~ModuleScene()
 
 bool ModuleScene::Start()
 {
-	LOG("Loading background assets");
+
+	LOG("Loading background assets (Scene 1)");
 
 	bool ret = true;
 
@@ -35,23 +37,19 @@ bool ModuleScene::Start()
 	lose = App->textures->Load("assets/UI/lose.png");
 	win = App->textures->Load("assets/UI/win.png");
 
-	// Music and FX
+	godModeGround = App->textures->Load("assets/UI/meowsprite.png");
 
-	levelMusic = App->audio->PlayMusic("assets/sound/music/stage1.ogg", 1.0f);
-	winMusic = App->audio->LoadFx("assets/sound/music/win_sound_loop.ogg"); 
-
-	winFx = App->audio->LoadFx("assets/sound/SFX/win_sound_init.wav");
+	// FX
+	winMusic = App->audio->LoadFx("assets/sound/music/win_sound_loop.ogg");
 	loseFx = App->audio->LoadFx("assets/sound/SFX/lost_sound.wav");
-
 	nextFx = App->audio->LoadFx("assets/sound/SFX/menu2_confirm.wav");
 	backFx = App->audio->LoadFx("assets/sound/SFX/menu3_back.wav");
-
-	
 
 	// Set up stage, steps and step limit
 	App->player->stage = 01;
 	App->player->limit = 90;
 	App->player->steps = 0;
+	App->player->playerMovement = true;
 
 	// Tell module Player how is the map
 	for (int i = 0; i < 16; ++i)
@@ -82,15 +80,29 @@ bool ModuleScene::Start()
 
 update_status ModuleScene::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)	// Back to Init menu
+	// Music
+
+	if (playMusic == false) {
+		if (godModeOn == true) {
+			godModeMusic = App->audio->PlayMusic("assets/sound/music/god_mode.ogg", 1.0f);
+		}
+		else {
+			levelMusic = App->audio->PlayMusic("assets/sound/music/stage1.ogg", 1.0f);
+		}
+		playMusic = true;
+	}
+
+
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)	//menu
 	{
-		CleanUp();
 		App->audio->PlayFx(backFx);
-		App->fade->FadeToBlack(this, (Module*)App->sceneintro, 60);
+		App->pause->current = (Module*)App->scene;
+		App->pause->Enable();
 
 	}
 	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)		// Reset lvl 1
 	{
+		App->audio->PlayFx(nextFx);
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->scene, 60);
 
@@ -98,27 +110,45 @@ update_status ModuleScene::Update()
 
 	if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)		// Go to lvl 2 
 	{
+		App->audio->PlayFx(nextFx);
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->scene2, 60);
 
 	}
 	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)		// Go to lvl 3
 	{
+		App->audio->PlayFx(nextFx);
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
 
 	}
 	if (App->input->keys[SDL_SCANCODE_4] == KEY_STATE::KEY_DOWN)		// Reset lvl 4
 	{
+		App->audio->PlayFx(nextFx);
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->scene4, 60);
 
 	}
 	if (App->input->keys[SDL_SCANCODE_6] == KEY_STATE::KEY_DOWN)		// Go to lvl 6
 	{
+		App->audio->PlayFx(nextFx);
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->scene6, 60);
 
+	}
+	if (App->input->keys[SDL_SCANCODE_F1] == KEY_STATE::KEY_DOWN)		// GOD MODE
+	{
+		if (godModeOn == true) {
+			LOG("GOD MODE OFF");
+			App->player->limit = 90;
+			godModeOn = false;
+		}
+		else{
+			LOG("GOD MODE ON");
+			App->player->limit = 9999;
+			godModeOn = true;
+		}
+		playMusic = false;
 	}
 	
 	return update_status::UPDATE_CONTINUE;
@@ -139,7 +169,12 @@ update_status ModuleScene::PostUpdate()
 			switch (type)
 			{
 			case 0:
-				App->render->Blit(background, i*24, j*24, NULL);
+				if (godModeOn == true) {
+					App->render->Blit(godModeGround, i * 24, j * 24, NULL);
+				}
+				else {
+					App->render->Blit(background, i * 24, j * 24, NULL);
+				}
 				break;
 			case 1:
 				App->render->Blit(wall, i * 24, j * 24, NULL);
@@ -169,18 +204,18 @@ update_status ModuleScene::PostUpdate()
 
 	//lose
 	if (App->player->steps == App->player->limit || dLose==true) {	// dLose= f4 direct loose
-
+		App->player->playerMovement = false;
 		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
 		if (loseF != true) {
-
 			App->audio->PlayFx(loseFx);
 			loseF = true;
-
 		}
-		CleanUp();
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN||pad.a)	// Restart the level when losing
+		playMusic = false;
+		
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a)	// Restart the level when losing
 		{
 			App->audio->PlayFx(nextFx);
+			CleanUp();
 			App->fade->FadeToBlack(this, (Module*)App->scene, 60);
 		}
 	}
@@ -196,23 +231,21 @@ update_status ModuleScene::PostUpdate()
 			}
 		}
 	}
+
 	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true || dWin==true) // dWin= F3 direct win
 	{
-		levelMusic = 0; // quita la musica
-
+		App->player->playerMovement = false;
 		if (winF != true) {
-
-			App->audio->PlayFx(winMusic);
 			winF = true;
-
+			App->audio->PlayFx(winMusic);
 		}
-
+		playMusic = false;
 		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
-		LOG("level 1 completed");
-		CleanUp();
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN||pad.a)	// go to the next level when winning
+		
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a)	// go to the next level when winning
 		{
 			App->audio->PlayFx(nextFx);
+			CleanUp();
 			App->fade->FadeToBlack(this, (Module*)App->scene2, 60);
 		}
 	}
@@ -221,8 +254,19 @@ update_status ModuleScene::PostUpdate()
 //disable the entities
 bool ModuleScene::CleanUp()
 {
+	LOG("Cleaning SCENE 1");
 	App->player->Disable();
 	App->boxes->Disable();
+	App->collisions->CleanUp();
+	dWin = false;
+	dLose = false;
+	winF = false;
+	loseF = false;
+	godModeOn = false;
+	playMusic = false;
+	for (int i = 0; i < numOfBoxes; i++) {
+		boxEnd[i] = false;
+	}
 
 	return true;
 }
