@@ -213,30 +213,30 @@ update_status ModulePlayer::Update()
 	}
 
 	if (flyMode == true) {	// Player Godmode movement (cause bugs because the player movement set is quit from the tiles )
-		if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT || pad.left_x > 0.0f) {
+		if (App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT || pad.left_x > 0.0f || pad.right) {
 			position.x += 1;
 		}
-		if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT || pad.left_y < 0.0f) {
+		if (App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT || pad.left_y < 0.0f || pad.up) {
 			position.y -= 1;
 		}
-		if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT || pad.left_x < 0.0f) {
+		if (App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT || pad.left_x < 0.0f || pad.left) {
 			position.x -= 1;
 		}
-		if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT || pad.left_y > 0.0f) {
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT || pad.left_y > 0.0f || pad.down) {
 			position.y += 1;
 		}
 	}			// Player real movement , collisions and animations 
 	else {
-		if ((App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT || pad.left_x > 0.0f) && nPosX == 0 && nPosY == 0) {		// mov Derecha
+		if ((App->input->keys[SDL_SCANCODE_D] == KEY_REPEAT || pad.left_x > 0.0f ||pad.right) && nPosX == 0 && nPosY == 0) {		// mov Derecha
 			nPosX = position.x + 24;
 		}
-		if ((App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT || pad.left_y < 0.0f) && nPosX == 0 && nPosY == 0) {		// mov arriba
+		if ((App->input->keys[SDL_SCANCODE_W] == KEY_REPEAT || pad.left_y < 0.0f || pad.up) && nPosX == 0 && nPosY == 0) {		// mov arriba
 			nPosY = position.y - 24;
 		}
-		if ((App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT || pad.left_x < 0.0f) && nPosX == 0 && nPosY == 0) {		// mov izquierda
+		if ((App->input->keys[SDL_SCANCODE_A] == KEY_REPEAT || pad.left_x < 0.0f || pad.left) && nPosX == 0 && nPosY == 0) {		// mov izquierda
 			nPosX = position.x - 24;
 		}
-		if ((App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT || pad.left_y > 0.0f) && nPosX == 0 && nPosY == 0) {		// mov abajo
+		if ((App->input->keys[SDL_SCANCODE_S] == KEY_REPEAT || pad.left_y > 0.0f || pad.down) && nPosX == 0 && nPosY == 0) {		// mov abajo
 			nPosY = position.y + 24;
 		}
 		if (nPosX != 0) {							// LEFT

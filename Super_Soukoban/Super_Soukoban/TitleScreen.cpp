@@ -68,7 +68,7 @@ update_status TitleScreen::Update()
 		scroller2Y = 1034;
 	}
 	//key commands 
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN) {
+	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN || pad.up || pad.left_y < 0.0f) {
 		if (M_Index < 2)
 		{
 			M_Index++;
@@ -76,7 +76,7 @@ update_status TitleScreen::Update()
 			App->audio->PlayFx(selectFx);
 		}
 	}
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN) {
+	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN || pad.down || pad.left_y > 0.0f) {
 		if (M_Index > 0)
 		{
 			M_Index--;
