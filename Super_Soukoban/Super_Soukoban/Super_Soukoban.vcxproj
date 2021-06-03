@@ -162,6 +162,7 @@
     <ClCompile Include="ModuleScene2.cpp" />
     <ClCompile Include="ModuleScene3.cpp" />
     <ClCompile Include="ModuleScene4.cpp" />
+    <ClCompile Include="ModuleScene6.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="SceneCredits.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="ModuleScene2.h" />
     <ClInclude Include="ModuleScene3.h" />
     <ClInclude Include="ModuleScene4.h" />
+    <ClInclude Include="ModuleScene6.h" />
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="p2Point.h" />

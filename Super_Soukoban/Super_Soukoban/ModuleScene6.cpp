@@ -1,4 +1,4 @@
-#include "ModuleScene3.h"
+#include "ModuleScene6.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -11,17 +11,17 @@
 
 #include "External_Libraries/SDL/include/SDL_scancode.h"
 
-ModuleScene3::ModuleScene3(bool startEnabled) :Module(startEnabled)
+ModuleScene6::ModuleScene6(bool startEnabled) :Module(startEnabled)
 {
 
 }
 
-ModuleScene3::~ModuleScene3()
+ModuleScene6::~ModuleScene6()
 {
 
 }
 
-bool ModuleScene3::Start()
+bool ModuleScene6::Start()
 {
 	LOG("Loading background assets 2");
 
@@ -36,14 +36,14 @@ bool ModuleScene3::Start()
 
 	// Music and FX
 	levelMusic = App->audio->PlayMusic("assets/sound/music/stage1.ogg", 1.0f);;
-	winMusic = App->audio->LoadFx("assets/sound/music/win_sound_loop.ogg"); 
+	winMusic = App->audio->LoadFx("assets/sound/music/win_sound_loop.ogg");
 
 	loseFx = App->audio->LoadFx("assets/sound/SFX/lost_sound.wav");
 
 	nextFx = App->audio->LoadFx("assets/sound/SFX/menu2_confirm.wav");
 	backFx = App->audio->LoadFx("assets/sound/SFX/menu3_back.wav");
 
-	
+
 	// Tell module Player how is the map
 	for (int i = 0; i < 16; ++i)
 	{
@@ -57,20 +57,20 @@ bool ModuleScene3::Start()
 	App->player->numBox = 5;
 
 	// Set up stage, steps and step limit
-	App->player->stage = 03;
-	App->player->limit = 50;
+	App->player->stage = 06;
+	App->player->limit = 60;
 	App->player->steps = 0;
 
 	// Boxes lvl1 :
-	App->boxes->AddBox(168, 96);
+	App->boxes->AddBox(144, 96);
 	App->boxes->AddBox(168, 72);
-	App->boxes->AddBox(192, 168);
-	App->boxes->AddBox(168, 144);
-	App->boxes->AddBox(192, 120);
+	App->boxes->AddBox(168, 120);
+	App->boxes->AddBox(192, 96);
+	App->boxes->AddBox(216, 120);
 
 	// Player position: (multiples de 24.) Add +5 to position.x 
-	App->player->position.x = 149;
-	App->player->position.y = 72;
+	App->player->position.x = 269;
+	App->player->position.y = 96;
 
 	//active the entities
 	App->player->Enable();
@@ -79,7 +79,7 @@ bool ModuleScene3::Start()
 	return ret;
 }
 
-update_status ModuleScene3::Update()
+update_status ModuleScene6::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)	// Back to Init menu
 	{
@@ -88,6 +88,7 @@ update_status ModuleScene3::Update()
 		App->fade->FadeToBlack(this, (Module*)App->sceneintro, 60);
 
 	}
+
 	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)		// Go to lvl 1
 	{
 		CleanUp();
@@ -101,29 +102,26 @@ update_status ModuleScene3::Update()
 		App->fade->FadeToBlack(this, (Module*)App->scene2, 60);
 
 	}
-	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)		// Reset lvl 3
+
+	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)		// Go to lvl 3
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
 
 	}
-	if (App->input->keys[SDL_SCANCODE_4] == KEY_STATE::KEY_DOWN)		// Reset lvl 4
-	{
-		CleanUp();
-		App->fade->FadeToBlack(this, (Module*)App->scene4, 60);
 
-	}
-	if (App->input->keys[SDL_SCANCODE_6] == KEY_STATE::KEY_DOWN)		// Go to lvl 6
+	if (App->input->keys[SDL_SCANCODE_6] == KEY_STATE::KEY_DOWN)		// Reset lvl 6
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->scene6, 60);
 
 	}
+
 	return update_status::UPDATE_CONTINUE;
 }
 
 
-update_status ModuleScene3::PostUpdate()
+update_status ModuleScene6::PostUpdate()
 {
 	// draw the background and tiles
 
@@ -166,7 +164,7 @@ update_status ModuleScene3::PostUpdate()
 	}
 
 	//lose
-	if (App->player->steps == App->player->limit || dLose==true) {
+	if (App->player->steps == App->player->limit || dLose == true) {
 		App->render->Blit(lose, SCREEN_WIDTH / 2 - 68, SCREEN_HEIGHT / 2 - 36, NULL);
 		if (loseF != true) {
 
@@ -177,7 +175,7 @@ update_status ModuleScene3::PostUpdate()
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
 			App->audio->PlayFx(nextFx);
-			App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
+			App->fade->FadeToBlack(this, (Module*)App->scene6, 60);
 		}
 	}
 
@@ -192,7 +190,7 @@ update_status ModuleScene3::PostUpdate()
 		}
 	}
 
-	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true && boxEnd[3] == true || dWin==true)
+	if (boxEnd[0] == true && boxEnd[1] == true && boxEnd[2] == true && boxEnd[3] == true || dWin == true)
 	{
 		if (winF != true) {
 			App->audio->PlayFx(winMusic);
@@ -200,7 +198,7 @@ update_status ModuleScene3::PostUpdate()
 		}
 
 		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
-		LOG("level 3 completed");
+		LOG("level 6 completed");
 		CleanUp();
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
@@ -212,10 +210,10 @@ update_status ModuleScene3::PostUpdate()
 	return update_status::UPDATE_CONTINUE;
 }
 //disable the entities
-bool ModuleScene3::CleanUp()
+bool ModuleScene6::CleanUp()
 {
 	App->player->Disable();
 	App->boxes->Disable();
-	
+
 	return true;
 }

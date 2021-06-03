@@ -114,6 +114,12 @@ update_status ModuleScene::Update()
 		App->fade->FadeToBlack(this, (Module*)App->scene4, 60);
 
 	}
+	if (App->input->keys[SDL_SCANCODE_6] == KEY_STATE::KEY_DOWN)		// Go to lvl 6
+	{
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->scene6, 60);
+
+	}
 	
 	return update_status::UPDATE_CONTINUE;
 }

@@ -13,6 +13,7 @@
 #include "ModuleScene2.h"
 #include "ModuleScene3.h"
 #include "ModuleScene4.h"
+#include "ModuleScene6.h"
 #include "ModuleWindow.h"
 #include "ModuleFonts.h"
 #include "SceneIntro.h"
@@ -31,12 +32,13 @@ Application::Application() {
 	modules[8] = scene2 = new ModuleScene2(false);
 	modules[9] = scene3 = new ModuleScene3(false);
 	modules[10] = scene4 = new ModuleScene4(false);
-    modules[11] = player = new ModulePlayer(false);
-	modules[12] = boxes = new ModuleBox(false); 
-	modules[13] = collisions = new ModuleCollisions(true);
-	modules[14] = fade = new ModuleFadeToBlack(true);
-	modules[15] = fonts = new ModuleFonts(true);
-	modules[16] = render = new ModuleRender(true);
+	modules[11] = scene6 = new ModuleScene6(false);
+    modules[12] = player = new ModulePlayer(false);
+	modules[13] = boxes = new ModuleBox(false); 
+	modules[14] = collisions = new ModuleCollisions(true);
+	modules[15] = fade = new ModuleFadeToBlack(true);
+	modules[16] = fonts = new ModuleFonts(true);
+	modules[17] = render = new ModuleRender(true);
 }
 
 Application::~Application() {
