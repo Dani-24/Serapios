@@ -126,7 +126,7 @@ update_status ModuleScene4::Update()
 update_status ModuleScene4::PostUpdate()
 {
 	// draw the background and tiles
-
+	GamePad& pad = App->input->pads[0];
 	int type = 0;
 	for (int i = 0; i < 16; ++i)
 	{
@@ -174,7 +174,7 @@ update_status ModuleScene4::PostUpdate()
 			loseF = true;
 		}
 		CleanUp();
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN||pad.a)
 		{
 			App->audio->PlayFx(nextFx);
 			App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
@@ -202,7 +202,7 @@ update_status ModuleScene4::PostUpdate()
 		App->render->Blit(win, SCREEN_WIDTH / 2 - 62, SCREEN_HEIGHT / 2 - 36, NULL);
 		LOG("level 4 completed");
 		CleanUp();
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN||pad.a)
 		{
 			App->audio->PlayFx(nextFx);
 			App->fade->FadeToBlack(this, (Module*)App->titleScreen, 60);

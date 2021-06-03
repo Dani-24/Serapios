@@ -57,6 +57,7 @@ bool TitleScreen::Start()
 
 update_status TitleScreen::Update()
 {
+	GamePad& pad = App->input->pads[0];
 	scrollerY -= 1;
 	scroller2Y -= 1;
 
@@ -83,7 +84,7 @@ update_status TitleScreen::Update()
 			App->audio->PlayFx(selectFx);
 		}
 	}
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN||pad.a)
 	{
 		if (M_Index == B_Play)
 		{

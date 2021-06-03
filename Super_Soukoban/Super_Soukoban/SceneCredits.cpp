@@ -51,13 +51,14 @@ bool SceneCredits::Start()
 
 update_status SceneCredits::Update()
 {
+	GamePad& pad = App->input->pads[0];
 	black.Update();
 	if (black.HasFinished())
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneintro, 60);
 	}
 	
-	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN||pad.a)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneintro, 60);
 	}

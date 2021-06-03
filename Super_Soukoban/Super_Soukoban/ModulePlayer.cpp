@@ -186,13 +186,6 @@ update_status ModulePlayer::Update()
 
 	GamePad& pad = App->input->pads[0];
 
-	//// If no up/down movement detected, set the current animation back to idle
-	//if (pad.enabled)
-	//{
-	//	if (pad.left_x == 0.0f && pad.left_y == 0.0f) currentAnimation = currentAnimation;
-	//}
-	//else if (App->input->keys[SDL_SCANCODE_S] == KEY_IDLE &&
-	//	App->input->keys[SDL_SCANCODE_W] == KEY_IDLE) currentAnimation = currentAnimation;
 	// Switch gamepad debug info
 	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN)
 		debugGamepadInfo = !debugGamepadInfo;

@@ -67,6 +67,7 @@ bool SceneIntro::Start() {
 }
 
 update_status SceneIntro::Update() {	// plays Game logo + animation
+	GamePad& pad = App->input->pads[0];
 	intro.Update();
 
 	if (intro.HasFinished())
@@ -74,7 +75,7 @@ update_status SceneIntro::Update() {	// plays Game logo + animation
 		App->fade->FadeToBlack(this, (Module*)App->titleScreen, 60);
 	}
 
-	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN||pad.a)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->titleScreen, 60);
 
