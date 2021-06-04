@@ -61,7 +61,7 @@ IDI_ICON1               ICON                    "Game\\Assets\\UI\\icon.ico"
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 0,9,0,0
+ FILEVERSION 1,0,0,0
  PRODUCTVERSION 1,0,0,1
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
@@ -77,14 +77,14 @@ BEGIN
     BEGIN
         BLOCK "0c0a04b0"
         BEGIN
-            VALUE "CompanyName", "Serapios"
+            VALUE "CompanyName", "Team Serapios"
             VALUE "FileDescription", "Super Soukoban game by Serapios. https://github.com/Dani-24/Serapios"
-            VALUE "FileVersion", "0.9"
-            VALUE "InternalName", "Super_So.exe"
+            VALUE "FileVersion", "1.0"
+            VALUE "InternalName", "Super_Soukoban.exe"
             VALUE "LegalCopyright", "Copyright (C) 2021"
             VALUE "OriginalFilename", "Super_Soukoban.exe"
             VALUE "ProductName", "Super Soukoban"
-            VALUE "ProductVersion", "0.9 alpha"
+            VALUE "ProductVersion", "1.0 Alpha"
         END
     END
     BLOCK "VarFileInfo"

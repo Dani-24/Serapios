@@ -26,7 +26,13 @@ private:
 	SDL_Texture* menu_title = nullptr;
 	SDL_Texture* menu_options = nullptr;
 	SDL_Texture* menu_pointer = nullptr;
+
 	SDL_Texture* menu_bg = nullptr;
+
+	SDL_Texture* menu_bg2 = nullptr;
+	int scrollerX = 0;
+	int scroller2X = 966;
+
 	uint menu_music = 0;
 	uint nextFx = 0;
 	uint backFx = 0;

@@ -252,7 +252,7 @@ update_status ModuleScene6::PostUpdate()
 		{
 			App->audio->PlayFx(nextFx);
 			CleanUp();
-			App->fade->FadeToBlack(this, (Module*)App->titleScreen, 60);
+			App->fade->FadeToBlack(this, (Module*)App->menu, 60);
 		}
 	}
 

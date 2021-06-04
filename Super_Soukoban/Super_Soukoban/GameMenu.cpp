@@ -28,6 +28,7 @@ bool GameMenu::Start() {
 	menu_options = App->textures->Load("assets/UI/game_menu_options.png");
 	menu_pointer = App->textures->Load("assets/UI/selector.png");
 	menu_bg = App->textures->Load("assets/UI/game_menu_bg.png");
+	menu_bg2 = App->textures->Load("assets/UI/game_menu_bg.png");
 
 	char lookupTable[] = { "!  ,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz" };
 	menuFont = App->fonts->Load("assets/fonts/rtype_font.png", lookupTable, 1);
@@ -43,6 +44,17 @@ bool GameMenu::Start() {
 }
 
 update_status GameMenu::Update() {
+
+	scrollerX -= 1;
+	scroller2X -= 1;
+
+	if (scrollerX < -964) {
+		scrollerX = 966;
+	}
+	if (scroller2X < -964) {
+		scroller2X = 966;
+	}
+
 	GamePad& pad = App->input->pads[0];
 
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN || pad.down || pad.left_y > 0.0f)
@@ -138,7 +150,9 @@ update_status GameMenu::Update() {
 
 update_status GameMenu::PostUpdate() {
 
-	App->render->Blit(menu_bg, 0, 0, NULL);
+	App->render->Blit(menu_bg, scrollerX, 0, NULL);
+
+	App->render->Blit(menu_bg2, scroller2X, 0, NULL);
 
 	App->render->Blit(menu_lvl, 115, 120, NULL);
 	App->render->Blit(menu_title, 123, 93, NULL);
