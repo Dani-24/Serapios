@@ -120,7 +120,7 @@ update_status PauseMenu::PostUpdate() {		// imagenes
 
 bool PauseMenu::CleanUp() {
 
-	current=nullptr;
+	current = nullptr;
 	pointerPosX = 130;
 	pointerPosY = 110;
 

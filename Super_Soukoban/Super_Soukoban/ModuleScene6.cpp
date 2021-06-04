@@ -94,7 +94,7 @@ update_status ModuleScene6::Update()
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)	//menu
 	{
 		App->audio->PlayFx(backFx);
-		App->pause->current = (Module*)App->scene;
+		App->pause->current = (Module*)App->scene6;
 		App->pause->Enable();
 
 	}

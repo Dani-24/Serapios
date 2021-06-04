@@ -19,7 +19,7 @@ public:
 
 	bool CleanUp();
 
-	Module* current;
+	Module* current = nullptr;
 private:
 
 	SDL_Texture* menuSurface = nullptr;
