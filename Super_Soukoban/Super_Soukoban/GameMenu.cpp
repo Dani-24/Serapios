@@ -85,7 +85,7 @@ update_status GameMenu::Update() {
 			App->audio->PlayFx(selectFx);
 		}
 	}
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) {
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a) {
 
 		// controls
 		if (pointerPosY == 30) {
