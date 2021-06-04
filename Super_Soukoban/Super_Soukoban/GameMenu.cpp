@@ -92,7 +92,7 @@ update_status GameMenu::Update() {
 				App->audio->PlayFx(selectFx);
 			}
 		}
-		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN || pad.left || pad.left_x > 0.0f)
+		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN || pad.right || pad.left_x > 0.0f)
 		{
 			if (pointerPosY == 120 && pointerPosX < 185) {
 				pointerPosX = pointerPosX + 16;
