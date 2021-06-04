@@ -39,6 +39,7 @@ bool PauseMenu::Start() {
 
 	nextFx = App->audio->LoadFx("assets/sound/SFX/menu2_confirm.wav");
 	backFx = App->audio->LoadFx("assets/sound/SFX/menu3_back.wav");
+	selectFx = App->audio->LoadFx("assets/sound/SFX/menu1_select.wav");
 
 	char lookupTable[] = { "!  ,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz" };
 	menuFont = App->fonts->Load("assets/fonts/rtype_font.png", lookupTable, 1);
@@ -56,12 +57,14 @@ update_status PauseMenu::Update() {	// teclas
 	{
 		if (pointerPosY < 140) {
 			pointerPosY = pointerPosY + 15;
+			App->audio->PlayFx(selectFx);
 		}
 	}
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN||pad.up || pad.left_y < 0.0f)
 	{
 		if (pointerPosY > 110) {
 			pointerPosY = pointerPosY - 15;
+			App->audio->PlayFx(selectFx);
 		}
 	}
 

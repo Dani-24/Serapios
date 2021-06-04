@@ -27,6 +27,7 @@ private:
 
 	uint nextFx = 0;
 	uint backFx = 0;
+	uint selectFx = 0;
 
 	int pointerPosX = 130;
 	int pointerPosY = 110;
