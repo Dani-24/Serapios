@@ -9,7 +9,7 @@ https://github.com/Dani-24/Serapios
 https://Dani-24.github.io/Serapios/
 
 ## Description
-<p> We are Serapios, a group of students from CITM and there is where we are going to work on our first project: Super Soukoban.
+<p> We are Serapios, a group of students from CITM and here is where we are going to work on our first project: Super Soukoban.
 
 ## Members
 
