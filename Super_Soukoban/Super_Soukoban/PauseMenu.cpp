@@ -14,7 +14,7 @@
 #include "ModuleScene2.h"
 #include "ModuleScene3.h"
 #include "ModuleScene4.h"
-//#include "ModuleScene5.h"
+#include "ModuleScene5.h"
 #include "ModuleScene6.h"
 
 PauseMenu::PauseMenu(bool startEnabled) : Module(startEnabled)
@@ -77,7 +77,7 @@ update_status PauseMenu::Update() {	// teclas
 			App->scene2->playMusic = false;
 			App->scene3->playMusic = false;
 			App->scene4->playMusic = false;
-			//App->scene5->playMusic = false;
+			App->scene5->playMusic = false;
 			App->scene6->playMusic = false;
 			Disable();
 		}
@@ -87,7 +87,7 @@ update_status PauseMenu::Update() {	// teclas
 			App->scene2->Disable();
 			App->scene3->Disable();
 			App->scene4->Disable();
-			//App->scene5->Disable();
+			App->scene5->Disable();
 			App->scene6->Disable();
 			Disable();
 		}
@@ -97,7 +97,7 @@ update_status PauseMenu::Update() {	// teclas
 			App->scene2->Disable();
 			App->scene3->Disable();
 			App->scene4->Disable();
-			//App->scene5->Disable();
+			App->scene5->Disable();
 			App->scene6->Disable();
 			Disable();
 		}

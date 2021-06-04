@@ -129,6 +129,13 @@ update_status ModuleScene::Update()
 		App->fade->FadeToBlack(this, (Module*)App->scene4, 60);
 
 	}
+	if (App->input->keys[SDL_SCANCODE_5] == KEY_STATE::KEY_DOWN)		// go to lvl 5
+	{
+		App->audio->PlayFx(nextFx);
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->scene5, 60);
+
+	}
 	if (App->input->keys[SDL_SCANCODE_6] == KEY_STATE::KEY_DOWN)		// Go to lvl 6
 	{
 		App->audio->PlayFx(nextFx);

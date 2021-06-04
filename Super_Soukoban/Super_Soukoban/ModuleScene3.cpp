@@ -61,7 +61,7 @@ bool ModuleScene3::Start()
 	App->player->steps = 0;
 	App->player->playerMovement = true;
 
-	// Boxes lvl1 :
+	// Boxes lvl 3 :
 	App->boxes->AddBox(168, 96);
 	App->boxes->AddBox(168, 72);
 	App->boxes->AddBox(192, 168);
@@ -121,11 +121,18 @@ update_status ModuleScene3::Update()
 		App->fade->FadeToBlack(this, (Module*)App->scene3, 60);
 
 	}
-	if (App->input->keys[SDL_SCANCODE_4] == KEY_STATE::KEY_DOWN)		// Reset lvl 4
+	if (App->input->keys[SDL_SCANCODE_4] == KEY_STATE::KEY_DOWN)		// Go to lvl 4
 	{
 		App->audio->PlayFx(nextFx);
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->scene4, 60);
+	}
+	if (App->input->keys[SDL_SCANCODE_5] == KEY_STATE::KEY_DOWN)		// go to lvl 5
+	{
+		App->audio->PlayFx(nextFx);
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->scene5, 60);
+
 	}
 	if (App->input->keys[SDL_SCANCODE_6] == KEY_STATE::KEY_DOWN)		// Go to lvl 6
 	{
