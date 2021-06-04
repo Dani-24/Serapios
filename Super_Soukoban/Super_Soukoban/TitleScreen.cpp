@@ -113,6 +113,11 @@ update_status TitleScreen::Update()
 		App->fade->FadeToBlack(this, (Module*)App->scene4, 90);
 
 	}
+	if (App->input->keys[SDL_SCANCODE_6] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene6, 90);
+
+	}
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_DOWN) {		// ESC to close the game
 		return update_status::UPDATE_STOP;
 	}
