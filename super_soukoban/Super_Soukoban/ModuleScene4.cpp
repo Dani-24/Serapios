@@ -82,7 +82,7 @@ update_status ModuleScene4::Update()
 {
 	// Music
 	if (playMusic == false) {
-		if (godModeOn == true) {
+		if (EasterEgg == true) {
 			godMode = App->audio->PlayMusic("assets/sound/music/god_mode.ogg", 1.0f);
 		}
 		else {
@@ -153,6 +153,20 @@ update_status ModuleScene4::Update()
 			App->player->limit = 9999;
 			godModeOn = true;
 		}
+
+	}
+	if (App->input->keys[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN)		// GOD MODE
+	{
+		if (EasterEgg == true) {
+			LOG("GOD MODE OFF");
+			App->player->limit = 140;
+			EasterEgg = false;
+		}
+		else {
+			LOG("GOD MODE ON");
+			App->player->limit = 9999;
+			EasterEgg = true;
+		}
 		playMusic = false;
 	}
 	return update_status::UPDATE_CONTINUE;
@@ -173,7 +187,7 @@ update_status ModuleScene4::PostUpdate()
 			switch (type)
 			{
 			case 0:
-				if (godModeOn == true) {
+				if (EasterEgg == true) {
 					App->render->Blit(godModeGround, i * 24, j * 24, NULL);
 				}
 				else {

@@ -69,7 +69,7 @@ private:
 
 	uint godModeMusic = 0;
 	bool godModeOn = false;
-
+	bool EasterEgg = false;
 	uint nextFx = 0;
 	uint backFx = 0;
 
