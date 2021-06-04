@@ -45,7 +45,7 @@ SceneIntro::SceneIntro(bool startEnabled) :Module(startEnabled)
 	intro.PushBack({ 1,2713, 256, 224 });
 
 	intro.loop = false;
-	intro.speed = 0.015f;
+	intro.speed = 0.03f;
 }
 
 SceneIntro::~SceneIntro() {

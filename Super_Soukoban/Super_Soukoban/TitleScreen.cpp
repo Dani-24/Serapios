@@ -89,35 +89,13 @@ update_status TitleScreen::Update()
 		if (M_Index == B_Play)
 		{
 			App->audio->PlayFx(nextFx);
-			App->fade->FadeToBlack(this, (Module*)App->scene, 60);
+			App->fade->FadeToBlack(this, (Module*)App->menu, 60);
 		}
 		else {
 			App->audio->PlayFx(backFx);
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN) {
-		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
-
-	}
-	if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN) {
-		App->fade->FadeToBlack(this, (Module*)App->scene2, 90);
-
-	}
-	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN) {
-		App->fade->FadeToBlack(this, (Module*)App->scene3, 90);
-
-	}
-	if (App->input->keys[SDL_SCANCODE_4] == KEY_STATE::KEY_DOWN)
-	{
-		App->fade->FadeToBlack(this, (Module*)App->scene4, 90);
-
-	}
-	if (App->input->keys[SDL_SCANCODE_6] == KEY_STATE::KEY_DOWN)
-	{
-		App->fade->FadeToBlack(this, (Module*)App->scene6, 90);
-
-	}
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_DOWN) {		// ESC to close the game
 		return update_status::UPDATE_STOP;
 	}

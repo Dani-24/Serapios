@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 20
+#define NUM_MODULES 21
 
 class Module;
 class ModuleAudio;
@@ -26,6 +26,7 @@ class SceneIntro;
 class TitleScreen;
 class SceneCredits;
 class PauseMenu;
+class GameMenu;
 
 class Application
 {
@@ -60,7 +61,7 @@ public:
 	ModuleWindow* window = nullptr;
 	ModuleFonts* fonts = nullptr;
 	PauseMenu* pause = nullptr;
-	
+	GameMenu* menu = nullptr;
 };
 
 extern Application* App;

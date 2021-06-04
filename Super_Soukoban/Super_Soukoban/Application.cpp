@@ -21,6 +21,7 @@
 #include "SceneCredits.h"
 #include "TitleScreen.h"
 #include "PauseMenu.h"
+#include "GameMenu.h"
 
 Application::Application() {
     modules[0] = window = new ModuleWindow(true);
@@ -30,19 +31,20 @@ Application::Application() {
 	modules[4] = sceneCredits = new SceneCredits(true);
 	modules[5] = sceneintro = new SceneIntro(false);
 	modules[6] = titleScreen = new TitleScreen(false);
-	modules[7] = scene = new ModuleScene(false);
-	modules[8] = scene2 = new ModuleScene2(false);
-	modules[9] = scene3 = new ModuleScene3(false);
-	modules[10] = scene4 = new ModuleScene4(false);
-	modules[11] = scene5 = new ModuleScene5(false);
-	modules[12] = scene6 = new ModuleScene6(false);
-    modules[13] = player = new ModulePlayer(false);
-	modules[14] = boxes = new ModuleBox(false); 
-	modules[15] = collisions = new ModuleCollisions(true);
-	modules[16] = pause = new PauseMenu(false);
-	modules[17] = fade = new ModuleFadeToBlack(true);
-	modules[18] = fonts = new ModuleFonts(true);
-	modules[19] = render = new ModuleRender(true);
+	modules[7] = menu = new GameMenu(false);
+	modules[8] = scene = new ModuleScene(false);
+	modules[9] = scene2 = new ModuleScene2(false);
+	modules[10] = scene3 = new ModuleScene3(false);
+	modules[11] = scene4 = new ModuleScene4(false);
+	modules[12] = scene5 = new ModuleScene5(false);
+	modules[13] = scene6 = new ModuleScene6(false);
+    modules[14] = player = new ModulePlayer(false);
+	modules[15] = boxes = new ModuleBox(false); 
+	modules[16] = collisions = new ModuleCollisions(true);
+	modules[17] = pause = new PauseMenu(false);
+	modules[18] = fade = new ModuleFadeToBlack(true);
+	modules[19] = fonts = new ModuleFonts(true);
+	modules[20] = render = new ModuleRender(true);
 }
 
 Application::~Application() {

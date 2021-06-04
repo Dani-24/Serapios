@@ -92,7 +92,7 @@ update_status PauseMenu::Update() {	// teclas
 			Disable();
 		}
 		else if (pointerPosY == 140) {
-			App->fade->FadeToBlack(current, (Module*)App->titleScreen, 60);	// cambiar por menu
+			App->fade->FadeToBlack(current, (Module*)App->menu, 60);	// cambiar por menu
 			App->scene->Disable();
 			App->scene2->Disable();
 			App->scene3->Disable();

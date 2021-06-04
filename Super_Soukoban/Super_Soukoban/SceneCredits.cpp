@@ -23,7 +23,7 @@ SceneCredits::SceneCredits(bool startEnabled) : Module(startEnabled)
 	black.PushBack({ 250, 200, 20, 20 });
 	black.PushBack({ 250, 200, 20, 20 });
 	black.loop = false;
-	black.speed = 0.015f;
+	black.speed = 0.08f;
 }
 
 SceneCredits::~SceneCredits()

@@ -100,6 +100,10 @@
     <ClInclude Include="ModuleScene5.h">
       <Filter>Archivos de origen\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="GameMenu.h">
+      <Filter>Archivos de origen\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -177,5 +181,18 @@
     <ClCompile Include="ModuleScene5.cpp">
       <Filter>Archivos de origen\Gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="GameMenu.cpp">
+      <Filter>Archivos de origen\Gameplay</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Super_Soukoban.rc">
+      <Filter>Archivos de origen</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Game\Assets\UI\icon.ico">
+      <Filter>Archivos de origen</Filter>
+    </Image>
   </ItemGroup>
 </Project>
