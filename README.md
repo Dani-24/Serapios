@@ -68,6 +68,8 @@ F3 - Direct Win  -  Space to go to the next stage
 
 F4 - Direct Lose -  Space to reset the stage
 
+F5 - Easter Egg 
+  
 Space (if lose) - Restart the current Stage 
 
 Space (if win) - next level
