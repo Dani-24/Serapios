@@ -88,7 +88,7 @@ W - Up
 ## Additional comments
 This game has been done thanks to SDL (https://www.libsdl.org/index.php)
   
-Has supports for Gamepad controller
+This game supports Gamepads controller. 
   
 ## License
 This project is licensed under an unmodified MIT license, which is an OSI-certified license that allows static linking with closed source software. Check LICENSE for further details.
