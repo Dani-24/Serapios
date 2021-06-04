@@ -26,7 +26,7 @@ private:
 	SDL_Texture* menu_title = nullptr;
 	SDL_Texture* menu_options = nullptr;
 	SDL_Texture* menu_pointer = nullptr;
-
+	SDL_Texture* menu_controls = nullptr;
 	SDL_Texture* menu_bg = nullptr;
 
 	SDL_Texture* menu_bg2 = nullptr;
@@ -44,6 +44,7 @@ private:
 	int music = 0;
 	int menuFont = -1;
 
+	bool displayCtrls = false;
 
 };
 

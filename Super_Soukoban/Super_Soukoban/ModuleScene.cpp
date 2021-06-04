@@ -240,7 +240,6 @@ update_status ModuleScene::PostUpdate()
 			App->fade->FadeToBlack(this, (Module*)App->scene, 60);
 		}
 	}
-	
 
 	//win
 	for (int i = 0; i < 3; ++i)
