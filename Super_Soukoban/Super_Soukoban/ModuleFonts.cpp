@@ -66,13 +66,20 @@ int ModuleFonts::Load(const char* texture_path, const char* characters, uint row
 	return id;
 }
 
-void ModuleFonts::UnLoad(int font_id) {
-	if (font_id >= 0 && font_id > MAX_FONTS && fonts[font_id].texture != nullptr) {
+void ModuleFonts::UnLoad(/*int font_id*/) {
+	/*if (font_id >= 0 && font_id > MAX_FONTS && fonts[font_id].texture != nullptr) {
 		App->textures->Unload(fonts[font_id].texture);
 		fonts[font_id].texture = nullptr;
 		LOG("Successfully unloaded BMP font_id %d  :)", font_id);
+	}*/
+
+	for (int i = 0; i < MAX_FONTS; i++) {
+		if (fonts[i].texture != nullptr) {
+			fonts[i].texture = nullptr;
+		}
 	}
 
+	LOG("Fonts cleaned");
 }
 
 void ModuleFonts::BlitText(int x, int y, int font_id, const char* text) const {

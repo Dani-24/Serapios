@@ -9,6 +9,7 @@
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "PauseMenu.h"
+#include "ModuleFonts.h"
 #include "External_Libraries/SDL/include/SDL_scancode.h"
 
 ModuleScene2::ModuleScene2(bool startEnabled) :Module(startEnabled)
@@ -263,7 +264,7 @@ bool ModuleScene2::CleanUp()
 	for (int i = 0; i < numOfBoxes; i++) {
 		boxEnd[i] = false;
 	}
-
+	App->fonts->UnLoad();
 	return true;
 }
 

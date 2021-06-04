@@ -4,8 +4,8 @@
 #include "Module.h"
 #include "External_Libraries/SDL/include/SDL_pixels.h"
 
-#define MAX_FONTS 1000
-#define MAX_FONT_CHARS 2560
+#define MAX_FONTS 10
+#define MAX_FONT_CHARS 256
 
 struct SDL_Texture;
 
@@ -38,7 +38,7 @@ public:
 	int Load(const char* texturePath, const char* characters, uint rows = 1);
 	//removes a font by its index
 	//unloads the texture and removes it from the fonts array
-	void UnLoad(int fontIndex);
+	void UnLoad(/*int fontIndex*/);
 
 	void BlitText(int x, int y, int fontIndex, const char* text) const;
 private:
