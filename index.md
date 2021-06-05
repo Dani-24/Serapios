@@ -8,25 +8,22 @@ Last release:
 Alpha v1.0 - https://github.com/Dani-24/Serapios/releases/tag/v1.0
 
  <img align="left" width="300" height="300" src="http://www.emulanium.com/images/snes/Super%20Soukoban.png">
- 
- ***
+ <img align="right" width="300" height="300" src="https://cdn.discordapp.com/attachments/818140279147724820/835096871692533771/serapios_logo.png">
  
  ## WHO WE ARE?
- We are five catalan students of CITM, UPC, located in Terrassa, Spain. Our team name is Serapios and our names are:
+ We are Serapios, a group of five catalan students of CITM (UPC), located in Terrassa, Spain.
  - Dani Toledo
  - Xavi López
  - Laia Pachón
  - Miguel Rodríguez
  - Adrián Ramírez
- <img width="400" height="400" src="https://cdn.discordapp.com/attachments/818140279147724820/835096871692533771/serapios_logo.png">
-
-serapios logo
 
 
+***
 
+<img align="middle" width="700" height="500" src="https://cdn.discordapp.com/attachments/818140279147724820/848592806691471360/IMG-20210527-WA0023_1.jpg">
 
-<img align="left" width="700" height="500" src="https://cdn.discordapp.com/attachments/818140279147724820/848592806691471360/IMG-20210527-WA0023_1.jpg">
-
+*Team photo*
 
 
 ### Dani Toledo (Group Leader):
@@ -36,12 +33,11 @@ serapios logo
 ### Laia Pachón:
  Design and code
 ### Miguel Rodríguez:
- UI designer
+ UI 
 ### Adrián Ramírez:
- UI designer
+ UI 
+ 
 ***
-
- team photo
 
 ## Controls
 ### Initial animation:
