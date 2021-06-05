@@ -7,29 +7,26 @@
 Last release:
 Alpha v1.0 - https://github.com/Dani-24/Serapios/releases/tag/v1.0
 
- <img align="left" width="300" height="300" src="https://www.giantbomb.com/a/uploads/square_medium/2/23093/2623980-super%20soukoban%20%28j%29_00001.jpg">
- <img align="right" width="300" height="300" src="https://cdn.discordapp.com/attachments/818140279147724820/835096871692533771/serapios_logo.png">
- 
- ### WHO WE ARE?
- We are Serapios, a group of five catalan students of CITM (UPC), located in Terrassa, Spain. Serapios members:
- 
-  Dani Toledo
-  
-  Xavi López
-  
-  Laia Pachón
-  
-  Miguel Rodríguez
-  
-  Adrián Ramírez
 
+<p align="center">
+ 
+ <img align="left" width="400" height="400" src="https://www.giantbomb.com/a/uploads/square_medium/2/23093/2623980-super%20soukoban%20%28j%29_00001.jpg">
+ 
+ <img align="right" width="400" height="400" src="https://cdn.discordapp.com/attachments/818140279147724820/835096871692533771/serapios_logo.png">
+ 
+<img width="700" height="500" src="https://cdn.discordapp.com/attachments/818140279147724820/848592806691471360/IMG-20210527-WA0023_1.jpg">
+ 
+ <br>
+ Team photo
+ <br><br>
+ 
+</p>
 
 ***
 
-<img align="middle" width="700" height="500" src="https://cdn.discordapp.com/attachments/818140279147724820/848592806691471360/IMG-20210527-WA0023_1.jpg">
-
-*Team photo*
-
+## Who we are?
+ 
+ We are Serapios, a group of five catalan students of CITM (UPC), located in Terrassa, Spain. Serapios members:
 
 ### Dani Toledo (Group Leader):
  Code and UI
