@@ -3,7 +3,7 @@
 ## Description
  Super Soukoban is an arcade game for the Super Nintendo Entertainment System launched in 1993. Is similar as a puzzle, and what the player has to do is pushing the boxes in the correct way and put them above the pink spheres. The history of the main character is to earn money and buy a new car so the girl choose him instead of the man of the blue car.
  
- <img align="left" width="400" height="400" src="http://www.emulanium.com/images/snes/Super%20Soukoban.png">
+ <img align="left" width="300" height="300" src="http://www.emulanium.com/images/snes/Super%20Soukoban.png">
  
  ***
  
@@ -14,10 +14,11 @@
  - Laia Pachón
  - Miguel Rodríguez
  - Adrián Ramírez
-
-<img width="300" height="300" src="https://cdn.discordapp.com/attachments/818140279147724820/835096871692533771/serapios_logo.png">
+ <img width="400" height="400" src="https://cdn.discordapp.com/attachments/818140279147724820/835096871692533771/serapios_logo.png">
 
 serapios logo
+
+
 
 
 <img align="left" width="700" height="500" src="https://cdn.discordapp.com/attachments/818140279147724820/848592806691471360/IMG-20210527-WA0023_1.jpg">
