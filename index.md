@@ -5,7 +5,7 @@ Super Soukoban is an arcade game for the Super Nintendo Entertainment System lau
  
  
 Last release:
-Alpha v1.0 - https://github.com/Dani-24/Serapios/releases/tag/v1.0
+Alpha v1.0 - [Download](https://github.com/Dani-24/Serapios/releases/tag/v1.0) 
 
 <p align="center">
  
