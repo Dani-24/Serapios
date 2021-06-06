@@ -50,6 +50,12 @@ Team photo
  
 ***
 
+[![](https://cdn.discordapp.com/attachments/851062158364246048/851062238550949929/video.png)](https://www.youtube.com/watch?v=hcMxPKZq-xg)
+
+*Super Soukoban Alpha v1.0 gameplay video*
+
+***
+
 ##  Controls
 ###  Initial animation:
 Space - skip animation
